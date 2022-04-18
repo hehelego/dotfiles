@@ -12,7 +12,11 @@ if s:cs=='gruvbox'
 
   let g:airline_theme='gruvbox'
   colorscheme gruvbox
-  autocmd vimenter * ++nested colorscheme gruvbox
+
+  augroup set_colorscheme
+    autocmd!
+    autocmd vimenter * ++nested colorscheme gruvbox
+  augroup END
 endif
 
 
@@ -24,5 +28,9 @@ if s:cs=='onedark'
 
   let g:airline_theme='onedark'
   colorscheme onedark
-  autocmd vimenter * ++nested colorscheme onedark
+
+  augroup set_colorscheme
+    autocmd!
+    autocmd vimenter * ++nested colorscheme onedark
+  augroup END
 endif

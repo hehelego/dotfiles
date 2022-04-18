@@ -1,13 +1,20 @@
-set noexpandtab
-autocmd FileType haskell set expandtab
-autocmd FileType python set expandtab
-autocmd FileType sage set expandtab
-autocmd FileType lua set expandtab
-autocmd FileType vim set expandtab
-autocmd FileType vimscript set expandtab
-autocmd FileType markdown set expandtab
+" set expandtab when indentation is used to delimit code block
+augroup filetype_expandtab
+  autocmd!
+
+  autocmd FileType haskell    setlocal expandtab
+  autocmd FileType python     setlocal expandtab
+  autocmd FileType lua        setlocal expandtab
+  autocmd FileType vim        setlocal expandtab
+  autocmd FileType markdown   setlocal expandtab
+augroup END
+
 
 " only display relative line number in terminal buffer
-autocmd TermOpen * set nonumber
-autocmd TermOpen * set relativenumber
+augroup term_lineno
+  autocmd!
+
+  autocmd TermOpen * setlocal nonumber
+  autocmd TermOpen * setlocal relativenumber
+augroup END
 
