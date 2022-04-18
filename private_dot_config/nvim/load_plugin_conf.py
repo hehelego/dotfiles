@@ -12,7 +12,7 @@ def notify_send(msg: Any, level: str, expire_time: int) -> None:
         subprocess.run(['notify-send',
                         '-u', level,
                         '-t', f'{expire_time}',
-                        '-a', '[vim: spinach]',
+                        '-a', '[load plugin]',
                         f'{msg}'],
                        timeout=0.5)
     except Exception as e:
@@ -23,13 +23,17 @@ def py_log(msg): return notify_send(msg, 'low', 1000)
 def py_err(msg): return notify_send(msg, 'critical', 5000)
 
 
-def load_plugin_configs(black_list: list[str] = []) -> None:
+def load_plugin_configs(black_list: list[str]) -> None:
     py_log('start loading plugin configurations')
     conf_dir = os.path.expandvars(r'$HOME/.config/nvim/plugin_config')
     loading = ''
     try:
-        confs = sorted(os.listdir(conf_dir))
-        for x in filter(lambda x: x not in black_list, confs):
+        confs = sorted([
+            x
+            for x in os.listdir(conf_dir)
+            if x not in black_list
+        ])
+        for x in confs:
             loading = path = os.path.join(conf_dir, x)
             if path.endswith('.vim'):
                 vim.command(f'source {path}')
@@ -47,4 +51,4 @@ def load_plugin_configs(black_list: list[str] = []) -> None:
 
 
 if __name__ == '__main__':
-    load_plugin_configs()
+    load_plugin_configs([])

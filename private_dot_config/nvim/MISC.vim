@@ -18,3 +18,10 @@ augroup term_lineno
   autocmd TermOpen * setlocal relativenumber
 augroup END
 
+" disable line-number in quick-fix
+augroup qf_nonu
+  autocmd!
+
+  autocmd FileType qf setlocal norelativenumber
+  autocmd FileType qf setlocal nonumber
+augroup END

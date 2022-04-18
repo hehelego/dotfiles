@@ -14,7 +14,7 @@ xnoremap > >gv
 " (temporarily) turn off highlight search result: <Ctrl>+l
 inoremap <silent><expr> <C-l> execute('nohlsearch')
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR>
-xnoremap <silent> <C-l> :<C-u>nohlsearch<CR>
+xnoremap <silent> <C-l> :<C-u>nohlsearch<CR>gv
 
 """""""""""""""""
 " SECITON: editor UI
@@ -110,18 +110,52 @@ inoremap <silent><expr> <A-F> expand('%:p')
 
 " selected text <-> X11 xclip clipboard/primary
 nnoremap <silent> <leader>yx "+y
-xnoremap <silent> <leader>yx "+y
+xnoremap <silent> <leader>yx "+y<Esc>gv
 nnoremap <silent> <leader>px "+p
-xnoremap <silent> <leader>px "+p
+xnoremap <silent> <leader>px "+p<Esc>gv
 " selected text <-> X11 xclip primary
 nnoremap <silent> <leader>yX "*y
-xnoremap <silent> <leader>yX "*y
+xnoremap <silent> <leader>yX "*y<Esc>gv
 nnoremap <silent> <leader>pX "*p
-xnoremap <silent> <leader>pX "*p
+xnoremap <silent> <leader>pX "*p<Esc>gv
+
 
 """""""""""""""""
 " SECITON: words look up
 """""""""""""""""
 
 " lookup the word using [ydcv](https://github.com/farseerfc/ydcv-rs)
-nnoremap <silent> <leader>w :<C-u>AsyncRun! -silent ydcv -n <cword><CR>
+nnoremap <silent> <leader>w :<C-u>call <SID>dict_lookup(expand('<cword>'))<CR>
+xnoremap <silent> <leader>w :<C-u>call <SID>dict_lookup(<SID>get_visual_selection())<CR>
+
+" lookup a word in dictionary using ydcv
+" 1. call ydcv dictionary lookup command,
+" 2. vertically split window, 3. open a terminal in the bottom part
+" 3. print the output
+function! s:dict_lookup(word)
+  call writefile([a:word], '/tmp/vim_ydcv_word')
+  let l:bang = '!'
+  let l:opt  = {
+        \ 'mode'   : 'term',
+        \ 'pos'    : 'tab',
+        \ 'raw'    : 1,
+        \ 'hidden' : 1,
+        \ 'focus'  : 0 }
+  let l:cmd  = 'cat /tmp/vim_ydcv_word | ydcv'
+  call asyncrun#run(l:bang, l:opt, l:cmd)
+endfunction
+
+" return the selected text in visual mode
+" credit https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
+function! s:get_visual_selection()
+  let [line_start, column_start] = getpos("'<")[1:2]
+  let [line_end, column_end] = getpos("'>")[1:2]
+  let lines = getline(line_start, line_end)
+  if len(lines) == 0
+      return ''
+  endif
+  let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][column_start - 1:]
+  return join(lines, "\n")
+endfunction
+
