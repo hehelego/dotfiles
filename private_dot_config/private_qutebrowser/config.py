@@ -171,6 +171,9 @@ config.bind(f'{leader}T',
 config.bind(f'{leader}{leader}',
             'spawn --userscript spinach-dictlookup.py',
             mode='normal')
+config.bind(f'{leader}{leader}',
+            'spawn --userscript spinach-dictlookup.py',
+            mode='caret')
 # spinach's bookmarks selector: open bookmark, with full feature
 config.bind(f'{leader}b',
             'spawn --userscript spinach-bookmarks.py --full',
