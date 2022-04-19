@@ -84,18 +84,11 @@ local git_keymap = {
   L = 'log',
   d = 'diff %',
 }
-local vista_keymap = {
-  name = 'vista',
+local aerial_keymap = {
+  name = 'aerial',
 
   f = 'finder',
-  F = 'finder-recursive',
-  l = 'lsp',
-  t = 'ctags',
-  m = 'markdown-toc',
-
-  o = 'focus',
-  c = 'close',
-  v = 'toggle',
+  s = 'toggle',
 }
 local undotree_keymap = {
   name = 'undo-tree',
@@ -130,9 +123,9 @@ local leader_keymap = {
   g = git_keymap,
   p = put_keymap,
   q = quickfix_keymap,
+  s = aerial_keymap,
   t = 'file-explorer',
   u = undotree_keymap,
-  v = vista_keymap,
   w = 'word-lookup',
   y = yank_keymap,
   z = zoxide_keymap,

@@ -26,5 +26,6 @@ augroup qf_nonu
   autocmd FileType qf setlocal nonumber
 augroup END
 
+" display white-space characters
 set list
 set listchars+=space:.
