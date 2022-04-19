@@ -67,6 +67,8 @@ nnoremap <silent> <leader>br :edit<CR>
 nnoremap <silent> <leader>bs :source %<CR>
 " change file type
 nnoremap <silent> <leader>bt :<C-u>Filetypes<CR>
+" find an opened buffer
+nnoremap <silent> <leader>bb :<C-u>Buffers<CR>
 
 
 """"""""""""""""""""""""""""""""""
@@ -110,14 +112,14 @@ inoremap <silent><expr> <A-F> expand('%:p')
 
 " selected text <-> X11 xclip clipboard/primary
 nnoremap <silent> <leader>yx "+y
-xnoremap <silent> <leader>yx "+y<Esc>gv
+xnoremap <silent> <leader>yx "+y
 nnoremap <silent> <leader>px "+p
-xnoremap <silent> <leader>px "+p<Esc>gv
+xnoremap <silent> <leader>px "+p
 " selected text <-> X11 xclip primary
 nnoremap <silent> <leader>yX "*y
-xnoremap <silent> <leader>yX "*y<Esc>gv
+xnoremap <silent> <leader>yX "*y
 nnoremap <silent> <leader>pX "*p
-xnoremap <silent> <leader>pX "*p<Esc>gv
+xnoremap <silent> <leader>pX "*p
 
 
 """""""""""""""""

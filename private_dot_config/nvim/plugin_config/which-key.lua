@@ -28,6 +28,7 @@ local fzf_ex_keymap = {
 }
 local buffer_keymap = {
   name = 'buffer',
+  b = 'find-buffer',
   f = 'search-contents',
   r = 'reload-file',
   s = 'source-vimscript',
@@ -129,9 +130,10 @@ local leader_keymap = {
   g = git_keymap,
   p = put_keymap,
   q = quickfix_keymap,
-  t = 'coc-explorer',
+  t = 'file-explorer',
   u = undotree_keymap,
   v = vista_keymap,
+  w = 'word-lookup',
   y = yank_keymap,
   z = zoxide_keymap,
 }

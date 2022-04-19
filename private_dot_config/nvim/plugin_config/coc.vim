@@ -21,7 +21,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 let g:coc_global_extensions = [
   \ 'coc-clangd',
   \ 'coc-cmake',
-  \ 'coc-explorer',
   \ 'coc-fish',
   \ 'coc-format-json',
   \ 'coc-go',

@@ -4,8 +4,6 @@ let maplocalleader=';'
 " SECTION: global keymaps 
 """"""""""""""""""""""""""
 
-" toggle file explorer
-nmap <silent> <leader>t :CocCommand explorer<CR>
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"

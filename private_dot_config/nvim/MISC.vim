@@ -25,3 +25,6 @@ augroup qf_nonu
   autocmd FileType qf setlocal norelativenumber
   autocmd FileType qf setlocal nonumber
 augroup END
+
+set list
+set listchars+=space:.
