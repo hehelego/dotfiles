@@ -136,12 +136,10 @@ function! s:dict_lookup(word)
   call writefile([a:word], '/tmp/vim_ydcv_word')
   let l:bang = '!'
   let l:opt  = {
-        \ 'mode'   : 'term',
-        \ 'pos'    : 'tab',
+        \ 'mode'   : 'async',
         \ 'raw'    : 1,
-        \ 'hidden' : 1,
         \ 'focus'  : 0 }
-  let l:cmd  = 'cat /tmp/vim_ydcv_word | ydcv'
+  let l:cmd  = 'cat /tmp/vim_ydcv_word | ydcv -n'
   call asyncrun#run(l:bang, l:opt, l:cmd)
 endfunction
 
