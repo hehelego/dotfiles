@@ -44,8 +44,8 @@ min_time = 1
 format = "[D](dimmed)[$duration]($style)"
 style = "bold purple dimmed"
 [jobs]
-symbol_threshold = 1
-number_threshold = 1
+symbol_threshold = 0
+number_threshold = 0
 format = "[J](dimmed)[$number]($style)"
 style = "bold purple dimmed"
 [shlvl]

@@ -7,7 +7,6 @@ let g:livepreview_previewer = 'okular'
 let g:livepreview_engine = 'xelatex'
 
 
-
 " re-compile only on buffer save,
 " don't re-compile it on CursorHold
 let g:livepreview_cursorhold_recompile = 0

@@ -138,9 +138,10 @@ function! s:dict_lookup(word)
   call writefile([a:word], '/tmp/vim_ydcv_word')
   let l:bang = '!'
   let l:opt  = {
-        \ 'mode'   : 'async',
-        \ 'raw'    : 1,
-        \ 'focus'  : 0 }
+    \ 'mode'   : 'async',
+    \ 'raw'    : 1,
+    \ 'focus'  : 0
+    \}
   let l:cmd  = 'cat /tmp/vim_ydcv_word | ydcv -n'
   call asyncrun#run(l:bang, l:opt, l:cmd)
 endfunction
@@ -152,7 +153,7 @@ function! s:get_visual_selection()
   let [line_end, column_end] = getpos("'>")[1:2]
   let lines = getline(line_start, line_end)
   if len(lines) == 0
-      return ''
+    return ''
   endif
   let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
   let lines[0] = lines[0][column_start - 1:]

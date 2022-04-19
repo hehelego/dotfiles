@@ -53,11 +53,7 @@ local ts_opts = {
 
   -- indentation module
   indent = {
-    enable = true,
-  },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
+    enable = false,
   },
 
   -- see https://github.com/p00f/nvim-ts-rainbow
