@@ -34,6 +34,10 @@ set -gx FZF_DEFAULT_OPTS "--cycle"
 # SECTION: starship
 #
 if not test "$TERM" = "linux"
-    set -gx STARSHIP_CONFIG ~/.config/starship/config.toml
-    starship init fish | source
+  set -gx STARSHIP_CONFIG ~/.config/starship/config.toml
+  starship init fish | source
 end
+
+# SECTION: key-bindings
+fish_hybrid_key_bindings
+fzf_key_bindings
