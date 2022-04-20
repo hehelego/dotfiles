@@ -29,8 +29,8 @@ Plug 'mbbill/undotree'
 " text alignment
 Plug 'junegunn/vim-easy-align'
 
-" for quick cursor navigating
-Plug 'easymotion/vim-easymotion'
+" for enhanced vim cursor motion
+Plug 'phaazon/hop.nvim'
 
 " for whichkey keybindings map
 Plug 'folke/which-key.nvim'

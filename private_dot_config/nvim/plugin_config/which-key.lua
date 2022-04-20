@@ -185,23 +185,17 @@ local coc_keymap = {
 wk.register(coc_keymap, { prefix = ';' })
 
 --
--- SECTION: easymotion keymap
+-- SECTION: hop.nvim keymap
 --
 
-local easymotion_keymap = {
-  name = 'easymotion',
+local hop_keymap = {
+  name = 'motion',
 
-  f = '[char]',
-  F = '[char,char]',
-  k = '^line',
-  j = '^line',
-  K = 'line$',
-  J = 'line$',
-  w = '^word',
-  W = 'word$',
+  f = 'char1-f',   t = 'char1-t',
+  g = 'char2-f',   h = 'char2-t',
+  w = 'word-beg',  e = 'word-end',
+  j = 'line-beg',  k = 'line-end',
 }
-easymotion_keymap[','] = 'ANYWHERE-search'
-easymotion_keymap['.'] = 'REPEAT-search'
-easymotion_keymap['n'] = 'PREV-match'
-easymotion_keymap['N'] = 'NEXT-match'
-wk.register(easymotion_keymap, { prefix = ',' })
+hop_keymap['/'] = 'pattern'
+hop_keymap[','] = 'anywhere'
+wk.register(hop_keymap, { prefix = ',' })
