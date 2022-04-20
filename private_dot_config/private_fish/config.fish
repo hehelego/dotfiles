@@ -5,6 +5,7 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx MANPAGER "nvim +Man!"
 
+set -gx LESSHISTFILE "/dev/null"
 
 # SECTION: alias and abbr
 #
