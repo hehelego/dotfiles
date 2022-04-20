@@ -24,17 +24,16 @@ def py_err(msg): return notify_send(msg, 'critical', 5000)
 
 
 def load_plugin_configs(black_list: list[str]) -> None:
-    py_log('start loading custom keymappings')
+    py_log('loading custom keymappings')
     keymap_dir = os.path.expandvars(r'$HOME/.config/nvim/keymaps')
-    loading = ''
-    try:
-        keymaps = sorted([
-            x
-            for x in os.listdir(keymap_dir)
-            if x not in black_list
-        ])
-        for x in keymaps:
-            loading = path = os.path.join(keymap_dir, x)
+    keymaps = sorted([
+        x
+        for x in os.listdir(keymap_dir)
+        if x not in black_list
+    ])
+    for keymap in keymaps:
+        try:
+            path = os.path.join(keymap_dir, keymap)
             if path.endswith('.vim'):
                 vim.command(f'source {path}')
             elif path.endswith('.py'):
@@ -43,11 +42,9 @@ def load_plugin_configs(black_list: list[str]) -> None:
                 vim.command(f'luafile {path}')
             else:
                 py_err(f'unknown keymap {path}')
-    except Exception:
-        py_err(f'failed {loading}')
-        traceback.print_exc(file=sys.stderr)
-    else:
-        py_log('all keymaps installed')
+        except Exception:
+            py_err(f'failed {keymap}')
+            traceback.print_exc(file=sys.stderr)
 
 
 if __name__ == '__main__':

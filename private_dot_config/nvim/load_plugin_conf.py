@@ -24,17 +24,16 @@ def py_err(msg): return notify_send(msg, 'critical', 5000)
 
 
 def load_plugin_configs(black_list: list[str]) -> None:
-    py_log('start loading plugin configurations')
+    py_log('loading plugin configurations')
     conf_dir = os.path.expandvars(r'$HOME/.config/nvim/plugin_config')
-    loading = ''
-    try:
-        confs = sorted([
-            x
-            for x in os.listdir(conf_dir)
-            if x not in black_list
-        ])
-        for x in confs:
-            loading = path = os.path.join(conf_dir, x)
+    confs = sorted([
+        x
+        for x in os.listdir(conf_dir)
+        if x not in black_list
+    ])
+    for conf in confs:
+        try:
+            path = os.path.join(conf_dir, conf)
             if path.endswith('.vim'):
                 vim.command(f'source {path}')
             elif path.endswith('.py'):
@@ -43,11 +42,9 @@ def load_plugin_configs(black_list: list[str]) -> None:
                 vim.command(f'luafile {path}')
             else:
                 py_err(f'unknown plug-conf {path}')
-    except Exception:
-        py_err(f'failed {loading}')
-        traceback.print_exc(file=sys.stderr)
-    else:
-        py_log('all plugin configs loaded')
+        except Exception:
+            py_err(f'failed {conf}')
+            traceback.print_exc(file=sys.stderr)
 
 
 if __name__ == '__main__':
