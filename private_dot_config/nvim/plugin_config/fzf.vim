@@ -3,20 +3,20 @@
 
 
 " the default setting
-"
-" let g:fzf_action = {
-"   \ 'ctrl-t': 'tab split',
-"   \ 'ctrl-h': 'split',
-"   \ 'ctrl-x': 'vsplit',
-"   \}
-
+" action to perform when a keybinding is triggered
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-v': 'vsplit',
-  \ 'ctrl-h': 'split',
   \ 'ctrl-s': 'split',
   \}
 
+" disable line-number for fzf windows
+augroup fzf_lineno
+  autocmd!
+
+  autocmd FileType fzf setlocal norelativenumber
+  autocmd FileType fzf setlocal nonumber
+augroup END
 
 
 " source https://github.com/SpaceVim/SpaceVim/blob/master/autoload/SpaceVim/layers/fzf.vim

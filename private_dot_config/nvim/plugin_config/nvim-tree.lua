@@ -14,7 +14,7 @@ local opts = {
   open_on_setup_file = false,
   open_on_tab = false,
   sort_by = 'name',
-  update_cwd = false,
+  update_cwd = true,
   view = {
     width = 30,
     height = 30,
@@ -26,15 +26,19 @@ local opts = {
     mappings = {
       custom_only = false,
       list = {
-        { key = '<C-s>',    cb = action 'hsplit' },
-        { key = '<C-v>',    cb = action 'vsplit' },
-        { key = '<C-q>',    cb = action 'close' },
+        { key = { 'x', '<C-x>' }, cb = action 'system_open' },
+        { key = { 't', '<C-t>' }, cb = action 'tabnew' },
+        { key = { 's', '<C-s>' }, cb = action 'split' },
+        { key = { 'v', '<C-v>' }, cb = action 'vsplit' },
+        { key = { 'q', '<C-q>' }, cb = action 'close' },
+        { key = 'o',              cb = action 'cd' },
+        { key = '<Tab>',          cb = action 'edit' },
       },
     },
   },
   renderer = {
     indent_markers = {
-      enable = false,
+      enable = true,
       icons = {
         corner = '└ ',
         edge = '│ ',
@@ -80,7 +84,7 @@ local opts = {
     timeout = 400,
   },
   actions = {
-    use_system_clipboard = true,
+    use_system_clipboard = false,
     change_dir = {
       enable = true,
       global = false,
@@ -117,9 +121,3 @@ local opts = {
 }
 
 nt.setup(opts)
-
--- use tree-sitter based folding
-vim.cmd([[
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-]])

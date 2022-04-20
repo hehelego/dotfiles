@@ -77,3 +77,9 @@ local ts_opts = {
 }
 
 ts.setup(ts_opts)
+
+-- use tree-sitter based folding
+vim.cmd([[
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+]])
