@@ -4,10 +4,10 @@
 # see https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/qutebrowser/config.py
 # see qute://help/settings.html#content.user_stylesheets
 
-from spinach_qutepy import Fzf, Qute, Helper
-
-import subprocess
 import os
+import subprocess
+
+from spinach_qutepy import Fzf, Helper, Qute
 
 
 def get_themes(search: str) -> list[str]:
@@ -35,6 +35,6 @@ if __name__ == '__main__':
 
     def set_theme(thm): qute.exec(f':set -tp content.user_stylesheets {thm}')
     if len(selected) > 0:
-        set_theme(selected[0])
+        set_theme(repr(selected[0]))
     else:
         set_theme(repr(''))

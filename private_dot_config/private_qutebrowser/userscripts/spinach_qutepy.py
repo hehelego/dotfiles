@@ -1,11 +1,9 @@
-#!/usr/bin/python
-
 import os
 from pprint import pprint
 import subprocess
 import sys
 import tempfile
-from typing import Any, TypeVar, Optional
+from typing import Any, Optional, TypeVar
 
 
 class Qute:

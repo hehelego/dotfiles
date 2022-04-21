@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
-from spinach_qutepy import Qute, Helper
 import subprocess
+
+from spinach_qutepy import Helper, Qute
 
 # look up the selected word in YouDao dictionary using [ydcv-rs](https://github.com/farseerfc/ydcv-rs)
 if __name__ == '__main__':

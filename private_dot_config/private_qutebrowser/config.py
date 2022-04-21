@@ -14,12 +14,13 @@ proxy_urls: list[str] = [
 
 # load the autoconfig file: $HOME/.config/qutebrowser/autoconfig.yml
 config.load_autoconfig()
-
+# common configurations
 config.set('bindings.key_mappings',                   dict())
 config.set('scrolling.smooth',                        True)
 config.set('qt.highdpi',                              True)
 config.set('fonts.default_family',                    'monospace')
 config.set('colors.webpage.preferred_color_scheme',   'dark')
+config.set('colors.webpage.bg',                       'gray')
 config.set('content.autoplay',                        False)
 config.set('content.javascript.can_access_clipboard', True)
 config.set('content.pdfjs',                           True)
@@ -37,11 +38,7 @@ config.set('qt.args', [
 
 # command for external editor
 # see https://github.com/qutebrowser/qutebrowser/issues/5340
-config.set('editor.command',                    ['codium', '--goto', '{file}:{line}:{column0}'])
-config.set('editor.command',                    ['alacritty', '-e', 'nvim', '-c', 'normal {line}G{column0}l', '--', '{file}'])
-config.set('editor.command',                    ['kate', '--startanon', '--line', '{line}', '--column', '{column}', '{file}'])
-config.set('editor.command',                    ['gedit', '--new-window', '{file}', '+{line}:{column}'])
-config.set('editor.command',                    ["nvim-qt", "--nofork", "{file}", "--", "-c", "normal {line}G{column0}l"])
+config.set('editor.command',                    ['alacritty', '-e', 'nvim', '--clean', '-c', 'normal {line}G{column0}l', '--', '{file}'])
 
 
 # use default rather than external file selector for HTML file upload form.
@@ -120,14 +117,6 @@ config.bind('<Alt-e>',
             'edit-text',
             mode='insert')
 
-# download page
-config.bind(f'{leader}d',
-            'download',
-            mode='normal')
-config.bind(f'{leader}D',
-            'hint links download',
-            mode='normal')
-
 # play video in MPV
 config.bind(f'{leader}m',
             'hint links spawn mpv {hint-url}',
@@ -150,22 +139,39 @@ config.bind(f'{leader}r',
             'restart',
             mode='normal')
 
-# ZEN mode (hidding the tab-bar and status-bar)
+# focus (hidding the tab-bar and status-bar)
 config.bind(f'{leader}z',
-            'config-cycle -tp statusbar.show never always ;; config-cycle -tp tabs.show never always ;; clear-messages ;; download-clear',
+            'config-cycle -tp statusbar.show never always ;; config-cycle -tp tabs.show never always ;; clear-messages',
+            mode='normal')
+# quiet (clear notifications)
+config.bind(f'{leader}q',
+            'clear-messages ;; download-clear',
             mode='normal')
 
-# toogle browser dark mode
+# enable browser dark mode
+config.bind(f'{leader}D',
+            'set colors.webpage.darkmode.enabled true  ;; restart',
+            mode='normal')
+# disable browser dark mode
 config.bind(f'{leader}d',
-            'config-cycle -p colors.webpage.darkmode.enabled true false ;; jseval ("restart required")',
+            'set colors.webpage.darkmode.enabled false ;; restart',
             mode='normal')
 
 ##################################### PART C: userscripts #####################################
 
-# run the developing userscript
-config.bind(f'{leader}T',
-            'spawn --userscript test.py',
+# spinach's theme selector: switch user stylesheets
+config.bind(f'*',
+            'spawn --userscript spinach-cursorword.py next',
             mode='normal')
+config.bind(f'*',
+            'spawn --userscript spinach-cursorword.py next',
+            mode='caret')
+config.bind(f'#',
+            'spawn --userscript spinach-cursorword.py prev',
+            mode='normal')
+config.bind(f'#',
+            'spawn --userscript spinach-cursorword.py prev',
+            mode='caret')
 
 # spinach's dinctionary lookup plugin: search for the selected text in YouDao dinctionary
 config.bind(f'{leader}{leader}',
@@ -174,6 +180,7 @@ config.bind(f'{leader}{leader}',
 config.bind(f'{leader}{leader}',
             'spawn --userscript spinach-dictlookup.py',
             mode='caret')
+
 # spinach's bookmarks selector: open bookmark, with full feature
 config.bind(f'{leader}b',
             'spawn --userscript spinach-bookmarks.py --full',

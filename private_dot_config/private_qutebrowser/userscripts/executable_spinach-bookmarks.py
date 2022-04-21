@@ -3,7 +3,6 @@
 import argparse
 import os
 import subprocess
-import sys
 from typing import Optional
 
 import yaml
@@ -117,10 +116,10 @@ if __name__ == '__main__':
     parser.add_argument('--tab', action='store_true', dest='tab')
     parser.add_argument('--win', action='store_true', dest='win')
     parser.add_argument('--full', action='store_true', dest='full')
-
-    args = parser.parse_args(sys.argv[1:])
-    qute = Qute()
+    args = parser.parse_args()
     Helper.log('args', args)
+
+    qute = Qute()
 
     bmdir = os.path.join(qute.config_dir, 'spinach-bookmarks')
     os.chdir(bmdir)
@@ -140,6 +139,6 @@ if __name__ == '__main__':
     else:
         bm = select_bookmark(bms)
         if bm is not None:
-            nt, nw = args.win, args.tab
+            nt, nw = bool(args.win), bool(args.tab)
             Helper.log('mode', f'tab={nt} win={nw}')
-            qute.open_url(bm.url, new_window=args.win, new_tab=args.tab)
+            qute.open_url(bm.url, new_window=nw, new_tab=nt)
