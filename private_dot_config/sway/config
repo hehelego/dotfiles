@@ -1,6 +1,9 @@
 # sway config
 # see (man 5 sway)
 
+# SHELL = fish
+# fish shell functions "$HOME/.config/fish/functions"
+
 ### Variables
 #
 # set font used by sway widgets
@@ -193,6 +196,8 @@ output DP-2  scale 1
     bindsym $mod+n                exec dunstctl close
     # pop one history notification
     bindsym $mod+Shift+n          exec dunstctl history-pop
+		# lookup the selected text in dictionary with ydcv
+		bindsym $mod+q                exec fish -c dict_lookup_sel
 
     # Use pactl to adjust volume in PulseAudio.
     bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@   +5%    ; exec $refresh_status
