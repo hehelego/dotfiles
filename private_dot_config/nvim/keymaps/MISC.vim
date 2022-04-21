@@ -70,16 +70,22 @@ nnoremap <silent> <leader>bt :<C-u>Filetypes<CR>
 " find an opened buffer
 nnoremap <silent> <leader>bb :<C-u>Buffers<CR>
 
+" switching between buffers
+nnoremap <silent> <leader>bn :<C-u>bnext<CR>
+nnoremap <silent> <leader>bp :<C-u>bprevious<CR>
+nnoremap <silent> <leader>bc :<C-u>bdelete<CR>
+nnoremap <silent> <leader>bd :<C-u>bdelete<CR>
+
 
 """"""""""""""""""""""""""""""""""
 " SECITON: windows/tabs/buffers
 """"""""""""""""""""""""""""""""""
 
 " manipulate window size
-nnoremap <silent> <A-Left> :<C-u>vertical resize -3<CR>
+nnoremap <silent> <A-Left>  :<C-u>vertical resize -3<CR>
 nnoremap <silent> <A-Right> :<C-u>vertical resize +3<CR>
-nnoremap <silent> <A-Down> :<C-u>resize -3<CR>
-nnoremap <silent> <A-Up> :<C-u>resize +3<CR>
+nnoremap <silent> <A-Down>  :<C-u>resize -3<CR>
+nnoremap <silent> <A-Up>    :<C-u>resize +3<CR>
 
 
 " switching between tabs
@@ -110,16 +116,12 @@ inoremap <silent><expr> <A-F> expand('%:p')
 " SECITON: clipboard
 """""""""""""""""
 
-" selected text <-> X11 xclip clipboard/primary
-nnoremap <silent> <leader>yx "+y
-xnoremap <silent> <leader>yx "+y
-nnoremap <silent> <leader>px "+p
-xnoremap <silent> <leader>px "+p
-" selected text <-> X11 xclip primary
-nnoremap <silent> <leader>yX "*y
-xnoremap <silent> <leader>yX "*y
-nnoremap <silent> <leader>pX "*p
-xnoremap <silent> <leader>pX "*p
+" selected text <-> system clipboard
+xnoremap <silent> <A-c> "+y
+xnoremap <silent> <A-v> "+p
+" more clipboard paste key-bindings
+nnoremap <silent> <A-v> "+p
+inoremap <silent><expr> <A-v> eval('@+')
 
 
 """""""""""""""""

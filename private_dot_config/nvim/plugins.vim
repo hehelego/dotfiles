@@ -1,6 +1,12 @@
 call plug#begin('~/.local/share/nvim/plugins')
 
 """"""""""""""""""""""""""""""""""""""
+" SECTION: BASE
+""""""""""""""""""""""""""""""""""""""
+
+Plug 'nvim-lua/plenary.nvim'
+
+""""""""""""""""""""""""""""""""""""""
 " SECTION: UI
 """"""""""""""""""""""""""""""""""""""
 
@@ -38,6 +44,9 @@ Plug 'folke/which-key.nvim'
 " for runing command and/or spawning task
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
+
+" for :BUG :FIXME :TODO markers
+Plug 'folke/todo-comments.nvim'
 
 
 """"""""""""""""""""""""""""""""""""""

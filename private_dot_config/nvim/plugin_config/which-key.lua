@@ -21,18 +21,24 @@ local fzf_ex_keymap = {
   name = 'fzf-ex',
 
   c = 'commands',
-  r = 'registers',
+  h = 'helps',
+  k = 'key-bindings',
   m = 'marks',
+  r = 'registers',
   t = 'asynctasks',
-  h = 'helps'
 }
 local buffer_keymap = {
   name = 'buffer',
   b = 'find-buffer',
   f = 'search-contents',
-  r = 'reload-file',
   s = 'source-vimscript',
   t = 'select-filetype',
+  -- buffer switching
+  n = 'next',
+  p = 'prev',
+  c = 'delete',
+  d = 'delete',
+  r = 'reload',
 }
 local editorui_keymap = {
   name = 'editor-ui',
@@ -62,18 +68,6 @@ local quickfix_keymap = {
   n = 'next',
   o = 'open',
   p = 'prev',
-}
-local yank_keymap = {
-  name = 'clip-take',
-
-  x = 'xclip-clipboard',
-  X = 'xclip-primary',
-}
-local put_keymap = {
-  name = 'clip-put',
-
-  x = 'xclip-clipboard',
-  X = 'xclip-primary',
 }
 local git_keymap = {
   name = 'git',
@@ -121,13 +115,11 @@ local leader_keymap = {
   f = fzf_keymap,
   F = fzf_ex_keymap,
   g = git_keymap,
-  p = put_keymap,
   q = quickfix_keymap,
   s = aerial_keymap,
   t = 'file-explorer',
   u = undotree_keymap,
   w = 'word-lookup',
-  y = yank_keymap,
   z = zoxide_keymap,
 }
 leader_keymap['<space>'] = {
@@ -135,26 +127,26 @@ leader_keymap['<space>'] = {
   p = {
     name = 'plugins',
 
-    c     = {'<CMD>PlugClean<CR>',  'vimplug-clean'},
-    d     = {'<CMD>PlugDiff<CR>',  'vimplug-diff'},
-    i     = {'<CMD>PlugInstall<CR>', 'vimplug-install'},
-    s     = {'<CMD>PlugStatus<CR>', 'vimplug-status'},
-    u     = {'<CMD>PlugUpdate<CR>', 'vimplug-update'},
-    U     = {'<CMD>PlugUpgrade<CR>', 'vimplug-upgrade'},
-    [';'] = {'<CMD>CocUpdate<CR>', 'coc-update'},
+    c     = { '<CMD>PlugClean<CR>', 'vimplug-clean' },
+    d     = { '<CMD>PlugDiff<CR>', 'vimplug-diff' },
+    i     = { '<CMD>PlugInstall<CR>', 'vimplug-install' },
+    s     = { '<CMD>PlugStatus<CR>', 'vimplug-status' },
+    u     = { '<CMD>PlugUpdate<CR>', 'vimplug-update' },
+    U     = { '<CMD>PlugUpgrade<CR>', 'vimplug-upgrade' },
+    [';'] = { '<CMD>CocUpdate<CR>', 'coc-update' },
   },
   v = {
     name = 'document-preview',
 
     m = {
       name = 'markdown',
-      m = {'<CMD>MarkdownPreview<CR>', 'start'},
-      s = {'<CMD>MarkdownPreviewStop<CR>', 'shutdown'},
-      t = {'<CMD>MarkdownPreviewStop<CR>', 'toggle'},
+      m = { '<CMD>MarkdownPreview<CR>', 'start' },
+      s = { '<CMD>MarkdownPreviewStop<CR>', 'shutdown' },
+      t = { '<CMD>MarkdownPreviewStop<CR>', 'toggle' },
     },
     t = {
       name = 'LaTeX',
-      t = {'<CMD>LLPStartPreview<CR>', 'start'},
+      t = { '<CMD>LLPStartPreview<CR>', 'start' },
     },
   },
 }
@@ -191,10 +183,10 @@ wk.register(coc_keymap, { prefix = ';' })
 local hop_keymap = {
   name = 'motion',
 
-  f = 'char1-f',   t = 'char1-t',
-  g = 'char2-f',   h = 'char2-t',
-  w = 'word-beg',  e = 'word-end',
-  j = 'line-beg',  k = 'line-end',
+  f = 'char1-f', t = 'char1-t',
+  g = 'char2-f', h = 'char2-t',
+  w = 'word-beg', e = 'word-end',
+  j = 'line-beg', k = 'line-end',
 }
 hop_keymap['/'] = 'pattern'
 hop_keymap[','] = 'anywhere'

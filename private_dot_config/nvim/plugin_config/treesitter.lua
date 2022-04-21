@@ -2,6 +2,7 @@
 -- see https://github.com/p00f/nvim-ts-rainbow
 -- see https://github.com/nvim-treesitter/playground
 local ts = require('nvim-treesitter.configs')
+local vim = vim
 
 local ts_opts = {
   ensure_installed = {
@@ -45,7 +46,7 @@ local ts_opts = {
 
     -- list, ddisable treesitter for the listed languages
     -- NOTE: these are the **names of the parsers** and not the **filetype**
-    disable = { },
+    disable = {},
 
     -- bool, whether to use treesitter and vim-regex-syntax simultaneously
     additional_vim_regex_highlighting = false,
@@ -80,4 +81,4 @@ ts.setup(ts_opts)
 
 -- use tree-sitter based folding
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr='nvim_treesitter#foldexpr()'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'

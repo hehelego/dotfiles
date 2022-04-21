@@ -12,6 +12,8 @@ nnoremap <silent> <leader>fw :<C-u>Windows<CR>
 
 " find commands
 nnoremap <silent> <leader>Fc :<C-u>Commands<CR>
+" find key-bindings
+nnoremap <silent> <leader>Fk :<C-u>Maps<CR>
 " find registers
 nnoremap <silent> <leader>Fr :<C-u>FzfRegister<CR>
 " find marks

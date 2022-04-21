@@ -5,8 +5,8 @@ local opts = {
   -- Priority list of preferred backends for aerial.
   -- This can be a filetype map (see :help aerial-filetype-map)
   backends = {
-    _        = {"lsp", "treesitter"},
-    markdown = {"markdown"},
+    _        = { "lsp", "treesitter" },
+    markdown = { "markdown" },
   },
 
   -- Enum: persist, close, auto, global
@@ -146,4 +146,3 @@ local opts = {
 }
 
 aerial.setup(opts)
-
