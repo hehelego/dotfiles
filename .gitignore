@@ -1,2 +1,10 @@
+# python pyc cache files
 __pycache__/
+
+# PATH="$HOME/.config/fish/fish_variables"
+# fish shell state
 fish_variables
+
+# PATH="$HOME/.config/qutebrowser/autoconfig.yml"
+# qutebrowser yaml configuration file
+autoconfig.yml
