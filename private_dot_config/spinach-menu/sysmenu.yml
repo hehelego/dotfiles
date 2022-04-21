@@ -76,6 +76,21 @@ system:
           - restart:
               desc: restart i3wm
               action: i3-msg restart
+          - exit:
+              desc: exit i3wm
+              action: i3-msg exit
+    - sway:
+        desc: managing sway session
+        son:
+          - reload:
+              desc: reload sway configuration
+              action: swaymsg reload
+          - restart:
+              desc: restart i3wm
+              action: swaymsg reload
+          - exit:
+              desc: exit i3wm
+              action: swaymsg exit
     - display output:
         desc: select video display output device
         son:
@@ -88,9 +103,6 @@ system:
           - all:
               desc: only use all the video display output
               action: display_all
-    - playerctl:
-        desc: media play control
-        action: alacritty --class spinach-FZFmenu -t playerctl-menu:expanded -e $HOME/.config/i3/menu-playerctl.fish --show expanded
     - volume:
         desc: pause audio volume control using pactl
         son:
@@ -178,3 +190,9 @@ system:
           - lxrandr:
               desc: configure display output
               action: lxrandr
+    - misc:
+        desc: miscellaneous utilities
+        son:
+          - dict-lookup:
+              desc: lookup the selected word in dictionary
+              action: dict_lookup_sel

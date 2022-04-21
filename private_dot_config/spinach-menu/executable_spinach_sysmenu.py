@@ -9,7 +9,7 @@ from spinach_fzf_menu import EntryPath, Helper, MenuEntry, MenuParser, main
 
 
 def load():
-    menu_file = os.path.expanduser('~/.config/i3/sysmenu.yml')
+    menu_file = os.path.expanduser('~/.config/spinach-menu/sysmenu.yml')
     doc = yaml.safe_load(Helper.readfile(menu_file))
     root = MenuParser.from_object(doc)
     return root
