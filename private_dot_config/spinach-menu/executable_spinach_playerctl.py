@@ -89,16 +89,21 @@ def load():
 
 def preview(path: EntryPath, entry: MenuEntry) -> str:
     if entry.is_leaf() and 'all' not in path.as_list():
-        metadata = subprocess.getoutput(f'playerctl --player="{entry.key}" metadata')
-        status = subprocess.getoutput(f'playerctl --player="{entry.key}" status')
-        return f'{status}\n\n{metadata}'
+        metadata = subprocess.getoutput(
+            f'playerctl --player="{entry.key}" metadata')
+        status = subprocess.getoutput(
+            f'playerctl --player="{entry.key}" status')
+        loop = subprocess.getoutput(f'playerctl --player="{entry.key}" loop')
+        shuffle = subprocess.getoutput(
+            f'playerctl --player="{entry.key}" shuffle')
+        return f'{metadata}\n\nstatus\t=\t{status}\nloop\t=\t{loop}\nshuffle\t=\t{shuffle}'
     else:
         return entry.desc
 
 
 if __name__ == '__main__':
     try:
-        main(sys.argv, load, preview, 
+        main(sys.argv, load, preview,
              log_file='/tmp/spinach_playerctl.log',
              prompt='playerctl> ')
     except:

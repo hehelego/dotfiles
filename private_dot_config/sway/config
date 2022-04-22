@@ -26,9 +26,10 @@ set $menu                     wofi --show drun
 # refresh the status bar
 set $refresh_status           killall -SIGUSR1 i3status-rs
 # spinach's fzf system menu
-set $menu_fzf_expanded        alacritty --class FZFmenu -t FZFmenu:system    -e ~/.config/spinach-menu/menu-sys.fish       --show expanded
-set $menu_fzf_mixed           alacritty --class FZFmenu -t FZFmenu:system    -e ~/.config/spinach-menu/menu-sys.fish       --show mixed
-set $menu_fzf_playerctl       alacritty --class FZFmenu -t FZFmenu:playerctl -e ~/.config/spinach-menu/menu-playerctl.fish --show expanded
+set $FZFmenu_system_expanded        alacritty --class FZFmenu -t FZFmenu:system    -e ~/.config/spinach-menu/menu-sys.fish       --show expanded
+set $FZFmenu_system_mixed           alacritty --class FZFmenu -t FZFmenu:system    -e ~/.config/spinach-menu/menu-sys.fish       --show mixed
+set $FZFmenu_playerctl_expanded     alacritty --class FZFmenu -t FZFmenu:playerctl -e ~/.config/spinach-menu/menu-playerctl.fish --show expanded
+set $FZFmenu_playerctl_mixed        alacritty --class FZFmenu -t FZFmenu:playerctl -e ~/.config/spinach-menu/menu-playerctl.fish --show mixed
 # take a screenshot
 set $screenshot               spectacle -r
 set $bg_img                   /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
@@ -185,9 +186,10 @@ output DP-2  scale 1
 # More key-bindings:
 #
     # start spinach's fzf-menu
-    bindsym $mod+b                exec $menu_fzf_expanded
-    bindsym $mod+Shift+b          exec $menu_fzf_mixed
-    bindsym $mod+m                exec $menu_fzf_playerctl
+    bindsym $mod+b                exec $FZFmenu_system_expanded
+    bindsym $mod+Shift+b          exec $FZFmenu_system_mixed
+    bindsym $mod+m                exec $FZFmenu_playerctl_expanded
+    bindsym $mod+Shift+m          exec $FZFmenu_playerctl_mixed
     # restart the fcitx5 input method
     bindsym $mod+Shift+i          exec fish -c restart_im
     # open the emoji selector
