@@ -8,3 +8,7 @@ fish_variables
 # PATH="$HOME/.config/qutebrowser/autoconfig.yml"
 # qutebrowser yaml configuration file
 autoconfig.yml
+
+# PATH="$HOME/.config/nvim/plugin/packer_compiled.lua"
+# neovim packer.nvim package manager compiled loader file
+packer_compiled.lua
