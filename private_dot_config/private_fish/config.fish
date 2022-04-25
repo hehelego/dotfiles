@@ -14,8 +14,8 @@ alias ll="exa --long --group-directories-first"
 alias la="exa --long --all --group-directories-first"
 alias tree="exa --tree"
 alias tree-list="exa --tree --long --all"
-alias fzff="fd --hidden --type file      | fzf --multi --cycle --preview='stat {}'"
-alias fzfd="fd --hidden --type directory | fzf --multi --cycle --preview='exa -F1 {}'"
+alias fzff="fd -HI --type file      --exclude .git | fzf --multi --cycle --preview='stat {}'"
+alias fzfd="fd -HI --type directory --exclude .git | fzf --multi --cycle --preview='exa -F1 {}'"
 alias bat="bat --pager=less"
 alias cat="bat --plain"
 
@@ -28,7 +28,7 @@ zoxide init fish | source
 
 # SECTION: fzf
 #
-set -gx FZF_DEFAULT_COMMAND "fd -H --type file"
+set -gx FZF_DEFAULT_COMMAND "fd -HI --type file --exclude .git --strip-cwd-prefix"
 set -gx FZF_DEFAULT_OPTS "--cycle"
 
 
