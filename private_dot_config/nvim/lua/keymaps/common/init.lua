@@ -37,6 +37,7 @@ local window_keys = {
 	-- increase or decrease width
 	"r",
 	"<",
+	">",
 	-- make the windows have equal size
 	"=",
 }
