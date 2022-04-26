@@ -22,7 +22,7 @@ local opts = {
 				{ key = { "a", "A" }, cb = action("create") },
 				{ key = "y", cb = action("copy") },
 				{ key = "d", cb = action("cut") },
-				{ key = "y", cb = action("paste") },
+				{ key = "p", cb = action("paste") },
 				{ key = "[", cb = action("dir_up") },
 				{ key = "]", cb = action("cd") },
 				{ key = "gy", cb = action("copy_path") },
