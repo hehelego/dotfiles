@@ -45,7 +45,7 @@ require("nvim-treesitter.configs").setup({
 		-- list, ddisable treesitter for the listed languages
 		-- (these are the **names of the parsers** and not the **filetype**)
 		disable = {},
-		additional_vim_regex_highlighting = true,
+		additional_vim_regex_highlighting = false,
 	},
 
 	-- indentation module
@@ -61,41 +61,3 @@ require("nvim-treesitter.configs").setup({
 		max_file_lines = 10000,
 	},
 })
-
--- use tree-sitter based folding
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
-vim.g.treesitter_status = false
-
-local function ts_on()
-	vim.g.treesitter_status = true
-	vim.cmd([[
-	TSEnable highlight
-	TSEnable rainbow
-	TSEnable indent
-	]])
-	vim.opt.foldmethod = "expr"
-	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-end
-local function ts_off()
-	vim.g.treesitter_status = false
-	vim.cmd([[
-	TSDisable highlight
-	TSDisable rainbow
-	TSDisable indent
-	]])
-	vim.opt.foldmethod = "manual"
-	vim.opt.foldexpr = ""
-end
-local function ts_toggle()
-	if vim.g.treesitter_status == true then
-		ts_off()
-	else
-		ts_on()
-	end
-end
-
-vim.api.nvim_create_user_command("TSon", ts_on, {})
-vim.api.nvim_create_user_command("TSoff", ts_off, {})
-vim.api.nvim_create_user_command("TStoggle", ts_toggle, {})

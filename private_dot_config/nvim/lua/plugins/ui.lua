@@ -1,4 +1,7 @@
 local function ui_plugins(use)
+	-- prettify the vim.ui functions
+	use({ "stevearc/dressing.nvim" })
+
 	-- nerd font dev-icons
 	use("kyazdani42/nvim-web-devicons")
 

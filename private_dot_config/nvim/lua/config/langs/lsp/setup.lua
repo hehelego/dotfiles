@@ -1,15 +1,6 @@
 local function L(mod)
 	return require("config.langs.lsp." .. mod)
 end
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local installer = require("nvim-lsp-installer")
-local lspconfig = require("lspconfig")
-local lspsignature = require("lsp_signature")
-local server_config = L("config")
-local other_servers = { "pyright", "rust_analyzer", "gopls", "clangd", "texlab" }
-
--- NOTE: <https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428>
-capabilities.offsetEncoding = { "utf-16" }
 
 local diagnostic_signs = {
 	{ name = "DiagnosticSignError", text = "" },
@@ -52,19 +43,26 @@ local function on_attach(client, bufnr)
 
 	-- add CursorHold highlighting
 	if cap.document_highlight then
-		vim.cmd([[
-		augroup lsp_document_highlight
-		autocmd! * <buffer>
-		autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-		augroup END
-		]])
+		local lsp_dochl_grp = vim.api.nvim_create_augroup("lsp_document_highlight", {})
+		vim.api.nvim_create_autocmd({ "CursorHold" }, {
+			callback = vim.lsp.buf.document_highlight,
+			group = lsp_dochl_grp,
+			desc = "On CursorHold, highlight the reference of the symbol under cursor",
+			buffer = bufnr,
+		})
+		vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+			callback = vim.lsp.buf.clear_references,
+			group = lsp_dochl_grp,
+			desc = "On CursorMoved, clear lsp document_highlight",
+			buffer = bufnr,
+		})
 	end
 
 	-- replace the default omnifunc completion <c-x><c-o>
 	vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
 	-- add lsp_signature support
+	local lspsignature = require("lsp_signature")
 	lspsignature.on_attach({
 		bind = true,
 		handler_opts = {
@@ -73,8 +71,16 @@ local function on_attach(client, bufnr)
 	}, bufnr)
 end
 
+local lspinstaller = require("nvim-lsp-installer")
+local lspconfig = require("lspconfig")
+local server_config = L("config")
+local other_servers = { "pyright", "rust_analyzer", "gopls", "clangd", "texlab" }
+
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.offsetEncoding = { "utf-16" } -- NOTE: <https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428>
+
 -- load servers installed by nvim-lsp-installer
-installer.on_server_ready(function(server)
+lspinstaller.on_server_ready(function(server)
 	local opts = {
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -83,6 +89,7 @@ installer.on_server_ready(function(server)
 	-- this `setup(opt)` is same to `lspconfig[server].setup(opt)`
 	server:setup(opts)
 end)
+
 -- load previously existed servers on the system
 for _, server in ipairs(other_servers) do
 	local opts = {

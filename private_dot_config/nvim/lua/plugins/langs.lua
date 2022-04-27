@@ -34,6 +34,9 @@ local function lsp_plugins(use)
 
 	-- show function signature for completion
 	use("ray-x/lsp_signature.nvim")
+
+	-- show a lightbulb when code-action is available
+	use("kosayoda/nvim-lightbulb")
 end
 
 local function langs_plugins(use)

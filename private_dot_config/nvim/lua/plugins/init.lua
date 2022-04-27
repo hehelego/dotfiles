@@ -31,6 +31,7 @@ local _ = {
 		plenary = "nvim-lua/plenary.nvim",
 	},
 	ui = {
+		dressing = "stevearc/dressing.nvim",
 		devicons = "kyazdani42/nvim-web-devicons",
 		nightfox = "EdenEast/nightfox.nvim",
 		alpha = "goolord/alpha-nvim",
@@ -79,12 +80,13 @@ local _ = {
 			lsp_installer = "williamboman/nvim-lsp-installer",
 			null_ls = "jose-elias-alvarez/null-ls.nvim",
 			lsp_signature = "ray-x/lsp_signature.nvim",
+			lightbulb = "kosayoda/nvim-lightbulb",
 		},
 	},
 	misc = {
 		markdown_preview = "iamcco/markdown-preview.nvim",
 		polyglot = "sheerun/vim-polyglot",
-		gitsigns = 'lewis6991/gitsigns.nvim',
+		gitsigns = "lewis6991/gitsigns.nvim",
 	},
 }
 

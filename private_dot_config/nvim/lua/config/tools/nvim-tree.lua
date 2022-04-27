@@ -65,9 +65,5 @@ local opts = {
 		cmd = "trash",
 		require_confirm = true,
 	},
-	diagnostic = {
-		enable = true,
-		show_on_dirs = true,
-	},
 }
 nvim_tree.setup(opts)
