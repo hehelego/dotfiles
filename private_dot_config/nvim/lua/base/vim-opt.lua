@@ -35,7 +35,7 @@ local opts = {
 	expandtab = false, -- do not expand tab characters
 	tabstop = 4, -- display tab character as 4 spaces
 	shiftwidth = 4, -- add/reduce 4 spaces in every shift operation
-	completeopt = "menu,menuone,noselect",
+	completeopt = { "menu", "menuone", "noselect" },
 
 	-- delays
 	timeoutlen = 300, -- wait 100ms before a key-stroke sequence to complete

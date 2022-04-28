@@ -33,13 +33,18 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {
 })
 
 -- show document
-vim.keymap.set("n", "K", function()
-	if vim.lsp.buf.server_ready() then
-		vim.lsp.buf.hover()
-	else
-		vim.cmd("Man")
-	end
-end, { noremap = true, silent = true, desc = "show document for the symbol under cursor" })
+vim.keymap.set(
+	"n",
+	"K",
+	vim.lsp.buf.hover,
+	{ noremap = true, silent = true, desc = "show document for the symbol under cursor" }
+)
+vim.keymap.set(
+	"n",
+	"M",
+	"<cmd>Man<cr>",
+	{ noremap = true, silent = true, desc = "show man page for the symbol under cursor" }
+)
 
 vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {
 	desc = "lsp document formatting",

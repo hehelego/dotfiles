@@ -60,11 +60,13 @@ reg({
 	c = { ":helpclose<cr>", "close" },
 	["/"] = { ":helpgrep ", "grep", silent = false },
 }, { mode = "n", prefix = "<leader>h" })
+
+local ft_quit_grp = vim.api.nvim_create_augroup("ft_quick_quit", {})
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "help",
+	pattern = { "help", "qf", "man", "lspinfo" },
 	callback = function(args)
-		vim.keymap.set("n", "q", "<cmd>helpclose<cr>", { silent = false, buffer = args.buf })
+		vim.keymap.set("n", "q", "<cmd>close<cr>", { silent = false, buffer = args.buf })
 	end,
-	desc = "press [q] to quit help page",
-	group = vim.api.nvim_create_augroup("help_quick_quit", { clear = false }),
+	desc = "press [q] to quit",
+	group = ft_quit_grp,
 })
