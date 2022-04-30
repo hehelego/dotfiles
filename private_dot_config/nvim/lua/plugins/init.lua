@@ -85,8 +85,9 @@ local _ = {
 	},
 	misc = {
 		markdown_preview = "iamcco/markdown-preview.nvim",
-		polyglot = "sheerun/vim-polyglot",
 		gitsigns = "lewis6991/gitsigns.nvim",
+		polyglot = "sheerun/vim-polyglot",
+		startuptime = "dstein64/vim-startuptime",
 	},
 }
 

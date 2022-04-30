@@ -157,7 +157,7 @@ local function debounce()
 end
 
 local cmp_debounce_grp = vim.api.nvim_create_augroup("cmp_debounce", {})
-vim.api.nvim_create_autocmd({ "TextChangedI", "CmdlineChanged"}, {
+vim.api.nvim_create_autocmd({ "TextChangedI", "CmdlineChanged" }, {
 	pattern = "*",
 	callback = debounce,
 	group = cmp_debounce_grp,

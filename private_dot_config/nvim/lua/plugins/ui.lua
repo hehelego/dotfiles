@@ -15,8 +15,5 @@ local function ui_plugins(use)
 	use("nvim-lualine/lualine.nvim")
 	-- tab/buffer line
 	use("akinsho/bufferline.nvim")
-
-	-- make color-name and hex-color colorful
-	use("norcalli/nvim-colorizer.lua")
 end
 return ui_plugins

@@ -3,4 +3,3 @@ local function L(mod)
 end
 
 L("hop")
-L("comment")

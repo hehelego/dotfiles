@@ -11,5 +11,8 @@ local function misc_plugins(use)
 
 	-- git sign-column
 	use("lewis6991/gitsigns.nvim")
+
+	-- profile vim startup time
+	use("dstein64/vim-startuptime")
 end
 return misc_plugins

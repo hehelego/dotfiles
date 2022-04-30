@@ -1,5 +1,7 @@
 local bind = vim.keymap.set
-bind("n", "<leader>e", ":NvimTreeToggle<cr>")
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", {
+	desc = "toggle nvim-tree file explorer",
+})
 
 local wk = require("which-key")
 

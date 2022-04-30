@@ -11,13 +11,10 @@ L("base")
 L("plugins")
 -- plugin configurations
 L("config")
--- -- set keymaps/keybindings
+-- set keymaps/keybindings
 L("keymaps")
 
 -- my neovim-lua configuration is divided into the following five modules,
 -- each has its own install-plugin,setup-config and set-keymap lua scripts
 local mods = { "common", "ui", "editing", "tools", "langs", "misc" }
 _ = mods
-
-
-
