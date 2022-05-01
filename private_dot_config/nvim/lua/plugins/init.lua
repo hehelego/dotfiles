@@ -88,6 +88,7 @@ local _ = {
 		gitsigns = "lewis6991/gitsigns.nvim",
 		polyglot = "sheerun/vim-polyglot",
 		startuptime = "dstein64/vim-startuptime",
+		impatient = "lewis6991/impatient.nvim",
 	},
 }
 

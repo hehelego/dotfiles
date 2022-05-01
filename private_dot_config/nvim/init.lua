@@ -1,6 +1,10 @@
 -- spinach/hehelego's neovim configuration
 -- neovim.version >= SemVer(0,7,0)
 
+-- optimize the startup time
+-- See <https://github.com/lewis6991/impatient.nvim>
+pcall(require, "impatient")
+
 local function L(mod)
 	return require(mod)
 end
