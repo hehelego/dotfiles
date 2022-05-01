@@ -50,8 +50,20 @@ system:
                     desc: set color temperature for night
                     action: redshift -PO 3300
                 - color=clear:
-                    desc: clear redshift color temperature setting
+                    desc: clear color temperature setting
                     action: redshift -x
+          - gammastep:
+              desc: change color temperature using gammastep
+              son:
+                - color=day:
+                    desc: set color temperature for daytime
+                    action: gammastep -PO 5500
+                - color=night:
+                    desc: set color temperature for night
+                    action: gammastep -PO 3300
+                - color=clear:
+                    desc: clear color temperature setting
+                    action: gammastep -x
     - session:
         desc: session control
         son:
