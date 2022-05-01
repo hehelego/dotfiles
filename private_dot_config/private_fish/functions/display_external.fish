@@ -8,15 +8,15 @@ function display_external
 			--gamma 1:1:1 \
 			--dpi 192 \
 			--set TearFree on \
-			--orientation normal
+			--orientation normal \
 			--left-of eDP
-		xrandr --output DisplayPort-0 \
+		xrandr --output DisplayPort-1 \
 			--mode 3840x2160 \
 			--rate 60 \
 			--gamma 1:1:1 \
 			--dpi 192 \
 			--set TearFree on \
-			--orientation normal
+			--orientation normal \
 			--right-of eDP
 	end
 	if test "$XDG_SESSION_TYPE" = "wayland"
