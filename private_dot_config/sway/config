@@ -31,8 +31,7 @@ set $FZFmenu_system_mixed           alacritty --class FZFmenu -t FZFmenu:system 
 set $FZFmenu_playerctl_expanded     alacritty --class FZFmenu -t FZFmenu:playerctl -e ~/.config/spinach-menu/menu-playerctl.fish --show expanded
 set $FZFmenu_playerctl_mixed        alacritty --class FZFmenu -t FZFmenu:playerctl -e ~/.config/spinach-menu/menu-playerctl.fish --show mixed
 # take a screenshot
-set $screenshot               spectacle -r
-set $bg_img                   /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
+set $screenshot               fish -c "grim -g (slurp) - | wl-copy"
 
 
 ### Startup Applications
@@ -56,18 +55,11 @@ exec                          swayidle -w \
 
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg $bg_img fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-output eDP-1 scale 1
-output DP-1  scale 1
-output DP-2  scale 1
+output * disable dpms off
+# set resolution,dpi,gamma,backlight; reset xrandr-gamma
+exec                          fich -c display_internal
+# set background wallpaper
+exec                          fish -c setbg
 
 ### Input configuration
 #
@@ -101,7 +93,7 @@ output DP-2  scale 1
     # reload the configuration file
     bindsym $mod+Shift+c          reload
     bindsym $mod+Shift+r          reload
-    # exit sway session
+    # terminate session
     bindsym $mod+Shift+e          exec swaynag \
                                     -t warning -m 'exit sway' \
                                     -B 'exit' 'swaymsg exit' \
@@ -149,7 +141,7 @@ output DP-2  scale 1
     bindsym $mod+8                   workspace number 8
     bindsym $mod+9                   workspace number 9
     bindsym $mod+0                   workspace number 10
-    # Move focused container to workspace
+    # move focused container to workspace
     bindsym $mod+Shift+1             move container to workspace number 1
     bindsym $mod+Shift+2             move container to workspace number 2
     bindsym $mod+Shift+3             move container to workspace number 3
@@ -164,7 +156,7 @@ output DP-2  scale 1
 # Layout stuff:
 #
     # split the current focused object; mod+v toggle split orientation
-    bindsym $mod+v                   splitt
+    bindsym $mod+v                   split toggle
     # change container layout (stacked, tabbed, toggle split)
     bindsym $mod+s                   layout stacking
     bindsym $mod+w                   layout tabbed

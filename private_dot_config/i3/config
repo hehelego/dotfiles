@@ -32,7 +32,6 @@ set $FZFmenu_playerctl_expanded     alacritty --class FZFmenu -t FZFmenu:playerc
 set $FZFmenu_playerctl_mixed        alacritty --class FZFmenu -t FZFmenu:playerctl -e ~/.config/spinach-menu/menu-playerctl.fish --show mixed
 # take a screenshot
 set $screenshot               spectacle -r
-set $bg_img                   /usr/share/wallpapers/Opal/contents/images/3840x2160.png
 
 
 ### Startup Applications
@@ -58,16 +57,9 @@ $exec_                        xss-lock --transfer-sleep-lock -- $locker
 ### Output configuration
 #
 # set resolution,dpi,gamma,backlight; reset xrandr-gamma
-$exec_                        fish -c 'display_internal; xbacklight -set 100; redshift -x'
+$exec_                        fish -c display_internal
 # set background wallpaper
-$exec_                        feh --bg-fill $bg_img
-
-
-
-
-
-
-
+$exec_                        fish -c setbg
 
 
 
@@ -101,7 +93,7 @@ $exec_                        feh --bg-fill $bg_img
     # reload the configuration file
     bindsym $mod+Shift+c          reload
     bindsym $mod+Shift+r          restart
-    # exit i3 session
+    # terminate session
     bindsym $mod+Shift+e          exec i3-nagbar \
                                     -t warning -m 'exit i3wm session' \
                                     -B 'exit' 'i3-msg exit' \
@@ -124,7 +116,7 @@ $exec_                        feh --bg-fill $bg_img
     bindsym $mod+Down             focus down
     bindsym $mod+Up               focus up
     bindsym $mod+Right            focus right
-    # move the focused container
+    # move the focused container (hjkl)
     bindsym $mod+Shift+$left      move left
     bindsym $mod+Shift+$down      move down
     bindsym $mod+Shift+$up        move up
