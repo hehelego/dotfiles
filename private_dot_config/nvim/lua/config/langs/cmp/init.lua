@@ -23,7 +23,7 @@ local cmp_keymaps = {
 	-- Ctrl-e to abort completion
 	["<C-e>"] = cmp.mapping.abort(),
 	-- Tab: next option | next snippet slot | fallback
-	["<Tab>"] = function(fallback)
+	["<Tab>"] = cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.select_next_item()
 		elseif luasnip.jumpable(1) then
@@ -31,9 +31,9 @@ local cmp_keymaps = {
 		else
 			fallback()
 		end
-	end,
+	end, { "i", "s" }),
 	-- Shift-Tab: prev option | prev snippet slot | fallback
-	["<S-Tab>"] = function(fallback)
+	["<S-Tab>"] = cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.select_prev_item()
 		elseif luasnip.jumpable(-1) then
@@ -41,7 +41,7 @@ local cmp_keymaps = {
 		else
 			fallback()
 		end
-	end,
+	end, { "i", "s" }),
 }
 
 cmp.setup({
