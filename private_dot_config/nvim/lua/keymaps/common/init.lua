@@ -12,6 +12,21 @@ vim.keymap.set("n", "U", "<cmd>:redo<cr>", {
 	desc = "undo one change",
 })
 
+-- move cursor in insert mode and command-line mode
+local direction_keys = {
+	{ "<M-h>", "<left>" },
+	{ "<M-j>", "<down>" },
+	{ "<M-k>", "<up>" },
+	{ "<M-l>", "<right>" },
+}
+for _, km in ipairs(direction_keys) do
+	vim.keymap.set({ "i", "c" }, km[1], km[2], {
+		silent = true,
+		noremap = true,
+		desc = "use alt+hjkl to move cursor",
+	})
+end
+
 reg({
 	name = "quickfix",
 	o = { "<cmd>copen<cr>", "open" },
