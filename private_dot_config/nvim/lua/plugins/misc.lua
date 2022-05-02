@@ -1,4 +1,9 @@
 local function misc_plugins(use)
+	-- profile vim startup time
+	use("dstein64/vim-startuptime")
+	-- optimize the startup time
+	use("lewis6991/impatient.nvim")
+
 	-- defer the evaluation after mkdp.nvim installed
 	local mkdp_after_install = function()
 		return vim.fn["mkdp#util#install"]()
@@ -8,13 +13,5 @@ local function misc_plugins(use)
 
 	-- vim syntax package
 	use("sheerun/vim-polyglot")
-
-	-- git sign-column
-	use("lewis6991/gitsigns.nvim")
-
-	-- profile vim startup time
-	use("dstein64/vim-startuptime")
-	-- optimize the startup time
-	use("lewis6991/impatient.nvim")
 end
 return misc_plugins

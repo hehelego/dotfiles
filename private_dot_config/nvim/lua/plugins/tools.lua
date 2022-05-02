@@ -25,5 +25,8 @@ local function tools_plugins(use)
 
 	-- show code structure and symbol tree
 	use("stevearc/aerial.nvim")
+
+	-- show git hunks on sign-column
+	use("lewis6991/gitsigns.nvim")
 end
 return tools_plugins

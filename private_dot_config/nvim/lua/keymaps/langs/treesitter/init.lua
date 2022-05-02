@@ -1,5 +1,3 @@
-local reg = require("which-key").register
-
 vim.g.treesitter_status = false
 
 local ts_mods = {
@@ -41,9 +39,9 @@ vim.api.nvim_create_user_command("TSoff", ts_off, {})
 vim.api.nvim_create_user_command("TStoggle", ts_toggle, {})
 
 -- see config.langs.treesitter for the commands
-reg({
+require("which-key").register({
 	name = "treesitter",
 	["o"] = { "<cmd>TSon<cr>", "on" },
 	["c"] = { "<cmd>TSoff<cr>", "off" },
 	["s"] = { "<cmd>TStoggle<cr>", "toggle" },
-}, { mode = "n", prefix = "<leader>s", silent = true })
+}, { mode = "n", silent = true, noremap = true, prefix = "<leader>s" })

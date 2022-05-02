@@ -10,5 +10,4 @@ set("refresh_slow", 1)
 set("open_to_the_world", 0)
 set("browser", "qutebrowser")
 set("echo_preview_url", 1)
-
 set("page_title", "render(${name})")

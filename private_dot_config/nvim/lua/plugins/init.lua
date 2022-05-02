@@ -37,7 +37,6 @@ local _ = {
 		alpha = "goolord/alpha-nvim",
 		lualine = "nvim-lualine/lualine.nvim",
 		tabline = "akinsho/bufferline.nvim",
-		colorizer = "norcalli/nvim-colorizer.lua",
 	},
 	tools = {
 		which_key = "folke/which-key.nvim",
@@ -50,6 +49,7 @@ local _ = {
 		todo_comments = "folke/todo-comments.nvim",
 		nvim_tree = "kyazdani42/nvim-tree.lua",
 		aerial = "stevearc/aerial.nvim",
+		gitsigns = "lewis6991/gitsigns.nvim",
 	},
 	editing = {
 		comment = "numToStr/Comment.nvim",
@@ -84,11 +84,10 @@ local _ = {
 		},
 	},
 	misc = {
-		markdown_preview = "iamcco/markdown-preview.nvim",
-		gitsigns = "lewis6991/gitsigns.nvim",
-		polyglot = "sheerun/vim-polyglot",
 		startuptime = "dstein64/vim-startuptime",
 		impatient = "lewis6991/impatient.nvim",
+		polyglot = "sheerun/vim-polyglot",
+		markdown_preview = "iamcco/markdown-preview.nvim",
 	},
 }
 

@@ -1,18 +1,5 @@
 local hop = require("hop")
 
-vim.g.maplocalleader = ","
-
-local function bind(mode, lhs, rhs, opts)
-	if opts == nil then
-		opts = {}
-	end
-	vim.keymap.set(mode, lhs, rhs, opts)
-end
-
-local function leader(key)
-	return "<localleader>" .. key
-end
-
 -- This function is used to create a wrapper from one hop.hint function.
 -- A wrapper is a function, which
 --   takes an option table and a callback executed after the motion,
@@ -76,26 +63,22 @@ motion["$"] = motion_wrap("$")
 -- SECTION: key bindings
 ---
 
-require("which-key").register({
-	name = "motion",
-
-	f = "char1-f",
-	t = "char1-t",
-	g = "char2-f",
-	h = "char2-t",
-	w = "word-beg",
-	e = "word-end",
-	j = "line-beg",
-	k = "line-end",
-	["/"] = "pattern",
-	[","] = "anywhere",
-}, { mode = "n", prefix = "," })
-
 -- SEE https://github.com/phaazon/hop.nvim/issues/82
 -- hop.nvim does not come with the vim-flavor inclusive/exclusive motion
 -- we use afterwards_callback to achieve desired behavior
 
 -- FIXME: inclusive/exclusive motion for operator-pending mode
+
+local function bind(mode, lhs, rhs)
+	vim.keymap.set(mode, lhs, rhs, {
+		silent = true,
+		noremap = true,
+	})
+end
+vim.g.maplocalleader = ","
+local function leader(key)
+	return "<localleader>" .. key
+end
 
 bind({ "n", "x", "v", "o" }, leader("f"), hint.char1({}, motion.nop))
 bind({ "n", "x", "v", "o" }, leader("t"), hint.char1({}, motion.h))
@@ -111,5 +94,21 @@ bind({ "n", "x", "v", "o" }, leader("k"), hint.lines({}, motion["^"]))
 
 bind({ "n", "x", "v", "o" }, leader("/"), hint.patterns({}, motion.nop))
 bind({ "n", "x", "v", "o" }, leader(","), hint.anywhere({}, motion.nop))
+
+-- register the keymap in which-key.nvim
+require("which-key").register({
+	name = "motion",
+
+	f = "char1-f",
+	t = "char1-t",
+	g = "char2-f",
+	h = "char2-t",
+	w = "word-beg",
+	e = "word-end",
+	j = "line-beg",
+	k = "line-end",
+	["/"] = "pattern",
+	[","] = "anywhere",
+}, { mode = "n", silent = true, noremap = true, prefix = "," })
 
 -- TODO: implement dot repeat

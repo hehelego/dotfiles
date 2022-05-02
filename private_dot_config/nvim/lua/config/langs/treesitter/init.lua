@@ -51,7 +51,6 @@ require("nvim-treesitter.configs").setup({
 	-- indentation module
 	indent = { enable = false },
 
-	-- see https://github.com/p00f/nvim-ts-rainbow
 	rainbow = {
 		enable = false,
 		disable = {}, -- list of languages you want to disable the plugin for

@@ -1,1 +1,1 @@
-require("cmp").setup()
+-- pass

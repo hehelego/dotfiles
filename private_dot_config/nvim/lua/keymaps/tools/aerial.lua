@@ -1,8 +1,6 @@
-local reg = require("which-key").register
-
-reg({
+require("which-key").register({
 	name = "aerial",
 	["a"] = { "<cmd>AerialToggle<cr>", "toggle" },
 	["o"] = { "<cmd>AerialOpen<cr>", "open" },
 	["c"] = { "<cmd>AerialClose<cr>", "close" },
-}, { mode = "n", prefix = "<leader>a", silent = true })
+}, { mode = "n", silent=true, noremap=true, prefix = "<leader>a"})

@@ -19,4 +19,4 @@ require("which-key").register({
 	[":"] = { "<cmd>Telescope commands<cr>", "commands" },
 	[" "] = { "<cmd>Telescope keymaps<cr>", "keymaps" },
 	["."] = { "<cmd>Telescope builtin include_extensions=true<cr>", "finders" },
-}, { mode = "n", prefix = "<leader>f" })
+}, { mode = "n", silent = true, noremap = true, prefix = "<leader>f" })

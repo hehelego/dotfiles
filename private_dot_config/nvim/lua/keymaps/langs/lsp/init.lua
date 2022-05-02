@@ -1,6 +1,4 @@
-local reg = require("which-key").register
-
-reg({
+require("which-key").register({
 	name = "lsp",
 	["t"] = {
 		name = "troubles",
@@ -10,6 +8,7 @@ reg({
 		["l"] = { "<cmd>Trouble loclist<cr>", "loclist" },
 		["d"] = { "<cmd>Trouble document_diagnostics<cr>", "diagnostics-file" },
 		["D"] = { "<cmd>Trouble workspace_diagnostics<cr>", "diagnostics-ws" },
+		["g"] = { "<cmd>Gitsigns setqflist<cr>", "git-diff-hunks" },
 	},
 	["g"] = {
 		name = "goto",
@@ -23,12 +22,16 @@ reg({
 	["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "rename" },
 	["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "rename" },
 	["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "format" },
-}, { mode = "n", prefix = ";", silent = true, noremap = true })
+}, { mode = "n", silent = true, noremap = true, prefix = ";" })
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
+	silent = true,
+	noremap = true,
 	desc = "goto next diagnostic",
 })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {
+	silent = true,
+	noremap = true,
 	desc = "goto next diagnostic",
 })
 
@@ -37,13 +40,13 @@ vim.keymap.set(
 	"n",
 	"K",
 	vim.lsp.buf.hover,
-	{ noremap = true, silent = true, desc = "show document for the symbol under cursor" }
+	{ silent = true, noremap = true, desc = "show document for the symbol under cursor" }
 )
 vim.keymap.set(
 	"n",
 	"M",
 	"<cmd>Man<cr>",
-	{ noremap = true, silent = true, desc = "show man page for the symbol under cursor" }
+	{ silent = true, noremap = true, desc = "show man page for the symbol under cursor" }
 )
 
 vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {
