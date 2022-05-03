@@ -84,7 +84,6 @@ lspinstaller.setup({})
 
 local function config_one(server_name)
 	local s = server_name
-	print('setup ' .. s)
 	local opts = {
 		on_attach = on_attach,
 		capabilities = capabilities,
