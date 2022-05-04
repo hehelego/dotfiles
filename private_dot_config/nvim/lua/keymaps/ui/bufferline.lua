@@ -1,5 +1,5 @@
 require("which-key").register({
-	p = { "<cmd>BufferLinePick<cr>", "pick-goto" },
+	f = { "<cmd>BufferLinePick<cr>", "pick-goto" },
 	c = { "<cmd>BufferLinePickClose<cr>", "pick-close" },
 }, { mode = "n", silent = true, noremap=true, prefix = "<leader>b" })
 
