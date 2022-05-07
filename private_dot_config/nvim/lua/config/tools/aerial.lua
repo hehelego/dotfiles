@@ -31,14 +31,32 @@ require("aerial").setup({
 	-- This can be a filetype map (see :help aerial-filetype-map)
 	-- To see all available values, see :help SymbolKind
 	filter_kind = {
+		"Array",
+		"Boolean",
 		"Class",
+		"Constant",
 		"Constructor",
 		"Enum",
+		"EnumMember",
+		"Event",
+		"Field",
+		"File",
 		"Function",
 		"Interface",
-		"Module",
+		"Key",
 		"Method",
+		"Module",
+		"Namespace",
+		"Null",
+		"Number",
+		"Object",
+		"Operator",
+		"Package",
+		"Property",
+		"String",
 		"Struct",
+		"TypeParameter",
+		"Variable",
 	},
 
 	-- Enum: split_width, full_width, last, none

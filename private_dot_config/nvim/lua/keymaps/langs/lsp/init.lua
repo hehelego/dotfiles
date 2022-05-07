@@ -19,7 +19,7 @@ require("which-key").register({
 		["s"] = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols-file" },
 		["S"] = { "<cmd>Telescope lsp_workspace_symbols<cr>", "symbols-ws" },
 	},
-	["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "rename" },
+	["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "code-action" },
 	["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "rename" },
 	["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "format" },
 }, { mode = "n", silent = true, noremap = true, prefix = ";" })
