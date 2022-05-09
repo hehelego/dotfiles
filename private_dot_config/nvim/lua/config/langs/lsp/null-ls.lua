@@ -7,20 +7,20 @@ local code_actions = null_ls.builtins.code_actions
 
 local src = {}
 -- formatter
-src = vim.tbl_extend("force", src, {
+src = vim.list_extend(src, {
 	formatting.yapf,
 	formatting.stylua,
 	formatting.rustfmt,
 	formatting.clang_format,
 })
 -- diagnostics
-src = vim.tbl_extend("force", src, {
+src = vim.list_extend(src, {
 	diagnostics.pylint,
 	diagnostics.chktex,
 	diagnostics.fish,
 })
 -- code action
-src = vim.tbl_extend("force", src, {
+src = vim.list_extend(src, {
 	code_actions.gitsigns,
 })
 
