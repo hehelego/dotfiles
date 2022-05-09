@@ -40,8 +40,8 @@ config.set('qt.args', [
 # command for external editor
 # see https://github.com/qutebrowser/qutebrowser/issues/5340
 config.set('editor.command', [
-    'alacritty', '-e', 'nvim', '--clean', '-c', 'normal {line}G{column0}l',
-    '--', '{file}'
+    'alacritty', '-e', 'fish', '-c',
+    "nvim -c 'normal {line}G{column0}l' -- {file}"
 ])
 
 # use default rather than external file selector for HTML file upload form.
@@ -154,15 +154,11 @@ config.bind(f'{leader}d',
 config.bind('*',
             'spawn --userscript spinach-cursorword.py next',
             mode='normal')
-config.bind('*',
-            'spawn --userscript spinach-cursorword.py next',
-            mode='caret')
+config.bind('*', 'spawn --userscript spinach-cursorword.py next', mode='caret')
 config.bind('#',
             'spawn --userscript spinach-cursorword.py prev',
             mode='normal')
-config.bind('#',
-            'spawn --userscript spinach-cursorword.py prev',
-            mode='caret')
+config.bind('#', 'spawn --userscript spinach-cursorword.py prev', mode='caret')
 
 # spinach's dinctionary lookup plugin: search for the selected text in YouDao dinctionary
 config.bind(f'{leader}{leader}',
