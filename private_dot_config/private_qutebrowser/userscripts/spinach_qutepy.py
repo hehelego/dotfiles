@@ -66,7 +66,7 @@ class Helper:
 
 
 class Fzf:
-    T_fzf_select = TypeVar('T_fzf_select')
+    T_entry = TypeVar('T_entry')
     default_multi = False
     default_prompt = '> '
     default_preview = r'''--preview \
@@ -79,11 +79,11 @@ class Fzf:
     '''
 
     @staticmethod
-    def fzf_select(src: list[T_fzf_select], multi: bool = default_multi, preview: Optional[str] = default_preview, prompt: str = default_prompt) -> list[T_fzf_select]:
+    def fzf_select(src: list[T_entry], multi: bool = default_multi, preview: Optional[str] = default_preview, prompt: str = default_prompt) -> list[T_entry]:
         input_file = tempfile.NamedTemporaryFile(
-            prefix='/tmp/spinach_i3_sysctrl.py', mode='w+')
+            prefix='/tmp/spinach_qutepy.fzf', mode='w+')
         output_file = tempfile.NamedTemporaryFile(
-            prefix='/tmp/spinach_i3_sysctrl.py', mode='w+')
+            prefix='/tmp/spinach_qutepy.fzf', mode='w+')
         src_map = {str(i): i for i in src}
         for i in src_map.keys():
             print(i, file=input_file)
