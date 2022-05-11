@@ -22,7 +22,12 @@ require("which-key").register({
 	["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "code-action" },
 	["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "rename" },
 	["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "format" },
-}, { mode = "n", silent = true, noremap = true, prefix = ";" })
+}, {
+	mode = "n",
+	silent = true,
+	noremap = true,
+	prefix = ";",
+})
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
 	silent = true,

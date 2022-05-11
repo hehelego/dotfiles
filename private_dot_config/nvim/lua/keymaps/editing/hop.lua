@@ -109,6 +109,11 @@ require("which-key").register({
 	k = "line-end",
 	["/"] = "pattern",
 	[","] = "anywhere",
-}, { mode = "n", silent = true, noremap = true, prefix = "," })
+}, {
+	mode = "n",
+	silent = true,
+	noremap = true,
+	prefix = ",",
+})
 
 -- TODO: implement dot repeat

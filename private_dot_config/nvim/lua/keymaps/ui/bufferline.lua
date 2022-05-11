@@ -1,7 +1,13 @@
 require("which-key").register({
+	name = "buffer",
 	f = { "<cmd>BufferLinePick<cr>", "pick-goto" },
 	c = { "<cmd>BufferLinePickClose<cr>", "pick-close" },
-}, { mode = "n", silent = true, noremap=true, prefix = "<leader>b" })
+}, {
+	mode = "n",
+	silent = true,
+	noremap = true,
+	prefix = "<leader>b",
+})
 
 -- goto the k-th buffer on the bufferline
 for i = 1, 9, 1 do

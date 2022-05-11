@@ -15,4 +15,9 @@ require("which-key").register({
 	["/"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "search-text" },
 	["?"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "search-text" },
 	[":"] = { "<cmd>Telescope commands<cr>", "commands" },
-}, { mode = "n", silent = true, noremap = true, prefix = "<leader>f" })
+}, {
+	mode = "n",
+	silent = true,
+	noremap = true,
+	prefix = "<leader>f",
+})

@@ -49,6 +49,7 @@ local _ = {
 		todo_comments = "folke/todo-comments.nvim",
 		nvim_tree = "kyazdani42/nvim-tree.lua",
 		aerial = "stevearc/aerial.nvim",
+		perfanno = "t-troebst/perfanno.nvim",
 		gitsigns = "lewis6991/gitsigns.nvim",
 	},
 	editing = {

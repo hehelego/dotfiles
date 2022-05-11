@@ -44,4 +44,9 @@ require("which-key").register({
 	["o"] = { "<cmd>TSon<cr>", "on" },
 	["c"] = { "<cmd>TSoff<cr>", "off" },
 	["s"] = { "<cmd>TStoggle<cr>", "toggle" },
-}, { mode = "n", silent = true, noremap = true, prefix = "<leader>s" })
+}, {
+	mode = "n",
+	silent = true,
+	noremap = true,
+	prefix = "<leader>s",
+})

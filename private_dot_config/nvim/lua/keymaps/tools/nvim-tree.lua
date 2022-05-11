@@ -6,4 +6,9 @@ local wk = require("which-key")
 
 wk.register({
 	e = "file-explorer",
-}, { mode = "n", silent = true, noremap = true, prefix = "<leader>" })
+}, {
+	mode = "n",
+	silent = true,
+	noremap = true,
+	prefix = "<leader>",
+})
