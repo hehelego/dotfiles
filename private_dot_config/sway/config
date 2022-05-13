@@ -7,7 +7,7 @@
 ### Variables
 #
 # set font used by sway widgets
-font                          pango:SourceCodePro 10
+font                          pango:Hack 10
 # Logo key. Use Mod1 for Alt.
 set $mod                      Mod4
 # use mouse+$mod to drag floating windows
@@ -274,7 +274,7 @@ mode $mode_display_output {
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     status_command            i3status-rs
-    font                      pango: SourceCodePro, FontAwesome6Free, FontAwesome6Brands 10
+    font                      pango: Hack, FontAwesome6Free, FontAwesome6Brands 10
     position                  bottom
 }
 
