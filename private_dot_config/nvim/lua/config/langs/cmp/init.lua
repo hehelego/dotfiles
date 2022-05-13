@@ -5,6 +5,7 @@
 -- Credit <https://github.com/LunarVim/Neovim-from-scratch/blob/master/lua/user/cmp.lua>
 -- Credit <https://github.com/t-troebst/config.nvim/blob/master/lua/user/completion.lua>
 
+local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 -- load snippets for luasnip
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -63,58 +64,12 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert(cmp_keymaps),
 	-- completion menu item formatter
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			-- item kind
-			local lspkind_icons = {
-				Text = "",
-				Method = "",
-				Function = "",
-				Constructor = "",
-				Field = "",
-				Variable = "",
-				Class = "ﴯ",
-				Interface = "",
-				Module = "",
-				Property = "ﰠ",
-				Unit = "",
-				Value = "",
-				Enum = "",
-				Keyword = "",
-				Snippet = "",
-				Color = "",
-				File = "",
-				Reference = "",
-				Folder = "",
-				EnumMember = "",
-				Constant = "",
-				Struct = "",
-				Event = "",
-				Operator = "",
-				TypeParameter = "",
-			}
-			local kind = vim_item.kind
-			vim_item.kind = lspkind_icons[vim_item.kind]
-			if vim_item.kind == nil then
-				vim_item.kind = "(" .. kind .. ")"
-			end
-
-			-- item source
-			local menu_alt = {
-				nvim_lsp = "[LSP]",
-				nvim_lua = "[NVIM-API]",
-				luasnip = "[SNIP]",
-				buffer = "[BUF]",
-				path = "[PATH]",
-				cmdline = "[CMD]",
-			}
-			vim_item.menu = menu_alt[entry.source.name]
-			if vim_item.menu == nil then
-				vim_item.menu = "[" .. entry.source.name .. "]"
-			end
-
-			return vim_item
-		end,
+		format = lspkind.cmp_format({
+			-- show only symbol annotations
+			mode = "symbol_text",
+			-- prevent the popup from showing more than provided characters
+			maxwidth = 50,
+		}),
 	},
 	-- installed sources
 	sources = {

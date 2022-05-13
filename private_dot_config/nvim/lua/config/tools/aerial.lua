@@ -78,12 +78,8 @@ require("aerial").setup({
 	-- Set to false to disable
 	highlight_on_jump = 300,
 
-	-- Define symbol icons. You can also specify "<Symbol>Collapsed" to change the
-	-- icon when the tree is collapsed at that symbol, or "Collapsed" to specify a
-	-- default collapsed icon. The default icon set is determined by the
-	-- "nerd_font" option below.
-	-- If you have lspkind-nvim installed, aerial will use it for icons.
-	icons = {},
+	-- use lspkind-nvim to provide symbol icons
+	-- icons = {},
 
 	-- When you fold code with za, zo, or zc, update the aerial tree as well.
 	-- Only works when manage_folds = true

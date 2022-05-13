@@ -11,3 +11,4 @@ end
 L("setup")
 L("null-ls")
 L("lightbulb")
+L("lspkind")

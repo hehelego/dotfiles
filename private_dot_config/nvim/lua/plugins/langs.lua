@@ -37,6 +37,9 @@ local function lsp_plugins(use)
 
 	-- show a lightbulb when code-action is available
 	use("kosayoda/nvim-lightbulb")
+
+	-- show icon in the completion menu
+	use("onsails/lspkind.nvim")
 end
 
 local function langs_plugins(use)
