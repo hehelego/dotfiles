@@ -12,6 +12,18 @@ vim.keymap.set("n", "U", "<cmd>:redo<cr>", {
 	desc = "undo one change",
 })
 
+-- dh/dl to delete half line
+vim.keymap.set("n", "dh", "d^", {
+	silent = true,
+	noremap = true,
+	desc = "delete the half line before cursor",
+})
+vim.keymap.set("n", "dl", "d$", {
+	silent = true,
+	noremap = true,
+	desc = "delete the half line after cursor",
+})
+
 -- move cursor in insert mode and command-line mode
 local direction_keys = {
 	{ "<M-h>", "<left>" },
