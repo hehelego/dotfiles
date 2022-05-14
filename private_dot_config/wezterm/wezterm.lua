@@ -35,7 +35,7 @@ update({
 	freetype_render_target = "HorizontalLcd",
 })
 
-local scheme_origin = "nord"
+local scheme_origin = "MaterialDarker"
 local scheme_nobg = wezterm.get_builtin_color_schemes()[scheme_origin]
 scheme_nobg.background = "rgba(10%, 10%, 10%, 80%)"
 update({
