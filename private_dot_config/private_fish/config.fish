@@ -32,13 +32,19 @@ set -gx FZF_DEFAULT_COMMAND "fd -HI --type file --exclude .git --strip-cwd-prefi
 set -gx FZF_DEFAULT_OPTS "--cycle"
 
 
-# SECTION: starship
+# SECTION: prompt
 #
+## load starship
 if not test "$TERM" = "linux"
   set -gx STARSHIP_CONFIG ~/.config/starship/config.toml
   starship init fish | source
 end
+## add vim mode prompt
+function fish_mode_prompt
+  fish_vi_mode_prompt
+end
 
 # SECTION: key-bindings
+#
 fish_hybrid_key_bindings
 fzf_key_bindings

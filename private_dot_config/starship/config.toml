@@ -9,7 +9,6 @@ $hg_branch\
 \
 $line_break\
 \
-$custom\
 $username@$hostname \
 $status\
 $character\
@@ -67,8 +66,9 @@ format = "[\\[$signal_name$symbol$status\\]]($style)"
 pipestatus_format = "$pipestatus ↦ [\\[$signal_name$symbol$status\\]]($style)"
 pipestatus_separator = "|"
 style = "blue"
-symbol = "[𐄂](bold red)"
-success_symbol = "[🗸](bold green)"
+symbol = "[✕](bold red)"
+success_symbol = "[✓](bold green)"
+
 
 
 [hostname]
@@ -85,6 +85,9 @@ style_user = "bold yellow"
 [directory]
 truncate_to_repo = false
 [character]
+disabled = false
 success_symbol = "[>](bold green)"
 error_symbol = "[>](bold red)"
-vicmd_symbol = "[<](bold green)"
+vicmd_symbol = "[>](bold green)"
+
+
