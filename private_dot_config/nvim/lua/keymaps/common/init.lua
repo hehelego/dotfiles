@@ -24,6 +24,29 @@ vim.keymap.set("n", "dl", "d$", {
 	desc = "delete the half line after cursor",
 })
 
+-- using system clipboard
+vim.keymap.set({ "i", "c" }, "<M-V>", [[eval('@+')]], {
+	silent = true,
+	noremap = true,
+	expr = true,
+	desc = "(insert) use system clipboard paste",
+})
+vim.keymap.set({ "v", "x" }, "<M-C>", [["+y]], {
+	silent = true,
+	noremap = true,
+	desc = "use system clipboard copy",
+})
+vim.keymap.set({ "v", "x" }, "<M-V>", [["+p]], {
+	silent = true,
+	noremap = true,
+	desc = "use system clipboard paste",
+})
+vim.keymap.set({ "v", "x" }, "<M-X>", [["+d]], {
+	silent = true,
+	noremap = true,
+	desc = "use system clipboard cut",
+})
+
 -- move cursor in insert mode and command-line mode
 local direction_keys = {
 	{ "<M-h>", "<left>" },
@@ -45,7 +68,7 @@ reg({
 	c = { "<cmd>cclose<cr>", "close" },
 	n = { "<cmd>cnext<cr>", "next" },
 	p = { "<cmd>cprevious<cr>", "prev" },
-}, { mode = "n", slient = true, noremap = true, prefix = "<leader>c" })
+}, { mode = "n", silent = true, noremap = true, prefix = "<leader>c" })
 reg({
 	name = "loclist",
 	o = { "<cmd>lopen<cr>", "open" },

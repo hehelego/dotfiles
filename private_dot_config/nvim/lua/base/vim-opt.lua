@@ -5,7 +5,6 @@ local opts = {
 	termguicolors = true, -- enable true-color support
 	mouse = "a", -- eanble mouse on every editing mode
 	undofile = true, -- enable persistent undo history
-	clipboard = "unnamedplus", -- use system clipboard
 
 	-- buf write
 	backup = false, -- do not create a backup file when writing buffer to disk
