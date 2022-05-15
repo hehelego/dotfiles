@@ -8,12 +8,16 @@ local function update(conf)
 end
 
 update({
+	-- enable IME support for wezterm
+	use_ime = true,
 	-- try to connect with wayland protocol
 	enable_wayland = true,
+	-- hold when the exit status of the last program is not zero
 	exit_behavior = "CloseOnCleanExit",
 })
 
 update({
+	-- enforce HiDPI rendering
 	dpi = 192.0,
 	font_size = 12.0,
 	font = wezterm.font_with_fallback({
@@ -33,6 +37,13 @@ update({
 	freetype_load_flags = "DEFAULT",
 	freetype_load_target = "Light",
 	freetype_render_target = "HorizontalLcd",
+
+	-- see <https://wezfurlong.org/wezterm/config/lua/config/custom_block_glyphs.html>
+	-- see <https://gitlab.freedesktop.org/freetype/freetype/-/issues/761>
+	custom_block_glyphs = false,
+	-- see <https://wezfurlong.org/wezterm/config/lua/config/allow_square_glyphs_to_overflow_width.html#allow_square_glyphs_to_overflow_width>
+	allow_square_glyphs_to_overflow_width = "Never",
+	warn_about_missing_glyphs = true,
 })
 
 local scheme_origin = "MaterialDarker"
@@ -47,6 +58,13 @@ update({
 	text_background_opacity = 1.0,
 	window_background_opacity = 1.0,
 	-- cursor color = reversed text color
+})
+
+update({
+	default_cursor_style = "BlinkingBlock",
+	animation_fps = 1,
+	cursor_blink_ease_in = "Constant",
+	cursor_blink_ease_out = "Constant",
 	force_reverse_video_cursor = true,
 })
 
