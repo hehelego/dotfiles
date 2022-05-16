@@ -98,7 +98,7 @@ cmp.setup.cmdline(":", {
 })
 
 -- See <https://github.com/hrsh7th/nvim-cmp/issues/598>
-local delay = 700
+local delay = vim.opt.timeoutlen:get()
 local timer = vim.loop.new_timer()
 local function debounce()
 	timer:stop()

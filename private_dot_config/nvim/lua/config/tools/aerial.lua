@@ -3,15 +3,14 @@ require("aerial").setup({
 	-- Priority list of preferred backends for aerial.
 	-- This can be a filetype map (see :help aerial-filetype-map)
 	backends = {
-		_ = { "lsp", "treesitter" },
 		markdown = { "markdown" },
+		_ = { "lsp", "treesitter" },
 	},
 
 	-- Enum: persist, close, auto, global
 	--   persist - aerial window will stay open until closed
 	--   close   - aerial window will close when original file is no longer visible
-	--   auto    - aerial window will stay open as long as there is a visible
-	--             buffer to attach to
+	--   auto    - aerial window will stay open as long as there is a visible buffer to attach to
 	--   global  - same as 'persist', and will always show symbols for the current buffer
 	close_behavior = "auto",
 
@@ -28,36 +27,9 @@ require("aerial").setup({
 	disable_max_lines = 10000,
 
 	-- A list of all symbols to display. Set to false to display all symbols.
-	-- This can be a filetype map (see :help aerial-filetype-map)
-	-- To see all available values, see :help SymbolKind
-	filter_kind = {
-		"Array",
-		"Boolean",
-		"Class",
-		"Constant",
-		"Constructor",
-		"Enum",
-		"EnumMember",
-		"Event",
-		"Field",
-		"File",
-		"Function",
-		"Interface",
-		"Key",
-		"Method",
-		"Module",
-		"Namespace",
-		"Null",
-		"Number",
-		"Object",
-		"Operator",
-		"Package",
-		"Property",
-		"String",
-		"Struct",
-		"TypeParameter",
-		"Variable",
-	},
+	-- see :help aerial-filetype-map
+	-- see :help SymbolKind
+	filter_kind = false,
 
 	-- Enum: split_width, full_width, last, none
 	-- Determines line highlighting mode when multiple splits are visible.

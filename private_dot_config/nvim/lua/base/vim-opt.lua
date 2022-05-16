@@ -1,5 +1,5 @@
 -- See <https://neovim.io/doc/user/options.html>
-local opts = {
+local set = {
 	-- MISC
 	guifont = "monospace:h12", -- font for gui-version of neovim
 	termguicolors = true, -- enable true-color support
@@ -40,14 +40,35 @@ local opts = {
 	timeoutlen = 300, -- wait 100ms before a key-stroke sequence to complete
 	updatetime = 300, -- time to wait before auto-complete get updated
 }
+local remove = {}
+local append = {
+	shortmess = "c",
+	listchars = {
+		"space:·", -- display ' ' as '·'
+		"eol:↴", -- display '\n' as '↴'
+	},
+}
 
-for k, v in pairs(opts) do
+for k, v in pairs(set) do
 	vim.opt[k] = v
 end
 
-vim.opt.shortmess:append("c")
+for k, v in pairs(remove) do
+	if type(v) == "table" then
+		for _, vv in ipairs(v) do
+			vim.opt[k]:remove(vv)
+		end
+	else
+		vim.opt[k]:remove(v)
+	end
+end
 
--- display ' ' as '·'
-vim.opt.listchars:append("space:·")
--- display '\n' as '↴'
-vim.opt.listchars:append("eol:↴")
+for k, v in pairs(append) do
+	if type(v) == "table" then
+		for _, vv in ipairs(v) do
+			vim.opt[k]:append(vv)
+		end
+	else
+		vim.opt[k]:append(v)
+	end
+end
