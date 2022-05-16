@@ -22,7 +22,7 @@ set $right                    l
 # Frequently used applications
 set $term                     alacritty
 set $locker                   swaylock -f -c 333333
-set $menu                     wofi --show drun
+set $menu                     rofi -show
 # refresh the status bar
 set $refresh_status           killall -SIGUSR1 i3status-rs
 # spinach's fzf system menu
@@ -55,7 +55,7 @@ exec                          swayidle -w \
 
 
 ### Output configuration
-output * disable dpms off
+#
 # set resolution,dpi,gamma,backlight; reset xrandr-gamma
 exec                          fich -c display_internal
 # set background wallpaper
