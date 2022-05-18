@@ -24,6 +24,18 @@ vim.keymap.set("n", "dl", "d$", {
 	desc = "delete the half line after cursor",
 })
 
+-- yh/yl to yank half line
+vim.keymap.set("n", "yh", "y^", {
+	silent = true,
+	noremap = true,
+	desc = "yank the half line before cursor",
+})
+vim.keymap.set("n", "yl", "y$", {
+	silent = true,
+	noremap = true,
+	desc = "yank the half line after cursor",
+})
+
 -- using system clipboard
 vim.keymap.set({ "i", "c" }, "<M-V>", [[eval('@+')]], {
 	silent = true,
