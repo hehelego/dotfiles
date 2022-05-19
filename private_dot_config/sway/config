@@ -41,6 +41,7 @@ set $screenshot               fish -c "grim -g (slurp) - | wl-copy"
 xwayland                      enabled
 # input: navigate mouse with keyboard
 exec                          keynav 'loadconfig ~/.config/keynav/keynavrc'
+exec                          fish -c warpd.fish
 # input method: start fcitx5
 exec                          fish -c restart_im
 # notification: start dunst notification server
@@ -190,8 +191,10 @@ exec                          fish -c setbg
     bindsym $mod+n                exec dunstctl close
     # pop one history notification
     bindsym $mod+Shift+n          exec dunstctl history-pop
-		# lookup the selected text in dictionary with ydcv
-		bindsym $mod+q                exec fish -c dict_lookup_sel
+    # lookup the selected text in dictionary with ydcv
+    bindsym $mod+comma            exec fish -c dict_lookup_sel
+    # start rvaiya/warpd; see hehelego/aur-warpd-both
+    bindsym $mod+x                exec fish -c 'warpd.fish --hint'
 
     # Use pactl to adjust volume in PulseAudio.
     bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@   +5%    ; exec $refresh_status
