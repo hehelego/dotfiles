@@ -45,7 +45,7 @@ require("nvim-treesitter.configs").setup({
 		-- list, ddisable treesitter for the listed languages
 		-- (these are the **names of the parsers** and not the **filetype**)
 		disable = {},
-		additional_vim_regex_highlighting = false,
+		additional_vim_regex_highlighting = true,
 	},
 
 	-- indentation module
