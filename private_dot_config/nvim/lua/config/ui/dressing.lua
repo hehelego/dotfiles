@@ -11,7 +11,7 @@ require("dressing").setup({
 		prompt_align = "left",
 
 		-- When true, <Esc> will close the modal
-		insert_only = true,
+		insert_only = false,
 
 		-- These are passed to nvim_open_win
 		anchor = "SW",
