@@ -16,8 +16,10 @@ alias   ll="exa --long       --group-directories-first"
 alias   la="exa --long --all --group-directories-first"
 alias   lt="exa --tree"
 alias  lta="exa --tree --long --all"
-alias fzff="fd -HI --type file      --exclude .git | fzf --multi --preview='stat {}'"
-alias fzfd="fd -HI --type directory --exclude .git | fzf --multi --preview='exa -F1 {}'"
+alias  fdf="fd -HI --type file      --exclude .git --strip-cwd-prefix"
+alias  fdd="fd -HI --type directory --exclude .git --strip-cwd-prefix"
+alias fzff="fdf | fzf --multi --preview='stat {}'"
+alias fzfd="fdd | fzf --multi --preview='exa -F1 {}'"
 alias  bat="bat --pager=less"
 alias  cat="bat --plain"
 alias   ip="ip -color"
@@ -25,14 +27,14 @@ alias   ip="ip -color"
 
 # SECTION: zoxide
 #
-set -gx _ZO_FZF_OPTS "--cycle --preview='exa -F1 {2..}'"
+set -gx _ZO_FZF_OPTS "--cycle --reverse --height=40% --preview='exa -F1 {2..}'"
 zoxide init fish | source
 
 
 # SECTION: fzf
 #
-set -gx FZF_DEFAULT_COMMAND "fd -HI --type file --exclude .git --strip-cwd-prefix"
-set -gx FZF_DEFAULT_OPTS "--cycle --reverse"
+set -gx FZF_DEFAULT_COMMAND "fdf"
+set -gx FZF_DEFAULT_OPTS "--cycle --reverse --height=40%"
 
 
 # SECTION: prompt
