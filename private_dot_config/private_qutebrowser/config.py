@@ -56,7 +56,7 @@ config.set('fileselect.multiple_files.command',
 
 ##################################### PART B: key bindings #####################################
 
-# remove the default key bindings: forward | back | tab-next | tab-prev | tab-pin | tab-move | tab-move - | tab-move + | tab-only | tab-give | tab-clone | tab-take
+# remove the default key bindings
 config.unbind('H', mode='normal')
 config.unbind('J', mode='normal')
 config.unbind('K', mode='normal')
@@ -132,10 +132,13 @@ config.bind(f'{leader}c', 'config-source', mode='normal')
 config.bind(f'{leader}r', 'restart', mode='normal')
 
 # focus (hidding the tab-bar and status-bar)
-config.bind(
-    f'{leader}z',
-    'config-cycle -tp statusbar.show never always ;; config-cycle -tp tabs.show never always ;; clear-messages',
-    mode='normal')
+config.bind(f'{leader}z',
+            ';;'.join([
+                'config-cycle -tp statusbar.show never always',
+                'config-cycle -tp tabs.show never always',
+                'clear-messages',
+            ]),
+            mode='normal')
 # quiet (clear notifications)
 config.bind(f'{leader}q', 'clear-messages ;; download-clear', mode='normal')
 
@@ -152,45 +155,45 @@ config.bind(f'{leader}d',
 
 # spinach's theme selector: switch user stylesheets
 config.bind('*',
-            'spawn --userscript spinach-cursorword.py next',
+            'spawn --userscript spinach_cursorword.py next',
             mode='normal')
-config.bind('*', 'spawn --userscript spinach-cursorword.py next', mode='caret')
+config.bind('*', 'spawn --userscript spinach_cursorword.py next', mode='caret')
 config.bind('#',
-            'spawn --userscript spinach-cursorword.py prev',
+            'spawn --userscript spinach_cursorword.py prev',
             mode='normal')
-config.bind('#', 'spawn --userscript spinach-cursorword.py prev', mode='caret')
+config.bind('#', 'spawn --userscript spinach_cursorword.py prev', mode='caret')
 
 # spinach's dinctionary lookup plugin: search for the selected text in YouDao dinctionary
 config.bind(f'{leader}{leader}',
-            'spawn --userscript spinach-dictlookup.py',
+            'spawn --userscript spinach_dictlookup.py',
             mode='normal')
 config.bind(f'{leader}{leader}',
-            'spawn --userscript spinach-dictlookup.py',
+            'spawn --userscript spinach_dictlookup.py',
             mode='caret')
 
 # spinach's history searcher: search in history, open in current tab
 config.bind(f'{leader}h',
-            'spawn --userscript spinach-history.py',
+            'spawn --userscript spinach_history.py',
             mode='normal')
 # spinach's history searcher: search in history, open in new tab
 config.bind(f'{leader}H',
-            'spawn --userscript spinach-history.py --tab',
+            'spawn --userscript spinach_history.py --tab',
             mode='normal')
 
 # spinach's bookmarks selector: open bookmark, with full feature
 config.bind(f'{leader}b',
-            'spawn --userscript spinach-bookmarks.py --full',
+            'spawn --userscript spinach_bookmarks.py --full',
             mode='normal')
 config.bind(f'{leader}B',
-            'spawn --userscript spinach-bookmarks.py --full',
+            'spawn --userscript spinach_bookmarks.py --full',
             mode='normal')
 # override the default key bindings
-config.bind('b', 'spawn --userscript spinach-bookmarks.py', mode='normal')
+config.bind('b', 'spawn --userscript spinach_bookmarks.py', mode='normal')
 config.bind('B',
-            'spawn --userscript spinach-bookmarks.py --tab',
+            'spawn --userscript spinach_bookmarks.py --tab',
             mode='normal')
 
 # spinach's theme selector: switch user stylesheets
 config.bind(f'{leader}s',
-            'spawn --userscript spinach-themes.py',
+            'spawn --userscript spinach_themes.py',
             mode='normal')

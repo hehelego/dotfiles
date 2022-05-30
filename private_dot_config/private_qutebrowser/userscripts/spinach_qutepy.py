@@ -7,9 +7,12 @@ from typing import Any, Optional, TypeVar
 
 
 class Qute:
+
     def __init__(self) -> None:
-        self.env = {k: v for k, v in os.environ.items()
-                    if k.startswith('QUTE')}
+        self.env = {
+            k: v
+            for k, v in os.environ.items() if k.startswith('QUTE')
+        }
         self.mode = self.get_env('mode')
         self.user_agent = self.get_env('user_agent')
         self.fifo = open(self._ge('fifo'), 'w')
@@ -34,7 +37,10 @@ class Qute:
         print(cmd, file=self.fifo)
         return True
 
-    def open_url(self, url: str, new_window: bool = False, new_tab: bool = False) -> bool:
+    def open_url(self,
+                 url: str,
+                 new_window: bool = False,
+                 new_tab: bool = False) -> bool:
         option = ''
         if new_window:
             option += '-w'
@@ -44,18 +50,12 @@ class Qute:
 
 
 class Helper:
+
     @staticmethod
     def log(pre: str, obj: Any):
         print(pre, end=': ', file=sys.stdout)
         pprint(obj, stream=sys.stdout)
         print(f'{pre}: {obj}', file=sys.stderr)
-
-    T_not_none = TypeVar('T_not_none')
-
-    @staticmethod
-    def not_none(x: Optional[T_not_none]) -> T_not_none:
-        assert(x is not None)
-        return x
 
     @staticmethod
     def readfile(path: str) -> str:
@@ -69,42 +69,55 @@ class Fzf:
     T_entry = TypeVar('T_entry')
     default_multi = False
     default_prompt = '> '
-    default_preview = r'''--preview \
-            'bat {} \
-                --language css \
-                --color always \
-                --paging never \
-                --line-range :500 \
-            ' \
+    default_preview = r'''bat {} \
+        --plain \
+        --color always \
+        --paging never \
+        --line-range :500 \
     '''
 
     @staticmethod
-    def fzf_select(src: list[T_entry], multi: bool = default_multi, preview: Optional[str] = default_preview, prompt: str = default_prompt) -> list[T_entry]:
-        input_file = tempfile.NamedTemporaryFile(
-            prefix='/tmp/spinach_qutepy.fzf', mode='w+')
-        output_file = tempfile.NamedTemporaryFile(
-            prefix='/tmp/spinach_qutepy.fzf', mode='w+')
+    def fzf_select(src: list[T_entry],
+                   multi: bool = default_multi,
+                   preview: Optional[str] = default_preview,
+                   prompt: str = default_prompt) -> list[T_entry]:
+
         src_map = {str(i): i for i in src}
+
+        def tmpf():
+            return tempfile.NamedTemporaryFile(
+                prefix='/tmp/spinach_qutepy.fzf',
+                mode='w+',
+            )
+
+        input_file = tmpf()
+        output_file = tmpf()
+
         for i in src_map.keys():
             print(i, file=input_file)
         input_file.flush()
-        cmd = rf'''
-            cat {input_file.name} \
-            | fzf \
-                {'--multi' if multi else ''} \
-                {preview if preview else ''} \
-                --prompt "{prompt}" \
-            > {output_file.name}
-            '''
-        subprocess.run(['alacritty', '-e', 'fish', '-c', cmd])
+
+        fzf_opts = ['fzf']
+        fzf_opts.append('--multi' if multi else '--no-multi')
+        if preview:
+            fzf_opts.append(f"--preview '{preview}'")
+        fzf_opts.append(f'--prompt "{prompt}"')
+
+        fzf_cmd = ' '.join(fzf_opts)
+        Helper.log('fzf command', fzf_cmd)
+
+        subprocess.check_call([
+            'alacritty', '-e', 'fish', '-c',
+            f'cat {input_file.name} | {fzf_cmd} > {output_file.name}'
+        ])
+
         output_file.seek(0)
         selected = [
-            src_map[i]
-            for i in output_file.read().split('\n')
-            if i in src_map
+            src_map[i] for i in output_file.read().split('\n') if i in src_map
         ]
+        Helper.log('selected:', selected)
+
         output_file.close()
         input_file.close()
 
-        Helper.log('selected:', selected)
         return selected
