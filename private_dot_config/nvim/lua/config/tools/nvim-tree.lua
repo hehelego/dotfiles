@@ -1,5 +1,6 @@
 -- See <https://github.com/kyazdani42/nvim-tree.lua>
 local nvim_tree = require("nvim-tree")
+local events = require("nvim-tree.events")
 local action = require("nvim-tree.config").nvim_tree_callback
 
 local opts = {
@@ -68,3 +69,9 @@ local opts = {
 	},
 }
 nvim_tree.setup(opts)
+
+-- add line number for nvim-tree window
+events.on_tree_open(function()
+	vim.wo.number = true
+	vim.wo.relativenumber = true
+end)
