@@ -7,7 +7,6 @@ require("which-key").register({
 	["b"] = { "<cmd>Telescope buffers<cr>", "buffers" },
 	["g"] = { "<cmd>Telescope live_grep<cr>", "live-grep" },
 	["h"] = { "<cmd>Telescope oldfiles<cr>", "recent-files" },
-	["d"] = { "<cmd>Telescope diagnostics<cr>", "diagnostics" },
 	["."] = { "<cmd>Telescope builtin include_extensions=true<cr>", "finders" },
 	-- It is not encouraged to use following keymaps.
 	-- Instead use `<leader>f.` and search for the function you want.

@@ -8,7 +8,6 @@ require("which-key").register({
 		["l"] = { "<cmd>Trouble loclist<cr>", "loclist" },
 		["d"] = { "<cmd>Trouble document_diagnostics<cr>", "diagnostics-file" },
 		["D"] = { "<cmd>Trouble workspace_diagnostics<cr>", "diagnostics-ws" },
-		["g"] = { "<cmd>Gitsigns setqflist<cr>", "git-diff-hunks" },
 	},
 	["g"] = {
 		name = "goto",
@@ -16,6 +15,7 @@ require("which-key").register({
 		["d"] = { "<cmd>Telescope lsp_definitions<cr>", "definitions" },
 		["i"] = { "<cmd>Telescope lsp_implementations<cr>", "implementations" },
 		["t"] = { "<cmd>Telescope lsp_type_definitions<cr>", "typedef" },
+		["w"] = { "<cmd>Telescope diagnostics<cr>", "diagnostics" },
 		["s"] = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols-file" },
 		["S"] = { "<cmd>Telescope lsp_workspace_symbols<cr>", "symbols-ws" },
 	},
