@@ -30,7 +30,6 @@ interval = 30
 block = "battery"
 driver = "sysfs"
 format = "{percentage} {time}"
-allow_missing = true
 good=70
 info=50
 warning=30
