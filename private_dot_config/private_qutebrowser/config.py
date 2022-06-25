@@ -4,7 +4,7 @@ from qutebrowser.config.configfiles import ConfigAPI  # noqa: F401
 config: ConfigAPI = config  # noqa: F821 pylint: disable=E0602,C0103
 
 leader: str = r','
-qutekey: str = r'B2D0D2EAB1C80196DA262CD9F019D7B44FB345C6'
+qutekey: str = r'8BBE37A279A254F28ED88F6B6E524D8368913D57'
 proxy_urls: list[str] = [
     'http://127.0.0.1:8889',
     'socks5://127.0.0.1:1089',
