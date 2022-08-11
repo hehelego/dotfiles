@@ -44,14 +44,6 @@ local opts = {
 	renderer = {
 		indent_markers = {
 			enable = true,
-			icons = {
-				corner = "└ ",
-				edge = "│ ",
-				none = "  ",
-			},
-		},
-		icons = {
-			webdev_colors = true,
 		},
 	},
 	ignore_ft_on_setup = {},
