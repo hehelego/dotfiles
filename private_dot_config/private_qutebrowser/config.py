@@ -20,6 +20,16 @@ config.set('bindings.key_mappings', {})
 config.set('scrolling.smooth', True)
 config.set('qt.highdpi', True)
 config.set('fonts.default_family', 'monospace')
+kind_ff_map = {
+    'cursive': 'Hack',
+    'fantasy': 'Hack',
+    'fixed': 'Hack',
+    'sans_serif': 'Noto Serif CJK SC',
+    'serif': 'Noto Sans CJK SC',
+    'standard': 'Hack',
+}
+for (kind, family) in kind_ff_map.items():
+    config.set(f'fonts.web.family.{kind}', family)
 config.set('colors.webpage.preferred_color_scheme', 'dark')
 config.set('colors.webpage.bg', 'gray')
 config.set('content.autoplay', False)
