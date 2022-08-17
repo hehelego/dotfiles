@@ -24,7 +24,7 @@ kind_ff_map = {
     'cursive': 'Hack',
     'fantasy': 'Hack',
     'fixed': 'Hack',
-    'sans_serif': 'Noto Serif CJK SC',
+    'sans_serif': 'Noto Sans CJK SC',
     'serif': 'Noto Sans CJK SC',
     'standard': 'Hack',
 }
