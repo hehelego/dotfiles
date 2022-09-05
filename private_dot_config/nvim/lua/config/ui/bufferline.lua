@@ -4,7 +4,6 @@ local conf = {
 	numbers = "none",
 	close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
 	left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-	indicator_icon = "▎",
 	buffer_close_icon = "",
 	modified_icon = "●",
 	close_icon = "",
@@ -28,6 +27,11 @@ local conf = {
 	persist_buffer_sort = true,
 	enforce_regular_tabs = true,
 	always_show_bufferline = true,
+
+	indicator = {
+		icon = '▎',
+		style = 'icon',
+	},
 
 	custom_filter = function(buf, buf_nums)
 		local _ = buf_nums -- discard the buf_nums argument
