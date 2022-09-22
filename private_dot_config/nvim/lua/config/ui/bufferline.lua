@@ -29,8 +29,8 @@ local conf = {
 	always_show_bufferline = true,
 
 	indicator = {
-		icon = '▎',
-		style = 'icon',
+		icon = "▎",
+		style = "icon",
 	},
 
 	custom_filter = function(buf, buf_nums)
