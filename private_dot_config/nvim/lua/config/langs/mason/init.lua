@@ -14,8 +14,17 @@ mason.setup({
 
 mason_lsp.setup({
 	ensure_installed = {
+		-- C/C++
 		"clangd",
+		-- rust
 		"rust_analyzer",
-		"lua-language-server",
+		-- python
+		"pyright",
+		-- lua
+		"sumneko_lua",
+		-- vim script
+		"vimls",
+		-- LaTeX
+		"texlab",
 	},
 })
