@@ -26,8 +26,10 @@ end
 local function lsp_plugins(use)
 	-- configure the neovim builtin lsp client
 	use("neovim/nvim-lspconfig")
-	-- manage lsp servers with nvim-lsp-installer
-	use("williamboman/nvim-lsp-installer")
+
+	-- mason package manager
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 
 	-- use clang-tidy/flake8/cargo-clippy as LSP servers
 	use("jose-elias-alvarez/null-ls.nvim")

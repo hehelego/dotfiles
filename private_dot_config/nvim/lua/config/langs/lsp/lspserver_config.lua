@@ -1,5 +1,6 @@
 -- configuration for each installed LSP servers
 local conf = {}
+
 conf["pyright"] = {}
 
 conf["rust_analyzer"] = {}
@@ -33,10 +34,4 @@ conf["clangd"] = {
 
 conf["taxlab"] = {}
 
-return function(server)
-	local opt = conf[server]
-	if opt == nil then
-		opt = {}
-	end
-	return opt
-end
+return conf

@@ -71,32 +71,19 @@ local function on_attach(client, bufnr)
 	}, bufnr)
 end
 
-local lspinstaller = require("nvim-lsp-installer")
-local lspconfig = require("lspconfig")
-local server_config = L("config")
-local other_servers = { "pyright", "rust_analyzer", "gopls", "clangd", "texlab" }
+local server_config = L("lspserver_config")
 
--- update the neovim LSP client capability
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.offsetEncoding = { "utf-16" } -- NOTE: <https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428>
+local mason_lsp = require("mason-lspconfig")
+mason_lsp.setup_handlers({
+	function(server_name)
+		local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+		local opts = {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		}
+		opts = vim.tbl_extend("force", opts, server_config[server_name] or {})
 
-lspinstaller.setup({})
-
-local function config_one(server_name)
-	local s = server_name
-	local opts = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
-	opts = vim.tbl_extend("force", opts, server_config(s))
-	lspconfig[s].setup(opts)
-end
-
--- load servers installed by nvim-lsp-installer
-for _, server_obj in ipairs(lspinstaller.get_installed_servers()) do
-	config_one(server_obj.name)
-end
--- load previously existed servers on the system
-for _, server in ipairs(other_servers) do
-	config_one(server)
-end
+		local lspconfig = require("lspconfig")
+		lspconfig[server_name].setup(opts)
+	end,
+})
