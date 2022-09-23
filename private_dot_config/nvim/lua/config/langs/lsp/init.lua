@@ -8,7 +8,8 @@ local function L(mod)
 	return require("config.langs.lsp." .. mod)
 end
 
-L("setup")
+L("lspclient_setup")
+L("lsp_signature")
 L("null-ls")
 L("lightbulb")
 L("lspkind")

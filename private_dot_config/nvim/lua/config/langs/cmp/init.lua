@@ -12,6 +12,7 @@ local lspkind = require("lspkind")
 -- load snippets for luasnip
 require("luasnip.loaders.from_vscode").lazy_load()
 
+-- debouncing
 -- See <https://github.com/hrsh7th/nvim-cmp/issues/598>
 local cmp_delay = vim.opt.timeoutlen:get()
 local cmp_timer = vim.loop.new_timer()

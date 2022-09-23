@@ -1,6 +1,6 @@
--- See https://github.com/phaazon/hop.nvim
--- See https://github.com/ggandor/lightspeed.nvim
--- See https://github.com/easymotion/vim-easymotion
+-- See <https://github.com/phaazon/hop.nvim>
+-- See <https://github.com/ggandor/lightspeed.nvim>
+-- See <https://github.com/easymotion/vim-easymotion>
 require("hop").setup({
 	keys = "asdghklqwertyuiopzxcvbnmfj",
 	quit_key = "<Esc>",

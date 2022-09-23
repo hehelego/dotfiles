@@ -25,5 +25,4 @@ require("which-key").register({
 	prefix = "<leader>g",
 })
 
--- for hunk actions (reest/blame,diff), use code-actions <leader>a
--- see config.langs.lsp.null-ls
+-- gitsigns.nvim hunk code actions are configured by null-ls

@@ -3,6 +3,6 @@ local function L(mod)
 end
 
 L("mason")
-L("cmp")
 L("lsp")
 L("treesitter")
+L("cmp")

@@ -63,7 +63,7 @@ motion["$"] = motion_wrap("$")
 -- SECTION: key bindings
 ---
 
--- SEE https://github.com/phaazon/hop.nvim/issues/82
+-- See <https://github.com/phaazon/hop.nvim/issues/82>
 -- hop.nvim does not come with the vim-flavor inclusive/exclusive motion
 -- we use afterwards_callback to achieve desired behavior
 

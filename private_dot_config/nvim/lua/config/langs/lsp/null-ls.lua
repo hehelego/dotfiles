@@ -11,7 +11,6 @@ src = vim.list_extend(src, {
 	formatting.yapf,
 	formatting.stylua,
 	formatting.rustfmt,
-	formatting.clang_format,
 })
 -- diagnostics
 src = vim.list_extend(src, {
