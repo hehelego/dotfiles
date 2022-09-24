@@ -4,6 +4,8 @@ shanghaitech egate http://egate.shanghaitech.edu.cn/new/index.html
 shanghaitech eams https://eams.shanghaitech.edu.cn/eams/home.action
 shanghaitech BB blackboard https://elearning.shanghaitech.edu.cn:8443/
 shanghaitech library https://library.shanghaitech.edu.cn/
+Shanghaitech CS130 22 https://lion.sist.shanghaitech.edu.cn/Course/CS130/22f/
+Shanghaitech CS130 21 https://lion.sist.shanghaitech.edu.cn/Course/CS130/21f/
 iTechX gitee https://itechx.gitee.io/dashboard.html
 iTechX github https://i-techx.github.io/dashboard
 piazza https://piazza.com/
@@ -49,9 +51,7 @@ Cambridge dictionary https://dictionary.cambridge.org/
 purdue online writting lab owl https://owl.purdue.edu/
 Firefox Monitor https://monitor.firefox.com/
 have i been pwned https://haveibeenpwned.com/
-Pentagonal number theorem - Wikipedia https://en.wikipedia.org/wiki/Pentagonal_number_theorem
-Partial fraction decomposition - Wikipedia https://en.wikipedia.org/wiki/Partial_fraction_decomposition
-Introduction to Parallel Computing Tutorial | High Performance Computing https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial
+LLNL tutorial on Parallel Computing https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial
 bilibili_maki的抽象代数视频课程 https://www.bilibili.com/video/BV1C7411Z7xh
 Rationality: A-Z - LessWrong https://www.lesswrong.com/rationality
 The Codex - LessWrong https://www.lesswrong.com/codex
@@ -64,19 +64,21 @@ edx https://www.edx.org/
 学堂在线 https://www.xuetangx.com/
 中国大学MOOC https://www.icourse163.org/
 3Blue1Brown https://www.3blue1brown.com/
-berkeley cs61c https://inst.eecs.berkeley.edu/~cs61c/sp21/
 the missing semester of your cs education https://missing.csail.mit.edu/
 OSTEP Operating Systems Three Easy Pieces https://pages.cs.wisc.edu/~remzi/OSTEP/
+computer network a systems approach https://book.systemsapproach.org/index.html
+pintos document https://web.stanford.edu/~ouster/cgi-bin/cs140-spring20/pintos/pintos.html
+UW cse 431 introduction theory of computation https://courses.cs.washington.edu/courses/cse431/19au/
+Stanford cs143 compilers https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/
+Stanford cs144 network https://cs144.github.io/
 UCSB CS170 notes on operating system https://sites.cs.ucsb.edu/~rich/class/cs170/lecture_notes.html
+UC Berkeley CS162 operating system https://cs162.org/
 MIT 6.824 distributed system https://pdos.csail.mit.edu/6.824/schedule.html
 MIT 6.851 advanced data structures http://courses.csail.mit.edu/6.851/
-MIT 6.042 math for CS https://courses.csail.mit.edu/6.042/spring18/
-MIT 6.001 SICP https://mitpress.mit.edu/sites/default/files/sicp/index.html
-MIT 6.829 networking http://web.mit.edu/6.829/www/currentsemester/index.html
-CMU TCS toolkit https://www.diderot.one/courses/28
-CMU great ideas in TCS https://www.anilada.com/courses/15251f18/www/schedule.html
+MIT 18.404 theory of computation https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/resources/mit18_404f20_hw1/
+CMU 15-751 TCS toolkit https://www.diderot.one/courses/28
+CMU 15-251 great ideas in TCS https://www.anilada.com/courses/15251f18/www/schedule.html
 stanford CS364A algorithmic game theory http://timroughgarden.org/f13/f13.html
-upenn CIS 194 haskell https://www.seas.upenn.edu/~cis194/fall16/
 CCF https://www.ccf.org.cn/
 ACM https://www.acm.org/
 IEEE https://www.ieee.org/
@@ -139,7 +141,6 @@ MATLAB Documentation https://www.mathworks.com/help/matlab/
 sagemath doc https://doc.sagemath.org/html/en/
 Vim scripting cheatsheet https://devhints.io/vimscript
 neovim doc https://neovim.io/doc/user/
-coc.nvim https://github.com/neoclide/coc.nvim
 cppreference https://en.cppreference.com/w/
 python doc https://docs.python.org/3/
 rustref https://doc.rust-lang.org/reference/index.html
