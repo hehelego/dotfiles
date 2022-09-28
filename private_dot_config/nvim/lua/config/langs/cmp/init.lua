@@ -42,7 +42,14 @@ local cmp_keymaps = {
 		cmp.complete()
 	end),
 	-- Return to confirm completion
-	["<CR>"] = cmp.mapping.confirm({ select = true }),
+	["<CR>"] = cmp.mapping(function(fallback)
+		cmp_timer:stop()
+		if cmp.visible() then
+			cmp.confirm({ select = true })
+		else
+			fallback()
+		end
+	end),
 	--  navigating the completion menu
 	["<C-d>"] = cmp.mapping.scroll_docs(4),
 	["<C-u>"] = cmp.mapping.scroll_docs(-4),
