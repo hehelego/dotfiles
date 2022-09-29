@@ -15,6 +15,8 @@ require("nightfox").setup({
 			types = "NONE",
 			variables = "NONE",
 		},
+		-- transparent backgroud
+		transparent = false,
 	},
 })
 -- setup must be called before loading
