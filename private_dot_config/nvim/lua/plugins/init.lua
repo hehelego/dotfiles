@@ -51,6 +51,7 @@ local _ = {
 		aerial = "stevearc/aerial.nvim",
 		perfanno = "t-troebst/perfanno.nvim",
 		gitsigns = "lewis6991/gitsigns.nvim",
+		messages = "AckslD/messages.nvim",
 	},
 	editing = {
 		comment = "numToStr/Comment.nvim",
@@ -78,10 +79,12 @@ local _ = {
 		},
 		lsp = {
 			base = "neovim/nvim-lspconfig",
-			lsp_installer = "williamboman/nvim-lsp-installer",
+			mason = "williamboman/mason.nvim",
+			mason_lspconfig = "williamboman/mason-lspconfig.nvim",
 			null_ls = "jose-elias-alvarez/null-ls.nvim",
 			lsp_signature = "ray-x/lsp_signature.nvim",
 			lightbulb = "kosayoda/nvim-lightbulb",
+			lspkind = "onsails/lspkind.nvim",
 		},
 	},
 	misc = {

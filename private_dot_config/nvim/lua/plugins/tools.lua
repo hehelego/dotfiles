@@ -31,5 +31,8 @@ local function tools_plugins(use)
 
 	-- show git hunks on sign-column
 	use("lewis6991/gitsigns.nvim")
+
+	-- redirect command output into a buffer
+	use("AckslD/messages.nvim")
 end
 return tools_plugins
