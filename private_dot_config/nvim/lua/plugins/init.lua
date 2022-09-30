@@ -51,7 +51,7 @@ local _ = {
 		aerial = "stevearc/aerial.nvim",
 		perfanno = "t-troebst/perfanno.nvim",
 		gitsigns = "lewis6991/gitsigns.nvim",
-		messages = "AckslD/messages.nvim",
+		messages = "hehelego/messages.nvim",
 	},
 	editing = {
 		comment = "numToStr/Comment.nvim",

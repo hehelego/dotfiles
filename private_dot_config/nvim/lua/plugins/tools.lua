@@ -33,6 +33,7 @@ local function tools_plugins(use)
 	use("lewis6991/gitsigns.nvim")
 
 	-- redirect command output into a buffer
-	use("AckslD/messages.nvim")
+	-- my own patched version
+	use("hehelego/messages.nvim")
 end
 return tools_plugins
