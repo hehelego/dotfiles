@@ -12,38 +12,11 @@ local lspkind = require("lspkind")
 -- load snippets for luasnip
 require("luasnip.loaders.from_vscode").lazy_load()
 
--- debouncing
--- See <https://github.com/hrsh7th/nvim-cmp/issues/598>
-local cmp_delay = vim.opt.timeoutlen:get()
-local cmp_timer = vim.loop.new_timer()
-local function debounce()
-	cmp_timer:stop()
-	cmp_timer:start(
-		cmp_delay,
-		0,
-		vim.schedule_wrap(function()
-			cmp.complete({ reason = cmp.ContextReason.Auto })
-		end)
-	)
-end
-
-local cmp_debounce_grp = vim.api.nvim_create_augroup("cmp_debounce", {})
-vim.api.nvim_create_autocmd({ "TextChangedI", "CmdlineChanged" }, {
-	pattern = "*",
-	callback = debounce,
-	group = cmp_debounce_grp,
-	desc = "nvim-cmp auto-completion debounce",
-})
-
 local cmp_keymaps = {
 	-- Ctrl-Space to trigger completion
-	["<C-Space>"] = cmp.mapping(function()
-		cmp_timer:stop()
-		cmp.complete()
-	end),
+	["<C-Space>"] = cmp.mapping.complete(),
 	-- Return to confirm completion
 	["<CR>"] = cmp.mapping(function(fallback)
-		cmp_timer:stop()
 		if cmp.visible() then
 			cmp.confirm({ select = true })
 		else
@@ -56,10 +29,7 @@ local cmp_keymaps = {
 	["<C-p>"] = cmp.mapping.select_prev_item(),
 	["<C-n>"] = cmp.mapping.select_next_item(),
 	-- Ctrl-e to abort completion
-	["<C-e>"] = cmp.mapping(function()
-		cmp_timer:stop()
-		cmp.abort()
-	end),
+	["<C-e>"] = cmp.mapping.abort(),
 	-- Tab: next option | next snippet slot | fallback
 	["<Tab>"] = cmp.mapping(function(fallback)
 		if cmp.visible() then
@@ -82,12 +52,16 @@ local cmp_keymaps = {
 	end, { "i", "s" }),
 }
 
-cmp.setup({
-	-- disable auto-completion while typing, see function DebounceCMP
-	completion = {
-		autocomplete = false,
-	},
+local delay = vim.opt.timeoutlen:get()
 
+cmp.setup({
+	-- prevent legging/bouncing
+	performance = {
+		debounce = delay,
+		throttle = 30,
+		fetching_timeout = 100,
+	},
+	-- snippet options
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
