@@ -144,7 +144,7 @@ reg({
 
 local ft_quit_grp = vim.api.nvim_create_augroup("ft_quick_quit", {})
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "help", "qf", "man", "lspinfo" },
+	pattern = { "help", "qf", "man", "lspinfo", "mason", "messages_capture" },
 	callback = function(args)
 		vim.keymap.set("n", "q", "<cmd>close<cr>", {
 			silent = false,
