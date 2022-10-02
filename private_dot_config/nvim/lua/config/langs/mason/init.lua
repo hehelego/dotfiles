@@ -35,7 +35,7 @@ mason_lsp.setup({
 -- the default LSP client buffer attach callback
 local function on_attach(client, bufnr)
 	_ = bufnr -- discard the argument
-	local cap = client.resolved_capabilities
+	local cap = client.server_capabilities
 
 	-- add CursorHold highlighting
 	if cap.document_highlight then
