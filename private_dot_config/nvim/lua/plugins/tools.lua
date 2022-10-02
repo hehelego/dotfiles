@@ -26,9 +26,6 @@ local function tools_plugins(use)
 	-- show code structure and symbol tree
 	use("stevearc/aerial.nvim")
 
-	-- visualize and annotate perfiling result
-	use("t-troebst/perfanno.nvim")
-
 	-- show git hunks on sign-column
 	use("lewis6991/gitsigns.nvim")
 
