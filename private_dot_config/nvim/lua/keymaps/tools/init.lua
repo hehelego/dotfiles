@@ -5,5 +5,4 @@ end
 L("telescope")
 L("nvim-tree")
 L("aerial")
-L("perfanno")
 L("gitsigns")
