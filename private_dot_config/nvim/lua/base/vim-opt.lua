@@ -36,6 +36,12 @@ local set = {
 	shiftwidth = 4, -- add/reduce 4 spaces in every shift operation
 	completeopt = { "menu", "menuone", "noselect" },
 
+	-- fold
+	foldenable = true, -- enable code folding feature
+	foldignore = "# // /// //!", -- ignore the fold level for line starting with these symbols
+	foldlevel = 99, -- do not close fold by default
+	foldmethod = "indent", -- use indentation based folding by default
+
 	-- delays
 	timeoutlen = 300, -- wait 100ms before a key-stroke sequence to complete
 	updatetime = 300, -- time to wait before auto-complete get updated
