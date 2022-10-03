@@ -48,6 +48,17 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = true,
 	},
 
+	-- incremental selection module
+	incremental_selection = {
+		enable = false,
+		keymaps = {
+			init_selection = "gnn",
+			node_incremental = "grn",
+			scope_incremental = "grc",
+			node_decremental = "grm",
+		},
+	},
+
 	-- indentation module
 	indent = { enable = false },
 
