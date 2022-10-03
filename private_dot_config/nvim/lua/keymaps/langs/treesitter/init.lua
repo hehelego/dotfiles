@@ -23,7 +23,7 @@ local function ts_off()
 		vim.cmd(string.format("TSDisable %s", mod))
 	end
 	vim.opt.syntax = "on"
-	vim.opt.foldmethod = require('base/vim-opt').foldmethod
+	vim.opt.foldmethod = require("base/vim-opt").foldmethod
 end
 local function ts_toggle()
 	if vim.g.treesitter_status == true then

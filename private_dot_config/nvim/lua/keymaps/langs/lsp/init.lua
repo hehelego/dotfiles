@@ -21,7 +21,7 @@ require("which-key").register({
 	},
 	["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "code-action" },
 	["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "rename" },
-	["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "format" },
+	["f"] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "format" },
 }, {
 	mode = "n",
 	silent = true,
@@ -54,6 +54,8 @@ vim.keymap.set(
 	{ silent = true, noremap = true, desc = "show man page for the symbol under cursor" }
 )
 
-vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {
+vim.api.nvim_create_user_command("Format", function()
+	vim.lsp.buf.format({ async = true })
+end, {
 	desc = "lsp document formatting",
 })
