@@ -22,7 +22,7 @@ alias fzff="fdf | fzf --multi --preview='stat {}'"
 alias fzfd="fdd | fzf --multi --preview='exa -F1 {}'"
 alias  bat="bat --pager=less"
 alias  cat="bat --plain"
-alias   ip="ip -color"
+alias   ip="ip -color=auto"
 
 
 # SECTION: zoxide
