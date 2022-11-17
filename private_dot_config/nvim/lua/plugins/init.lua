@@ -91,6 +91,7 @@ local _ = {
 		impatient = "lewis6991/impatient.nvim",
 		polyglot = "sheerun/vim-polyglot",
 		markdown_preview = "iamcco/markdown-preview.nvim",
+		vimtex = "lervag/vimtex",
 	},
 }
 

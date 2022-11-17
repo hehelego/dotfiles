@@ -3,3 +3,4 @@ local function L(mod)
 end
 
 L("markdown-preview")
+L("vimtex")

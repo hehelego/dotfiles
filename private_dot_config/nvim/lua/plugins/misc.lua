@@ -11,7 +11,11 @@ local function misc_plugins(use)
 	-- markdown preview rendering in the browser
 	use({ "iamcco/markdown-preview.nvim", run = mkdp_after_install, ft = { "markdown" } })
 
+	-- LaTeX IDE
+	use({ "lervag/vimtex", ft = { "tex" } })
+
 	-- vim syntax package
 	use("sheerun/vim-polyglot")
 end
+
 return misc_plugins
