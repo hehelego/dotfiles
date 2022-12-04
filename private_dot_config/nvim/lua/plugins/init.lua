@@ -50,7 +50,6 @@ local _ = {
 		nvim_tree = "kyazdani42/nvim-tree.lua",
 		aerial = "stevearc/aerial.nvim",
 		gitsigns = "lewis6991/gitsigns.nvim",
-		messages = "hehelego/messages.nvim",
 	},
 	editing = {
 		comment = "numToStr/Comment.nvim",
