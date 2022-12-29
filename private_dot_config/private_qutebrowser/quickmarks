@@ -4,9 +4,6 @@ shanghaitech egate http://egate.shanghaitech.edu.cn/new/index.html
 shanghaitech eams https://eams.shanghaitech.edu.cn/eams/home.action
 shanghaitech BB blackboard https://elearning.shanghaitech.edu.cn:8443/
 shanghaitech library https://library.shanghaitech.edu.cn/
-Shanghaitech CS130 22 https://lion.sist.shanghaitech.edu.cn/Course/CS130/22f/
-Shanghaitech CS130 21 https://lion.sist.shanghaitech.edu.cn/Course/CS130/21f/
-Shanghaitech CS130 gitea http://10.15.29.134:3000/
 iTechX gitee https://itechx.gitee.io/dashboard.html
 iTechX github https://i-techx.github.io/dashboard
 piazza https://piazza.com/
@@ -68,12 +65,8 @@ edx https://www.edx.org/
 the missing semester of your cs education https://missing.csail.mit.edu/
 OSTEP Operating Systems Three Easy Pieces https://pages.cs.wisc.edu/~remzi/OSTEP/
 computer network a systems approach https://book.systemsapproach.org/index.html
-pintos document https://web.stanford.edu/~ouster/cgi-bin/cs140-spring20/pintos/pintos.html
 UW cse 431 introduction theory of computation https://courses.cs.washington.edu/courses/cse431/19au/
 Stanford cs143 compilers https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/
-Stanford cs144 network https://cs144.github.io/
-UCSB CS170 notes on operating system https://sites.cs.ucsb.edu/~rich/class/cs170/lecture_notes.html
-UC Berkeley CS162 operating system https://cs162.org/
 MIT 6.824 distributed system https://pdos.csail.mit.edu/6.824/schedule.html
 MIT 6.851 advanced data structures http://courses.csail.mit.edu/6.851/
 MIT 18.404 theory of computation https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/resources/mit18_404f20_hw1/
