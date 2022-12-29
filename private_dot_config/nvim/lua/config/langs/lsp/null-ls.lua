@@ -14,8 +14,6 @@ src = vim.list_extend(src, {
 })
 -- diagnostics
 src = vim.list_extend(src, {
-	diagnostics.pylint,
-	diagnostics.chktex,
 	diagnostics.fish,
 })
 -- code action
