@@ -36,6 +36,10 @@ config.set('content.autoplay', False)
 config.set('content.javascript.can_access_clipboard', True)
 config.set('content.pdfjs', True)
 
+# adblock, requires python-adblock, see https://github.com/ArniDagur/python-adblock
+config.set('content.blocking.enabled', True)
+config.set('content.blocking.method', 'both')
+
 # enable GPU acceleration
 # see https://github.com/qutebrowser/qutebrowser/discussions/6573
 # see https://github.com/qutebrowser/qutebrowser/issues/5378]
