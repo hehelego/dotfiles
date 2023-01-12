@@ -68,7 +68,22 @@ local server_conf = {
 			"--offset-encoding=utf-16",
 		},
 	},
-	["rust_analyzer"] = {},
+	["rust_analyzer"] = {
+		imports = {
+			granularity = {
+				group = "module",
+			},
+			prefix = "self",
+		},
+		cargo = {
+			buildScripts = {
+				enable = true,
+			},
+		},
+		procMacro = {
+			enable = true,
+		},
+	},
 	["pyright"] = {},
 	["sumneko_lua"] = {
 		settings = {
