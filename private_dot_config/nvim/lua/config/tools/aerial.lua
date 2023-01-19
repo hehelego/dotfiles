@@ -106,7 +106,7 @@ require("aerial").setup({
 		-- function     - A function that returns true if the buffer should be
 		--                ignored or false if it should not be ignored.
 		--                Takes two arguments, `bufnr` and `buftype`.
-		buftypes = "special",
+		buftypes = false,
 
 		-- Ignored wintypes.
 		-- Can be one of the following:
@@ -117,7 +117,7 @@ require("aerial").setup({
 		-- function     - A function that returns true if the window should be
 		--                ignored or false if it should not be ignored.
 		--                Takes two arguments, `winid` and `wintype`.
-		wintypes = "special",
+		wintypes = false,
 	},
 
 	-- Use symbol tree for folding. Set to true or false to enable/disable
