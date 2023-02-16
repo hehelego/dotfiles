@@ -22,7 +22,7 @@ mason_lsp.setup({
 		-- python
 		"pyright",
 		-- lua
-		"sumneko_lua",
+		"lua_ls",
 		-- vim script
 		"vimls",
 		-- LaTeX
@@ -85,7 +85,7 @@ local server_conf = {
 		},
 	},
 	["pyright"] = {},
-	["sumneko_lua"] = {
+	["lua_ls"] = {
 		settings = {
 			Lua = {
 				diagnostics = {
