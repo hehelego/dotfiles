@@ -86,10 +86,11 @@ local _ = {
 		},
 	},
 	misc = {
+		polyglot = "sheerun/vim-polyglot",
 		startuptime = "dstein64/vim-startuptime",
 		impatient = "lewis6991/impatient.nvim",
-		polyglot = "sheerun/vim-polyglot",
 		markdown_preview = "iamcco/markdown-preview.nvim",
+		nabla = "jbyuki/nabla.nvim",
 		vimtex = "lervag/vimtex",
 	},
 }

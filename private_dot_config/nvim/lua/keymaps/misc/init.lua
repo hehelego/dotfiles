@@ -10,6 +10,15 @@ wk.register({
 })
 
 wk.register({
+	["p"] = { "<cmd>lua require('nabla').popup()<cr>", "nabla" },
+}, {
+	mode = "n",
+	silent = true,
+	noremap = true,
+	prefix = "<leader>",
+})
+
+wk.register({
 	["l"] = { "vimtex" },
 }, {
 	mode = "n",
