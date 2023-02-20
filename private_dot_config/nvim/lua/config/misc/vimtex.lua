@@ -6,6 +6,9 @@ vim.g.vimtex_quickfix_mode = 0
 -- allow overwriting the default tex filetype syntax&highlight
 vim.g.tex_flavor = "latex"
 
+-- allow vimtex symbol concealing
+vim.g.tex_conceal = "abdgm"
+
 -- doc viewer: zathura
 vim.g.vimtex_view_method = "zathura"
 
