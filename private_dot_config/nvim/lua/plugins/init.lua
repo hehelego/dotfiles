@@ -90,7 +90,6 @@ local _ = {
 		startuptime = "dstein64/vim-startuptime",
 		impatient = "lewis6991/impatient.nvim",
 		markdown_preview = "iamcco/markdown-preview.nvim",
-		nabla = "jbyuki/nabla.nvim",
 		vimtex = "lervag/vimtex",
 	},
 }

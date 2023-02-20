@@ -9,8 +9,16 @@ wk.register({
 	prefix = "<leader>",
 })
 
+local function toggle_conceal()
+	if vim.opt.conceallevel:get() > 0 then
+		vim.opt.conceallevel = 0
+	else
+		vim.opt.conceallevel = 2
+	end
+end
+
 wk.register({
-	["p"] = { "<cmd>lua require('nabla').popup()<cr>", "nabla" },
+	["p"] = { toggle_conceal, "conceal" },
 }, {
 	mode = "n",
 	silent = true,

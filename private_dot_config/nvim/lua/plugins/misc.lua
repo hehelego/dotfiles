@@ -14,9 +14,6 @@ local function misc_plugins(use)
 	-- markdown preview rendering in the browser
 	use({ "iamcco/markdown-preview.nvim", run = mkdp_after_install, ft = { "markdown" } })
 
-	-- LaTeX math preview rendering for markdown documents
-	use("jbyuki/nabla.nvim")
-
 	-- LaTeX IDE
 	use({ "lervag/vimtex" })
 end

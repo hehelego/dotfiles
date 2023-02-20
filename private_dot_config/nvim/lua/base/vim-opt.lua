@@ -24,7 +24,7 @@ local set = {
 	number = true, -- display line number
 	relativenumber = true, -- display relative line number
 	showtabline = 2, -- always show the tabline
-	conceallevel = 0, -- disable text concealing
+	conceallevel = 2, -- enable text concealing
 	list = true, -- display white-space characters
 	laststatus = 3, -- global status line
 
