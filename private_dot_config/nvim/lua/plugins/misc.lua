@@ -18,7 +18,7 @@ local function misc_plugins(use)
 	use("jbyuki/nabla.nvim")
 
 	-- LaTeX IDE
-	use({ "lervag/vimtex", ft = { "tex" } })
+	use({ "lervag/vimtex" })
 end
 
 return misc_plugins
