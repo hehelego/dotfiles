@@ -1,0 +1,13 @@
+# see <https://wiki.archlinux.org/title/Zathura>
+# see man zathura(1)
+# see man zathurarc(5)
+
+# copy text to clipboard with selection
+set selection-clipboard clipboard
+
+# SyncTeX support: vimtex
+# Ctrl + Left_Click
+set synctex true
+set synctex-editor-command "nvim --headless -c \"VimtexInverseSearch %l '%f'\""
+
+map normal d set "first-page-column 1:1"
