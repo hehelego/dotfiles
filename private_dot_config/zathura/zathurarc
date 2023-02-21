@@ -10,4 +10,5 @@ set selection-clipboard clipboard
 set synctex true
 set synctex-editor-command "nvim --headless -c \"VimtexInverseSearch %l '%f'\""
 
-map normal d set "first-page-column 1:1"
+map D set "first-page-column 1:1"
+
