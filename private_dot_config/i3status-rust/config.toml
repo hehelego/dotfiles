@@ -1,37 +1,44 @@
-[theme]
-name = "plain"
+# See <https://github.com/greshake/i3status-rust>
+# See man i3status-rs(1)
 
+invert_scrolling = true
+
+[theme]
+theme = "semi-native"
+[theme.overrides]
+separator_fg = "#335544"
 [icons]
-name = "awesome5"
+icons = "awesome6"
+
+
+###
+### blocks
+###
 
 [[block]]
-block = "networkmanager"
-primary_only=true
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
-interface_name_include = []
+block = "net"
+format = " $icon $device@{$ip | $ipv6} "
 
 [[block]]
 block = "backlight"
-on_click = "lxrandr"
+[[block.click]]
+button = "left"
+cmd = "lxrandr"
 
 [[block]]
 block = "sound"
-format = "{volume}"
-show_volume_when_muted=true
-on_click = "pavucontrol"
+show_volume_when_muted = true
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
 
 [[block]]
 block = "time"
-format = "%Y/%m/%d %a %R"
-timezone = "Asia/Shanghai"
-interval = 30
+[block.format]
+full = " $icon $timestamp.datetime(f:'%a %Y-%m-%d %R') "
+short = " $icon $timestamp.datetime(f:%R) "
+
 
 [[block]]
 block = "battery"
-driver = "sysfs"
-format = "{percentage} {time}"
-good=70
-info=50
-warning=30
-critical=15
-
+format = " $icon $percentage {$time |}"
