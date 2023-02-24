@@ -104,6 +104,10 @@ cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "path" },
-		{ name = "cmdline" },
+		{ name = "cmdline", option = {
+			-- cmp-nvim disable completion for `:Man` and `!<shell command>` by default
+			-- we want to enable them
+			ignore_cmds = {},
+		} },
 	},
 })
