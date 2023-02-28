@@ -54,7 +54,7 @@ local _ = {
 	editing = {
 		comment = "numToStr/Comment.nvim",
 		indent_line = "lukas-reineke/indent-blankline.nvim",
-		hop = "phaazon/hop.nvim",
+		leap = "ggandor/leap.nvim",
 	},
 	langs = {
 		cmp = {

@@ -2,6 +2,6 @@ local function L(mod)
 	return require("config.editing." .. mod)
 end
 
-L("hop")
+L("leap")
 L("comment")
 L("indent-blankline")

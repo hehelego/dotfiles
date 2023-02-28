@@ -6,6 +6,6 @@ local function editing_plugins(use)
 	use("lukas-reineke/indent-blankline.nvim")
 
 	-- hop.nvim lua-version of easymotion
-	use("phaazon/hop.nvim")
+	use("ggandor/leap.nvim")
 end
 return editing_plugins
