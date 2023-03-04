@@ -55,6 +55,7 @@ local _ = {
 		comment = "numToStr/Comment.nvim",
 		indent_line = "lukas-reineke/indent-blankline.nvim",
 		leap = "ggandor/leap.nvim",
+		flit = "ggandor/flit.nvim",
 	},
 	langs = {
 		cmp = {

@@ -5,7 +5,10 @@ local function editing_plugins(use)
 	-- visualize indentation
 	use("lukas-reineke/indent-blankline.nvim")
 
-	-- hop.nvim lua-version of easymotion
+	-- double character easymotion: <localleader>s {char1}{char2}
 	use("ggandor/leap.nvim")
+
+	-- single character easymotion
+	use({ "ggandor/flit.nvim", requires = { "ggandor/leap.nvim" } })
 end
 return editing_plugins
