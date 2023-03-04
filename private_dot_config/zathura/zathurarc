@@ -10,8 +10,13 @@ set selection-clipboard clipboard
 set synctex true
 set synctex-editor-command "nvim --headless -c \"VimtexInverseSearch %l '%f'\""
 
-# toggle single/double page view mode
+# D: toggle single/double page view mode
 map D set "first-page-column 1:1"
+# i: show document information
+map i feedkeys :info<Return>
+# Ctrl+S: reload config
+map <C-s> feedkeys :source<Return>
+
 
 # window title and status bar settings
 set window-title-basename true
