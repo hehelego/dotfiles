@@ -43,7 +43,7 @@ local set = {
 	foldmethod = "indent", -- use indentation based folding by default
 
 	-- delays
-	timeoutlen = 300, -- wait 100ms before a key-stroke sequence to complete
+	timeoutlen = 300, -- wait 300ms before a key-stroke sequence to complete
 	updatetime = 300, -- time to wait before auto-complete get updated
 }
 local remove = {}

@@ -21,6 +21,11 @@ src = vim.list_extend(src, {
 	code_actions.gitsigns,
 })
 
+local opt = {
+	debounce = vim.opt.timeoutlen:get(),
+}
+
 null_ls.setup({
 	sources = src,
+	options = opt,
 })

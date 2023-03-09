@@ -101,14 +101,19 @@ local server_conf = {
 mason_lsp.setup_handlers({
 	function(server_name)
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local lsp_flags = {
+			debounce_text_changes = vim.opt.timeoutlen:get(),
+		}
 
 		-- NOTE: issue on offset encoding
 		-- see <https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428>
 		-- see <https://github.com/neovim/neovim/pull/16694>
 		capabilities.offsetEncoding = { "utf-16" }
+
 		local opts = {
 			on_attach = on_attach,
 			capabilities = capabilities,
+			flags = lsp_flags,
 		}
 		opts = vim.tbl_deep_extend("force", opts, server_conf[server_name] or {})
 		lspconfig[server_name].setup(opts)

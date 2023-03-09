@@ -1,7 +1,3 @@
-local function L(mod)
-	return require("config.langs.lsp." .. mod)
-end
-
 local diagnostic_signs = {
 	{ name = "DiagnosticSignError", text = "" },
 	{ name = "DiagnosticSignWarn", text = "" },
