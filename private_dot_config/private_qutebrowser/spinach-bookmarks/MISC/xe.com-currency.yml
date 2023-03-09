@@ -1,0 +1,5 @@
+name: 'xe.com: exchange rate query'
+tags:
+  - currency
+url:
+  https://www.xe.com/

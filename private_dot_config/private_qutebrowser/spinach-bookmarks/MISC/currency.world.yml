@@ -1,0 +1,5 @@
+name: 'currency.world: exchange rate query'
+tags:
+  - currency
+url:
+  https://currency.world/
