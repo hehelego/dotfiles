@@ -21,3 +21,7 @@ vim.g.vimtex_format_enabled = 0
 -- For SyncTeX support in Zathura, edit `~/.config/zathura/zathurarc` and add
 -- set synctex true
 -- set synctex-editor-command "nvim --headless -c \"VimtexInverseSearch %l '%f'\""
+
+-- highlight for concealed LaTeX symbols
+vim.cmd.highlight({ "clear", "Conceal" })
+vim.cmd.highlight({ "link", "Conceal", "Type" })
