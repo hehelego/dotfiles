@@ -1,6 +1,6 @@
-name: ShanghaiTech postmaster
+name: ShanghaiTech postmaster 邮件拦截
 tags:
   - email
   - shtech
 url:
-  http://postmaster.shanghaitech.edu.cn:8183
+  https://postmaster.shanghaitech.edu.cn:8183/index.html

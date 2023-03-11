@@ -1,8 +1,8 @@
 name: 'Boaz Barak: An Intensive Introduction to Cryptography'
 tags:
-  - cryptography
   - CS
-  - course
+  - cryptography
+  - book
 url:
   https://github.com/boazbk/crypto
 
