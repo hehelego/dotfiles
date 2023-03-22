@@ -4,13 +4,16 @@ shanghaitech egate https://egate-new.shanghaitech.edu.cn/
 shanghaitech eams https://eams.shanghaitech.edu.cn/eams/home.action
 shanghaitech BB blackboard https://elearning.shanghaitech.edu.cn:8443/
 shanghaitech library https://library.shanghaitech.edu.cn/
-iTechX gitee https://itechx.gitee.io/dashboard.html
-iTechX github https://i-techx.github.io/dashboard
+itechx https://i-techx.github.io/iTechX/dashboard
 piazza https://piazza.com/
 Gradescope https://www.gradescope.com/
 GitHub https://github.com/
 archive of the internet https://archive.org/
 open library https://openlibrary.org/
+dbooks https://www.dbooks.org/
+Library Genesis https://libgen.rs/
+z-lib https://z-lib.org/
+Sci-Hub https://sci-hub.st/
 Wikipedia https://www.wikipedia.org/
 nLab https://ncatlab.org/nlab/show/HomePage
 ProofWiki https://proofwiki.org/wiki/Main_Page
@@ -28,7 +31,9 @@ Telegram Messenger https://telegram.org/
 LessWrong https://www.lesswrong.com/
 OvercomingBias https://www.overcomingbias.com/
 reddit https://www.reddit.com/
+quora https://www.quora.com/
 zhihu https://www.zhihu.com/
+1point3acres 一亩三分地bbs https://www.1point3acres.com/bbs/
 Stack Overflow https://stackoverflow.com/
 Mathematics Stack Exchange https://math.stackexchange.com/
 Unix Linux Stack Exchange https://unix.stackexchange.com/
@@ -38,23 +43,14 @@ bilibili https://www.bilibili.com/
 AcFun https://www.acfun.cn/
 OpenStreetMap https://www.openstreetmap.org/
 Wind and weather https://www.windy.com/
-Library Genesis https://libgen.rs/
-z-lib https://z-lib.org/
-Sci-Hub https://sci-hub.st/
 Merriam Webster dictionary https://www.merriam-webster.com/
 Cambridge dictionary https://dictionary.cambridge.org/
 旋元佑进阶文法 https://grammar.codeyu.com/
 kmf 英语语言备考 https://www.kmf.com/
 zhan 小站英语语言备考 https://top.zhan.com/
+TOEFL resources https://www.toeflresources.com/
 purdue online writting lab owl https://owl.purdue.edu/
-Firefox Monitor https://monitor.firefox.com/
-have i been pwned https://haveibeenpwned.com/
-bilibili_maki的抽象代数视频课程 https://www.bilibili.com/video/BV1C7411Z7xh
-Rationality: A-Z - LessWrong https://www.lesswrong.com/rationality
-The Codex - LessWrong https://www.lesswrong.com/codex
-All About Monads - HaskellWiki https://wiki.haskell.org/All_About_Monads
-Monads as computation - HaskellWiki https://wiki.haskell.org/Monads_as_computation
-Monads as containers - HaskellWiki https://wiki.haskell.org/Monads_as_containers
+CS自学指南 https://csdiy.wiki/
 MIT OCW https://ocw.mit.edu/
 coursera https://www.coursera.org/
 edx https://www.edx.org/
@@ -71,6 +67,8 @@ MIT 18.404 theory of computation https://ocw.mit.edu/courses/18-404j-theory-of-c
 CMU 15-751 TCS toolkit https://www.diderot.one/courses/28
 CMU 15-251 great ideas in TCS https://www.anilada.com/courses/15251f18/www/schedule.html
 stanford CS364A algorithmic game theory https://timroughgarden.org/f13/f13.html
+brown cs1440 algorithmic game theory https://cs.brown.edu/courses/csci1440/
+ShanghaiTech CS243 algorithmic game theory http://dengji-zhao.net/AGTCourse/index.html
 CCF https://www.ccf.org.cn/
 ACM https://www.acm.org/
 IEEE https://www.ieee.org/
@@ -78,6 +76,7 @@ IEEE Xplore https://ieeexplore.ieee.org/Xplore/home.jsp
 ACM Digital Library https://dl.acm.org/
 arXiv https://arxiv.org/
 CSRankings https://csrankings.org/
+acemap cs rankings https://www.acemap.info/ranking
 dblp https://dblp.uni-trier.de/
 LLNL tutorial on Parallel Computing https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial
 Project Euler https://projecteuler.net/
@@ -100,7 +99,7 @@ AniDex https://anidex.info/
 Netcan blog https://netcan.github.io/
 Bartosz Milewski blog https://bartoszmilewski.com/
 极客兔兔 https://geektutu.com/
-iYouPort - IYP https://www.iyouport.org/
+iyouport https://www.iyouport.org/
 菜鸟教程 runoob https://www.runoob.com/
 javaTpoint https://www.javatpoint.com/
 tutorials point https://www.tutorialspoint.com/index.htm
@@ -121,8 +120,6 @@ Learn Git Branching https://learngitbranching.js.org/
 乱码恢复指北 https://blog.outv.im/2019/encoding-guide/
 Overleaf latex doc https://www.overleaf.com/learn
 lshort intro to latex https://www.ctan.org/tex-archive/info/lshort/
-Octave doc https://octave.org/doc/v5.2.0/
-MATLAB Documentation https://www.mathworks.com/help/matlab/
 sagemath doc https://doc.sagemath.org/html/en/
 Vim scripting cheatsheet https://devhints.io/vimscript
 neovim doc https://neovim.io/doc/user/
@@ -136,18 +133,12 @@ Jiumo Search 鸠摩文档搜索 https://www.jiumodiary.com/
 google scholar https://scholar.google.com/
 tmux-cheatsheet https://tmuxcheatsheet.com/
 leetcode solutions https://leetcode.ca/
-stanford cs110 https://reberhardt.com/cs110l/spring-2020/
-CS自学指南 https://csdiy.wiki/
-dbooks https://www.dbooks.org/
-1point3acres 一亩三分地bbs https://www.1point3acres.com/bbs/
 eff.org https://www.eff.org/
-quora https://www.quora.com/
 Software Foundations https://softwarefoundations.cis.upenn.edu/
 SF zh https://coq-zh.github.io/SF-zh/
 PLAI https://www.plai.org/
 PLFA https://plfa.github.io/
 PLFA zh https://agda-zh.github.io/PLFA-zh/
-SICP pdf https://github.com/sarabander/sicp-pdf
 numbeo cost of living https://www.numbeo.com/cost-of-living/
 duolingo 多邻国 https://www.duolingo.com/
 youdao-dict https://dict.youdao.com/
@@ -157,5 +148,3 @@ imf https://www.imf.org/en/Home
 UN united nations https://www.un.org/en/
 grammarly-blog https://www.grammarly.com/blog/
 msd 默沙东诊疗手册 https://www.msdmanuals.cn/
-acemap cs rankings https://www.acemap.info/ranking
-TOEFL resources https://www.toeflresources.com/
