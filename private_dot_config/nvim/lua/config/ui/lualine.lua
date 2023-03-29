@@ -4,4 +4,13 @@ require("lualine").setup({
 		theme = "nightfox",
 		globalstatus = true,
 	},
+	extensions = {
+		"aerial",
+		"fzf",
+		"man",
+		"nvim-dap-ui",
+		"nvim-tree",
+		"quickfix",
+		"toggleterm",
+	},
 })
