@@ -64,7 +64,13 @@ local function on_attach(client, bufnr)
 		})
 	end
 
-	vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+	require("lsp_signature").on_attach({
+		bind = true,
+		fix_pos = true,
+		handler_opts = {
+			border = "single",
+		},
+	}, bufnr)
 end
 
 return {
@@ -90,7 +96,8 @@ return {
 
 			mason_lsp.setup_handlers({
 				function(server_name)
-					local capabilities = require("cmp_nvim_lsp").default_capabilities()
+					local capabilities =
+						require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 					-- NOTE: issue on offset encoding
 					-- see <https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428>
