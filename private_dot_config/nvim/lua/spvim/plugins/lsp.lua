@@ -104,14 +104,9 @@ return {
 					-- see <https://github.com/neovim/neovim/pull/16694>
 					capabilities.offsetEncoding = { "utf-16" }
 
-					local lsp_flags = {
-						debounce_text_changes = vim.opt.timeoutlen:get(),
-					}
-
 					local opts = {
 						on_attach = on_attach,
 						capabilities = capabilities,
-						flags = lsp_flags,
 					}
 					-- special configuration for lua-ls
 					if server_name == "lua_ls" then
@@ -120,12 +115,10 @@ return {
 						opts = vim.tbl_deep_extend("force", opts, {
 							settings = {
 								Lua = {
-									diagnostics = {
-										globals = { "vim" },
-									},
-									workspace = {
-										library = libs,
-									},
+									runtime = { version = "LuaJIT" },
+									diagnostics = { globals = { "vim" } },
+									workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+									telemetry = { enable = false },
 									format = { enable = false },
 								},
 							},

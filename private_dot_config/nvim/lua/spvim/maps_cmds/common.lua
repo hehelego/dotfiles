@@ -50,7 +50,6 @@ vim.keymap.set({ "n", "v", "x" }, "gp", [["+p]], {
 	desc = "use system clipboard paste",
 })
 
-
 -- move cursor in insert mode and command-line mode
 local direction_keys = {
 	{ "<M-h>", "<left>" },
