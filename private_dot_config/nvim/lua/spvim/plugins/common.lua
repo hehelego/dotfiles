@@ -8,5 +8,5 @@ return {
 		end,
 	},
 	{ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } },
-	{ "nvim-lua/plenary.nvim" },
+	{ "nvim-lua/plenary.nvim", lazy = true },
 }

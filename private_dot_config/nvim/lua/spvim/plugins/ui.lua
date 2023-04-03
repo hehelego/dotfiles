@@ -1,5 +1,4 @@
 return {
-	{ "nvim-lua/popup.nvim" },
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
@@ -50,6 +49,7 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("lualine").setup({
 				options = {
@@ -97,6 +97,7 @@ return {
 	},
 	{
 		"goolord/alpha-nvim",
+		lazy = false,
 		config = function()
 			local dashboard = require("alpha.themes.dashboard")
 			dashboard.section.buttons.val = {

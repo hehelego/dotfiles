@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
+			"nvim-lua/plenary.nvim",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "make",
@@ -59,12 +60,6 @@ return {
 			telescope.load_extension("aerial")
 		end,
 	},
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-		lazy = true,
-	},
-	{ "jvgrootveld/telescope-zoxide", lazy = true },
 	{
 		"kyazdani42/nvim-tree.lua",
 		cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeFindFileToggle" },
