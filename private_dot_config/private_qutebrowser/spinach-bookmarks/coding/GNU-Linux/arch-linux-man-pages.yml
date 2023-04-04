@@ -1,5 +1,6 @@
 name: man pages for archlinux
 tags:
-  []
+  - arch
+  - linux
 url:
   https://man.archlinux.org/

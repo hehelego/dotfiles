@@ -1,7 +1,6 @@
 name: tuna mirros
 tags:
   - linux
-  - tuna
-  - tsinghua
+  - mirrors
 url:
   https://mirrors.tuna.tsinghua.edu.cn/

@@ -1,7 +1,6 @@
 name: ustc mirros
 tags:
   - linux
-  - ustc
-  - mirros
+  - mirrors
 url:
   https://mirrors.ustc.edu.cn/
