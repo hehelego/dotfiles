@@ -47,15 +47,4 @@ return {
 			vim.cmd.highlight({ "link", "Conceal", "Type" })
 		end,
 	},
-	{
-		"jalvesaq/dict.nvim",
-		event = { "BufReadPost", "BufAdd", "BufNewFile" },
-		config = function()
-			vim.keymap.set("n", "<leader>d", '<cmd>lua require("dict").lookup()<cr>',{
-				noremap = true,
-				silent = true,
-				desc = 'word lookup with dictd',
-			})
-		end,
-	},
 }
