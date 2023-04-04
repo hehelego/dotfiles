@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import subprocess
+from subprocess import run, DEVNULL
 
 from spinach_qutepy import Helper, Qute
 
@@ -11,4 +11,8 @@ if __name__ == '__main__':
     selected_text = qute.get_env('selected_text')
     if selected_text:
         Helper.log('selected:', selected_text)
-        subprocess.check_call(['ydcv', '-n', selected_text], timeout=5)
+        run(['fish', '-c', 'dict_lookup_sel'],
+            stdin=DEVNULL,
+            stdout=DEVNULL,
+            stderr=DEVNULL,
+            timeout=5)
