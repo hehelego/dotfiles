@@ -1,3 +1,4 @@
+vim.keymap.set('n','<leader>l','<cmd>Lazy<cr>')
 return {
 	{
 		"iamcco/markdown-preview.nvim",
@@ -44,13 +45,6 @@ return {
 			-- highlight for concealed LaTeX symbols
 			vim.cmd.highlight({ "clear", "Conceal" })
 			vim.cmd.highlight({ "link", "Conceal", "Type" })
-		end,
-	},
-	{
-		"sheerun/vim-polyglot",
-		event = { "BufReadPost", "BufNewFile", "BufAdd" },
-		config = function()
-			vim.g.polyglot_disabled = { "ftdetect" }
 		end,
 	},
 }
