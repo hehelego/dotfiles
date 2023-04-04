@@ -134,19 +134,25 @@ return {
 		lazy = true,
 		config = function()
 			local null_ls = require("null-ls")
-			local formatting = null_ls.builtins.formatting
-			local diagnostics = null_ls.builtins.diagnostics
-			local code_actions = null_ls.builtins.code_actions
+			local b = null_ls.builtins
 
 			null_ls.setup({
 				sources = {
 					-- formatting
-					formatting.rustfmt,
-					formatting.stylua,
+					b.formatting.latexindent,
+					b.formatting.rustfmt,
+					b.formatting.stylua,
+					b.formatting.rustfmt,
+					b.formatting.clang_format,
+					b.formatting.fish_indent,
+					b.formatting.yapf,
 					-- diagnostic
-					diagnostics.fish,
+					b.diagnostics.fish,
 					-- code action
-					code_actions.gitsigns,
+					b.code_actions.gitsigns,
+					b.code_actions.gitrebase,
+					-- hover
+					b.hover.dictionary,
 				},
 				options = {
 					debounce = vim.opt.timeoutlen:get(),
@@ -183,14 +189,7 @@ return {
 		"kosayoda/nvim-lightbulb",
 		event = { "CursorHold", "CursorHoldI" },
 		config = function()
-			local lightbulb = require("nvim-lightbulb")
-			local lbgrp = vim.api.nvim_create_augroup("lsp_lightbulb", {})
-			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-				pattern = "*",
-				callback = lightbulb.update_lightbulb,
-				group = lbgrp,
-				desc = "show a lightbulb on sign-column when code-action is available",
-			})
+			require("nvim-lightbulb").setup({ autocmd = { enabled = true } })
 		end,
 	},
 }
