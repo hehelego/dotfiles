@@ -6,30 +6,36 @@ from typing import Callable, Union
 
 from spinach_fzf_menu import EntryPath, Helper, MenuEntry, MenuParser, main
 
-
 PlayerList = list[str]
 ActionEntry = dict[str, dict[str, str]]
 ActionList = list[ActionEntry]
 EntryGenerator = Callable[[PlayerList], dict[str, Union[str, ActionList]]]
 
 
+def getoutput(cmd: list[str]) -> str:
+    return subprocess.run(cmd, stdout=subprocess.PIPE,
+                          check=True).stdout.decode()
+
+
 def create_eg(desc: str, cmd: str) -> EntryGenerator:
+
     def wrapper(players: PlayerList) -> dict[str, Union[str, ActionList]]:
         return {
-            'desc': desc,
-            'son': [
-                {i: {
+            'desc':
+            desc,
+            'son': [{
+                i: {
                     'desc': f'{desc} for player {i}',
                     'action': f'playerctl --player="{i}" {cmd}',
-                }}
-                for i in players
-            ]
+                }
+            } for i in players]
         }
+
     return wrapper
 
 
 def load():
-    players = subprocess.getoutput('playerctl --list-all').split('\n')
+    players = getoutput(['playerctl', '--list-all']).split('\n')
     if players[0] == 'No players found':
         players = []
 
@@ -51,26 +57,42 @@ def load():
     }
     all_at_once = {
         'all': {
-            'desc': 'control all the players at once',
+            'desc':
+            'control all the players at once',
             'son': [
-                {'play': {'desc': 'continue playing',
-                          'action': 'playerctl --all-players play'}},
-                {'pause': {'desc': 'continue playing',
-                           'action': 'playerctl --all-players pause'}},
-                {'toggle-play': {'desc': 'toggle play/pause',
-                                 'action': 'playerctl --all-players play-pause'}},
-                {'stop': {'desc': 'continue playing',
-                          'action': 'playerctl --all-players stop'}},
+                {
+                    'play': {
+                        'desc': 'continue playing',
+                        'action': 'playerctl --all-players play'
+                    }
+                },
+                {
+                    'pause': {
+                        'desc': 'continue playing',
+                        'action': 'playerctl --all-players pause'
+                    }
+                },
+                {
+                    'toggle-play': {
+                        'desc': 'toggle play/pause',
+                        'action': 'playerctl --all-players play-pause'
+                    }
+                },
+                {
+                    'stop': {
+                        'desc': 'continue playing',
+                        'action': 'playerctl --all-players stop'
+                    }
+                },
             ]
         }
     }
     single_at_once = {
         'single': {
             'desc': 'control one the player at once',
-            'son': [
-                {key: gen(players)}
-                for (key, gen) in entry_gens.items()
-            ]
+            'son': [{
+                key: gen(players)
+            } for (key, gen) in entry_gens.items()]
         }
     }
 
@@ -89,13 +111,13 @@ def load():
 
 def preview(path: EntryPath, entry: MenuEntry) -> str:
     if entry.is_leaf() and 'all' not in path.as_list():
-        metadata = subprocess.getoutput(
-            f'playerctl --player="{entry.key}" metadata')
-        status = subprocess.getoutput(
-            f'playerctl --player="{entry.key}" status')
-        loop = subprocess.getoutput(f'playerctl --player="{entry.key}" loop')
-        shuffle = subprocess.getoutput(
-            f'playerctl --player="{entry.key}" shuffle')
+        metadata = getoutput(
+            ['playerctl', f'--player="{entry.key}"', 'metadata'])
+        status = getoutput(['playerctl', f'--player="{entry.key}"', 'status'])
+        loop = getoutput(['playerctl'
+                          f'--player="{entry.key}"', 'loop'])
+        shuffle = getoutput(
+            ['playerctl', f'--player="{entry.key}"', 'shuffle'])
         return f'{metadata}\n\nstatus\t=\t{status}\nloop\t=\t{loop}\nshuffle\t=\t{shuffle}'
     else:
         return entry.desc
@@ -103,7 +125,9 @@ def preview(path: EntryPath, entry: MenuEntry) -> str:
 
 if __name__ == '__main__':
     try:
-        main(sys.argv, load, preview,
+        main(sys.argv,
+             load,
+             preview,
              log_file='/tmp/spinach_playerctl.log',
              prompt='playerctl> ')
     except:

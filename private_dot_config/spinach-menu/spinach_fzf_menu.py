@@ -462,16 +462,18 @@ def main(argv: list[str],
         default='level',
         metavar='display_mode',
         help='one of [expanded, level, mixed]. how to display the menu tree')
-    arg_parser.add_argument('--pathfile',
-                    type=str,
-                    default='',
-                    metavar='pathfile',
-                    help='path to file storing the current path of selector')
-    arg_parser.add_argument('--choice',
-                    type=str,
-                    default='',
-                    metavar='choice',
-                    help='the hover entry path(only used for preview mode)')
+    arg_parser.add_argument(
+        '--pathfile',
+        type=str,
+        default='',
+        metavar='pathfile',
+        help='path to file storing the current path of selector')
+    arg_parser.add_argument(
+        '--choice',
+        type=str,
+        default='',
+        metavar='choice',
+        help='the hover entry path(only used for preview mode)')
 
     arg = arg_parser.parse_args(argv[1:])
     mode: str = arg.mode

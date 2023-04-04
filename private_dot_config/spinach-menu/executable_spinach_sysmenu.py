@@ -32,7 +32,9 @@ def preview(path: EntryPath, entry: MenuEntry) -> str:
 
 if __name__ == '__main__':
     try:
-        main(sys.argv, load, preview,
+        main(sys.argv,
+             load,
+             preview,
              log_file='/tmp/spinach_sysmenu.log',
              prompt='sysctrl> ')
     except:
