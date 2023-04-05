@@ -1,4 +1,3 @@
-vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>")
 return {
 	{
 		"iamcco/markdown-preview.nvim",
