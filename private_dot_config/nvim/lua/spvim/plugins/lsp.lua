@@ -152,7 +152,6 @@ return {
 					b.code_actions.gitsigns,
 					b.code_actions.gitrebase,
 					-- hover
-					b.hover.dictionary,
 				},
 				options = {
 					debounce = vim.opt.timeoutlen:get(),

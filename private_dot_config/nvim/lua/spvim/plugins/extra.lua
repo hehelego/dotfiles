@@ -6,12 +6,25 @@ return {
 		end,
 		ft = "markdown",
 		config = function()
-			vim.g.vim_markdown_conceal = 1
-			vim.g.vim_markdown_math = 1
-			vim.g.vim_markdown_conceal_code_blocks = 0
-
 			vim.g.mkdp_refresh_slow = 1
 			vim.g.mkdp_browser = "qutebrowser"
+		end,
+	},
+	{
+		"preservim/vim-markdown",
+		ft = "markdown",
+		config = function()
+			-- more LaTeX math conceal
+			vim.g.tex_flavor = "latex"
+			vim.g.tex_conceal = "abdgms"
+			-- enable conceal
+			vim.g.vim_markdown_conceal = 1
+			vim.g.vim_markdown_math = 1
+			vim.g.vim_markdown_conceal_code_blocks = 1
+			-- enable frontmatter headers
+			vim.g.vim_markdown_frontmatter = 1
+			vim.g.vim_markdown_toml_frontmatter = 1
+			vim.g.vim_markdown_json_frontmatter = 1
 		end,
 	},
 	{
