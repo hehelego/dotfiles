@@ -42,7 +42,11 @@ class Helper:
 
     @staticmethod
     def shell_run(cmd: str) -> None:
-        subprocess.check_call(['fish', '-c', cmd])
+        subprocess.run(['fish', '-c', cmd],
+                       check=False,
+                       stdin=subprocess.DEVNULL,
+                       stdout=subprocess.DEVNULL,
+                       stderr=subprocess.DEVNULL)
 
     T = TypeVar('T')
 
@@ -61,7 +65,6 @@ class Helper:
             )
 
         input_file = tmpf()
-        output_file = tmpf()
 
         for i in src_map.keys():
             print(i, file=input_file)
@@ -76,19 +79,18 @@ class Helper:
         fzf_cmd = ' '.join(fzf_opts)
         Helper.log('fzf command', fzf_cmd)
 
-        subprocess.check_call([
-            'fish', '-c',
-            f'cat {input_file.name} | {fzf_cmd} > {output_file.name}'
-        ])
+        sub = subprocess.run(
+            ['fish', '-c', f'cat {input_file.name} | {fzf_cmd}'],
+            check=True,
+            stdout=subprocess.PIPE)
 
-        output_file.seek(0)
-        selected = [
-            src_map[i] for i in output_file.read().split('\n') if i in src_map
-        ]
-        Helper.log('selected:', selected)
-
-        output_file.close()
         input_file.close()
+
+        selected = []
+        if sub.returncode == 0:
+            selected_raw = sub.stdout.decode().strip().split('\n')
+            selected = [src_map[i] for i in selected_raw if i in src_map]
+            Helper.log('selected:', selected)
 
         return selected
 

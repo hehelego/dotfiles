@@ -14,7 +14,7 @@ EntryGenerator = Callable[[PlayerList], dict[str, Union[str, ActionList]]]
 
 def getoutput(cmd: list[str]) -> str:
     return subprocess.run(cmd, stdout=subprocess.PIPE,
-                          check=True).stdout.decode()
+                          check=True).stdout.decode().strip()
 
 
 def create_eg(desc: str, cmd: str) -> EntryGenerator:
