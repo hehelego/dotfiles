@@ -11,6 +11,7 @@ reg({
 	["h"] = { "<cmd>Telescope oldfiles<cr>", "recent-files" },
 	["."] = { "<cmd>Telescope builtin include_extensions=true<cr>", "finders" },
 	[":"] = { "<cmd>Telescope commands<cr>", "commands" },
+	["/"] = { "<cmd>Telescope current_buffer_fuzzy_find skip_empty_lines=true<cr>", "commands" },
 }, {
 	mode = "n",
 	silent = true,
