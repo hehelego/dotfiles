@@ -56,11 +56,13 @@ class Bookmark:
 
 def get_bookmarks_paths_all(bookmarks_directory: str) -> list[str]:
     os.chdir(bookmarks_directory)
-    return [
-        path for path in subprocess.check_output([
-            'fd', '--type', 'file', '--extension', 'yaml', '--extension', 'yml'
-        ]).decode().split('\n') if os.path.isfile(path)
-    ]
+    path_raw = subprocess.run(
+        ['fd', '--type', 'file', '--extension', 'yaml', '--extension', 'yml'],
+        check=True,
+        stdin=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        stdout=subprocess.PIPE).stdout.decode().strip().split('\n')
+    return [path for path in path_raw if os.path.isfile(path)]
 
 
 def get_tags_all(bookmarks_directory: str) -> list[str]:

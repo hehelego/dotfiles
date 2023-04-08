@@ -106,10 +106,14 @@ class Fzf:
         fzf_cmd = ' '.join(fzf_opts)
         Helper.log('fzf command', fzf_cmd)
 
-        subprocess.check_call([
+        subprocess.run([
             'alacritty', '-e', 'fish', '-c',
             f'cat {input_file.name} | {fzf_cmd} > {output_file.name}'
-        ])
+        ],
+                       check=True,
+                       stdin=subprocess.DEVNULL,
+                       stderr=subprocess.DEVNULL,
+                       stdout=subprocess.DEVNULL)
 
         output_file.seek(0)
         selected = [

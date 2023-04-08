@@ -11,11 +11,13 @@ from spinach_qutepy import Fzf, Helper, Qute
 
 
 def get_themes(search: str) -> list[str]:
-    themes = [
-        path for path in subprocess.check_output([
-            'fd', '--type', 'file', '--extension', 'css', search, 'userstyles/'
-        ]).decode().split('\n') if os.path.isfile(path)
-    ]
+    raw_path = subprocess.run(
+        ['fd', '--type', 'file', '--extension', 'css', search, 'userstyles/'],
+        check=True,
+        stdin=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        stdout=subprocess.PIPE).stdout.decode().strip().split('\n')
+    themes = [path for path in raw_path if os.path.isfile(path)]
     Helper.log('all available themes', themes)
     return themes
 
