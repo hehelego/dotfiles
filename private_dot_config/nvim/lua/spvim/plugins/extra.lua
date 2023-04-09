@@ -42,7 +42,7 @@ return {
 			-- use zathura as PDF viewer
 			vim.g.vimtex_view_method = "zathura"
 			-- use tectonic as default TeX engine
-			vim.g.vimtex_compiler_method = "tectonic"
+			vim.g.vimtex_compiler_method = "latexmk"
 			-- enable vimtex folding feature
 			vim.g.vimtex_fold_enabled = 1
 			-- enable vimtex indentation feature

@@ -10,30 +10,7 @@ return {
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					-- build system, scripting
-					"bash",
-					"fish",
-					"make",
-					-- working
-					"c",
-					"cpp",
-					"python",
-					"rust",
-					-- config
-					"yaml",
-					"toml",
-					"json",
-					"dockerfile",
-					-- doc
-					"latex",
-					"bibtex",
-					"markdown",
-					-- vim
-					"vim",
-					"help",
-					"lua",
-				},
+				ensure_installed = {},
 				highlight = {
 					enable = true,
 					disable = function(ft, bufnr)
