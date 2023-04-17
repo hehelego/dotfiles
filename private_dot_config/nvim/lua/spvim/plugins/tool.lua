@@ -12,34 +12,7 @@ return {
 		cmd = "Telescope",
 		config = function()
 			local telescope = require("telescope")
-			local actions = require("telescope.actions")
-			local layout = require("telescope.actions.layout")
 			telescope.setup({
-				defaults = {
-					mappings = {
-						n = {
-							["<M-p>"] = layout.toggle_preview,
-							["<M-/>"] = actions.which_key,
-							["K"] = actions.move_to_top,
-							["J"] = actions.move_to_bottom,
-							["<CR>"] = actions.select_default,
-							["v"] = actions.select_horizontal,
-							["x"] = actions.select_vertical,
-							["t"] = actions.select_tab,
-							["q"] = actions.close,
-						},
-						i = {
-							["<M-p>"] = layout.toggle_preview,
-							["<M-/>"] = actions.which_key,
-							["<M-j>"] = actions.move_selection_next,
-							["<M-k>"] = actions.move_selection_previous,
-							["<CR>"] = actions.select_default,
-							["<C-v>"] = actions.select_horizontal,
-							["<C-x>"] = actions.select_vertical,
-							["<C-t>"] = actions.select_tab,
-						},
-					},
-				},
 				pickers = {
 					find_files = {
 						find_command = { "fd", "--type", "file", "--exclude", ".git", "--strip-cwd-prefix" },
@@ -65,8 +38,7 @@ return {
 		cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeFindFileToggle" },
 		config = function()
 			local nvim_tree = require("nvim-tree")
-			local on_attach = require('spvim.maps_cmds.nvim-tree')
-
+			local on_attach = require("spvim.maps_cmds.nvim-tree")
 
 			local opts = {
 				auto_reload_on_write = true,
@@ -98,13 +70,6 @@ return {
 					indent_markers = {
 						enable = true,
 						inline_arrows = true,
-						icons = {
-							corner = "└",
-							edge = "│",
-							item = "│",
-							bottom = "─",
-							none = " ",
-						},
 					},
 					icons = {
 						webdev_colors = true,
@@ -118,31 +83,6 @@ return {
 							folder_arrow = true,
 							git = true,
 							modified = true,
-						},
-						glyphs = {
-							default = "",
-							symlink = "",
-							bookmark = "",
-							modified = "●",
-							folder = {
-								arrow_closed = "",
-								arrow_open = "",
-								default = "",
-								open = "",
-								empty = "",
-								empty_open = "",
-								symlink = "",
-								symlink_open = "",
-							},
-							git = {
-								unstaged = "✗",
-								staged = "✓",
-								unmerged = "",
-								renamed = "➜",
-								untracked = "★",
-								deleted = "",
-								ignored = "◌",
-							},
 						},
 					},
 					special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
@@ -169,12 +109,6 @@ return {
 					severity = {
 						min = vim.diagnostic.severity.HINT,
 						max = vim.diagnostic.severity.ERROR,
-					},
-					icons = {
-						hint = "",
-						info = "",
-						warning = "",
-						error = "",
 					},
 				},
 				filters = {
@@ -399,5 +333,10 @@ return {
 				},
 			},
 		},
+	},
+	{
+		"TimUntersberger/neogit",
+		dependencies = "nvim-lua/plenary.nvim",
+		cmd = "Neogit",
 	},
 }

@@ -56,6 +56,7 @@ vim.keymap.set("n", "[g", "<cmd>Gitsigns prev_hunk<cr>", {
 
 reg({
 	name = "git",
+	["g"] = { "<cmd>Neogit<CR>", "neogit" },
 	["f"] = { "<cmd>Telescope git_files<CR>", "tracked-files" },
 	["s"] = { "<cmd>Telescope git_status<CR>", "status" },
 	["S"] = { "<cmd>Telescope git_stash<CR>", "stash" },
