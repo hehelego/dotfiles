@@ -99,18 +99,21 @@ return {
 		"goolord/alpha-nvim",
 		lazy = false,
 		config = function()
-			local startify = require("alpha.themes.startify")
-			startify.section.top_buttons.val = {
-				startify.button("e", "new empty file", "<cmd>enew<cr>"),
-				startify.button("f", "find file", "<cmd>Telescope find_files<cr>"),
-				startify.button("h", "history files", "<cmd>Telescope oldfiles<cr>"),
-				startify.button("g", "grep string", "<cmd>Telescope live_grep<cr>"),
-				startify.button("G", "neogit", "<cmd>Neogit<cr>"),
-				startify.button("z", "zoxide chdir", "<cmd>Telescope zoxide list<cr>"),
-				startify.button(".", "Edit $MYVIMRC", "<cmd>edit $MYVIMRC<cr> <cmd>cd %:h<cr>"),
-				startify.button("?", "Search helptags", "<cmd>Telescope help_tags<cr>"),
+			local dashboard = require("alpha.themes.dashboard")
+			dashboard.section.buttons.val = {
+				dashboard.button("e", "  Explorer", "<cmd>NvimTreeFocus<cr>"),
+				dashboard.button("f", "  Find files", "<cmd>Telescope find_files<cr>"),
+				dashboard.button("h", "  History files", "<cmd>Telescope oldfiles<cr>"),
+				dashboard.button("g", "󰑑  Grep string", "<cmd>Telescope live_grep<cr>"),
+				dashboard.button("G", "  Neogit", "<cmd>Neogit<cr>"),
+				dashboard.button("z", "  Zoxide change dir", "<cmd>Telescope zoxide list<cr>"),
+				dashboard.button(".", "  Edit neovim config", "<cmd>edit $MYVIMRC<cr><cmd>cd %:h<cr>"),
+				dashboard.button("l", "  Lazy.nvim plugin manager", "<cmd>Lazy<cr>"),
+				dashboard.button("m", "󱧕  Mason.nvim package installer", "<cmd>Mason<cr>"),
+				dashboard.button("?", "ﲉ  Help tags", "<cmd>Telescope help_tags<cr>"),
+				dashboard.button("q", "  Quit", "<cmd>quitall<cr>"),
 			}
-			require("alpha").setup(startify.config)
+			require("alpha").setup(dashboard.opts)
 		end,
 	},
 }
