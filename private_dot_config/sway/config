@@ -131,6 +131,8 @@ exec                          fish -c setbg
 # Workspaces:
 #
     # NOTE: workspaces can have any name you want, not just numbers.
+    # switching between two recently used workspaces
+    bindsym $mod+Tab                 workspace back_and_forth
     # switching between workspaces
     bindsym $mod+1                   workspace number 1
     bindsym $mod+2                   workspace number 2
