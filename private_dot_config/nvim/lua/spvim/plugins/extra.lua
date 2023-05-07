@@ -12,6 +12,7 @@ return {
 	},
 	{
 		"preservim/vim-markdown",
+		dependencies = "godlygeek/tabular",
 		ft = "markdown",
 		config = function()
 			-- more LaTeX math conceal

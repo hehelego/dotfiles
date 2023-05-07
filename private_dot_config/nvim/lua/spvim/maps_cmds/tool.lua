@@ -40,7 +40,7 @@ reg({
 	d = { "<cmd>TroubleToggle document_diagnostics<cr>", "trouble.list diagnostic" },
 	D = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "trouble.list diagnostic-ws" },
 	c = { "<cmd>TroubleToggle quickfix<cr>", "trouble.list quickfix" },
-	l = { "<cmd>TroubleToggle loclist<cr>", "trouble.list quickfix" },
+	l = { "<cmd>TroubleToggle loclist<cr>", "trouble.list loclist" },
 }, { mode = "n", silent = true, noremap = true, prefix = "<leader>l" })
 
 vim.keymap.set("n", "]g", "<cmd>Gitsigns next_hunk<cr>", {
