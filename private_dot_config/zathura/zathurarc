@@ -17,6 +17,11 @@ map i feedkeys :info<Return>
 # Ctrl+S: reload config
 map <C-s> feedkeys :source<Return>
 
+map <Left> navigate previous
+map <Right> navigate next
+map <Up> navigate previous
+map <Down> navigate next
+
 
 # window title and status bar settings
 set window-title-basename true
