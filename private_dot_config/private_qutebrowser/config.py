@@ -43,15 +43,19 @@ config.set('zoom.mouse_divider', 0)
 config.set('content.blocking.enabled', True)
 config.set('content.blocking.method', 'both')
 
-# enable GPU acceleration
-# see https://github.com/qutebrowser/qutebrowser/discussions/6573
-# see https://github.com/qutebrowser/qutebrowser/issues/5378]
+# flags passing to Qt library
 config.set('qt.args', [
+    # enable GPU acceleration
+    # see https://github.com/qutebrowser/qutebrowser/discussions/6573
+    # see https://github.com/qutebrowser/qutebrowser/issues/5378
     'ignore-gpu-blocklist',
     'enable-gpu-rasterization',
     'enable-native-gpu-memory-buffers',
     'num-raster-threads=4',
     'enable-accelerated-video-decode',
+    # fixing pdf.js behavior when qt5 - qt6 migration in progress
+    # see https://github.com/qutebrowser/qutebrowser/issues/7701
+    'enable-experimental-web-platform-features',
 ])
 
 # command for external editor
