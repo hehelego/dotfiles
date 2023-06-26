@@ -144,7 +144,6 @@ return {
 				sources = {
 					-- formatting
 					b.formatting.latexindent,
-					b.formatting.rustfmt,
 					b.formatting.stylua,
 					b.formatting.rustfmt,
 					b.formatting.clang_format,
@@ -152,6 +151,7 @@ return {
 					b.formatting.yapf,
 					-- diagnostic
 					b.diagnostics.fish,
+					b.diagnostics.revive,
 					-- code action
 					b.code_actions.gitsigns,
 					b.code_actions.gitrebase,
