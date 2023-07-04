@@ -41,7 +41,46 @@ reg({
 	D = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "trouble.list diagnostic-ws" },
 	c = { "<cmd>TroubleToggle quickfix<cr>", "trouble.list quickfix" },
 	l = { "<cmd>TroubleToggle loclist<cr>", "trouble.list loclist" },
-}, { mode = "n", silent = true, noremap = true, prefix = "<leader>l" })
+}, { mode = "n", silent = true, noremap = true, prefix = "<leader>q" })
+
+vim.keymap.set("n", "]t", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+vim.keymap.set("n", "[q", function()
+	local trouble = require("trouble")
+	if trouble.is_open() then
+		trouble.previous({ skip_groups = true, jump = true })
+	else
+		local ok, _ = pcall(vim.cmd.cprev)
+		if not ok then
+			vim.cmd.echo('"cprev: no previous item"')
+		end
+	end
+end, {
+	silent = true,
+	noremap = true,
+	desc = "Previous trouble/quickfix item",
+})
+vim.keymap.set("n", "]q", function()
+	local trouble = require("trouble")
+	if trouble.is_open() then
+		trouble.next({ skip_groups = true, jump = true })
+	else
+		local ok, _ = pcall(vim.cmd.cnext)
+		if not ok then
+			vim.cmd.echo('"cnext: no next item"')
+		end
+	end
+end, {
+	silent = true,
+	noremap = true,
+	desc = "Next trouble/quickfix item",
+})
 
 vim.keymap.set("n", "]g", "<cmd>Gitsigns next_hunk<cr>", {
 	silent = true,
