@@ -36,11 +36,13 @@ reg({
 
 reg({
 	name = "trouble.list",
+	q = { "<cmd>TroubleToggle<cr>", "trouble.list toggle" },
 	r = { "<cmd>TroubleRefresh<cr>", "trouble.list refresh" },
 	d = { "<cmd>TroubleToggle document_diagnostics<cr>", "trouble.list diagnostic" },
 	D = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "trouble.list diagnostic-ws" },
 	c = { "<cmd>TroubleToggle quickfix<cr>", "trouble.list quickfix" },
 	l = { "<cmd>TroubleToggle loclist<cr>", "trouble.list loclist" },
+	t = { "<cmd>TodoTrouble<cr>", "trouble.list todo-comments" },
 }, { mode = "n", silent = true, noremap = true, prefix = "<leader>q" })
 
 vim.keymap.set("n", "]t", function()

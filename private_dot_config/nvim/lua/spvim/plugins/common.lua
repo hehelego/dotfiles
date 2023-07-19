@@ -3,9 +3,7 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("which-key").setup({})
-		end,
+		config = true,
 	},
 	{ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } },
 	{ "nvim-lua/plenary.nvim", lazy = true },

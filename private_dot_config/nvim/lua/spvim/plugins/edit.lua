@@ -3,9 +3,7 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile", "BufAdd" },
-		config = function()
-			require("Comment").setup()
-		end,
+		config = true,
 	},
 
 	-- visualize indentation
@@ -24,13 +22,11 @@ return {
 	{
 		"ggandor/flit.nvim",
 		event = { "BufReadPost", "BufNewFile", "BufAdd" },
-		config = function()
-			require("flit").setup({
-				keys = { f = "f", F = "F", t = "t", T = "T" },
-				labeled_modes = "nvo",
-				multiline = true,
-				opts = {},
-			})
-		end,
+		opts = {
+			keys = { f = "f", F = "F", t = "t", T = "T" },
+			labeled_modes = "nvo",
+			multiline = true,
+			opts = {},
+		},
 	},
 }

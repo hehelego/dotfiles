@@ -85,32 +85,27 @@ return {
 			"AerialCloseAll",
 			"AerialInfo",
 		},
-		config = function()
-			require("aerial").setup({
-				backends = { "markdown", "man", "lsp", "treesitter" },
-				layout = {
-					placement = "edge", -- open aerial at the far right/left of the editor
-				},
-				filter_kind = false, -- display all symbols
-				highlight_on_hover = true, -- Highlight the symbol in the source buffer when cursor is in the aerial win
-				show_guides = true, -- Show box drawing characters for the tree hierarchy
-			})
-		end,
+		opts = {
+			backends = { "markdown", "man", "lsp", "treesitter" },
+			layout = {
+				placement = "edge", -- open aerial at the far right/left of the editor
+			},
+			filter_kind = false, -- display all symbols
+			highlight_on_hover = true, -- Highlight the symbol in the source buffer when cursor is in the aerial win
+			show_guides = true, -- Show box drawing characters for the tree hierarchy
+		},
 	},
 	{
 		"folke/trouble.nvim",
 		cmd = { "Trouble", "TroubleToggle", "TroubleClose", "TroubleRefresh" },
-		config = function()
-			require("trouble").setup()
-		end,
+		config = true,
 	},
 	{
 		"folke/todo-comments.nvim",
 		dependencies = "folke/trouble.nvim",
 		event = { "BufReadPost", "BufNewFile", "BufAdd" },
-		config = function()
-			require("todo-comments").setup({})
-		end,
+		cmd = { "TodoTrouble", "TodoLocList", "TodoQuickFix", "TodoTelescope" },
+		config = true,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -136,8 +131,9 @@ return {
 		},
 	},
 	{
-		"TimUntersberger/neogit",
+		"NeogitOrg/neogit",
 		dependencies = "nvim-lua/plenary.nvim",
 		cmd = "Neogit",
+		config = true,
 	},
 }

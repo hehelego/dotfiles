@@ -144,6 +144,7 @@ return {
 				sources = {
 					-- formatting
 					b.formatting.latexindent,
+					b.formatting.rustfmt,
 					b.formatting.stylua,
 					b.formatting.rustfmt,
 					b.formatting.clang_format,
@@ -191,8 +192,6 @@ return {
 	{
 		"kosayoda/nvim-lightbulb",
 		event = { "CursorHold", "CursorHoldI" },
-		config = function()
-			require("nvim-lightbulb").setup({ autocmd = { enabled = true } })
-		end,
+		opts = { autocmd = { enabled = true } },
 	},
 }

@@ -2,20 +2,18 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("dressing").setup({
-				input = {
-					-- When true, <Esc> will close the modal
-					insert_only = false,
-					-- When true, input will start in insert mode.
-					start_in_insert = true,
-					-- allow wrapping
-					win_options = {
-						wrap = false,
-					},
+		opts = {
+			input = {
+				-- When true, <Esc> will close the modal
+				insert_only = false,
+				-- When true, input will start in insert mode.
+				start_in_insert = true,
+				-- allow wrapping
+				win_options = {
+					wrap = false,
 				},
-			})
-		end,
+			},
+		},
 	},
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
@@ -50,50 +48,48 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("lualine").setup({
-				options = {
-					theme = "catppuccin",
-					globalstatus = true,
-				},
-				extensions = {
-					"aerial",
-					"fzf",
-					"lazy",
-					"man",
-					"nvim-dap-ui",
-					"nvim-tree",
-					"quickfix",
-					"toggleterm",
-					"trouble",
-				},
-				sections = {
-					lualine_a = { "mode" },
-					lualine_b = { "branch", "diff", "diagnostics" },
-					lualine_c = { "filename" },
-					lualine_x = { "encoding", "fileformat", "filetype" },
-					lualine_y = { "progress" },
-					lualine_z = { "location" },
-				},
-				tabline = {
-					lualine_a = {
-						{
-							"buffers",
-							show_filename_only = false,
-							hide_filename_extension = false,
-							show_modified_status = true,
-						},
+		opts = {
+			options = {
+				theme = "catppuccin",
+				globalstatus = true,
+			},
+			extensions = {
+				"aerial",
+				"fzf",
+				"lazy",
+				"man",
+				"nvim-dap-ui",
+				"nvim-tree",
+				"quickfix",
+				"toggleterm",
+				"trouble",
+			},
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_c = { "filename" },
+				lualine_x = { "encoding", "fileformat", "filetype" },
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+			tabline = {
+				lualine_a = {
+					{
+						"buffers",
+						show_filename_only = false,
+						hide_filename_extension = false,
+						show_modified_status = true,
 					},
-					lualine_z = { "tabs" },
 				},
-				winbar = {
-					lualine_c = { "filename" },
-				},
-				inactive_winbar = {
-					lualine_c = { "filename" },
-				},
-			})
-		end,
+				lualine_z = { "tabs" },
+			},
+			winbar = {
+				lualine_c = { "filename" },
+			},
+			inactive_winbar = {
+				lualine_c = { "filename" },
+			},
+		},
 	},
 	{
 		"goolord/alpha-nvim",
