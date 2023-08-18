@@ -36,6 +36,9 @@ config.set('content.autoplay', False)
 config.set('content.javascript.can_access_clipboard', True)
 config.set('content.pdfjs', True)
 
+# prevent IP address leak through WebRTC
+config.set('content.webrtc_ip_handling_policy', 'disable-non-proxied-udp')
+
 # disable mouse scroll
 config.set('zoom.mouse_divider', 0)
 
