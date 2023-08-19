@@ -33,7 +33,7 @@ for (kind, family) in kind_ff_map.items():
 config.set('colors.webpage.preferred_color_scheme', 'dark')
 config.set('colors.webpage.bg', 'gray')
 config.set('content.autoplay', False)
-config.set('content.javascript.can_access_clipboard', True)
+config.set('content.javascript.clipboard', 'none')
 config.set('content.pdfjs', True)
 
 # prevent IP address leak through WebRTC
@@ -46,20 +46,23 @@ config.set('zoom.mouse_divider', 0)
 config.set('content.blocking.enabled', True)
 config.set('content.blocking.method', 'both')
 
+# start page and homepage
+config.set('url.default_page', 'qute://start')
+config.set('url.start_pages', 'qute://start')
+
 # flags passing to Qt library
-config.set('qt.args', [
-    # enable GPU acceleration
-    # see https://github.com/qutebrowser/qutebrowser/discussions/6573
-    # see https://github.com/qutebrowser/qutebrowser/issues/5378
-    'ignore-gpu-blocklist',
-    'enable-gpu-rasterization',
-    'enable-native-gpu-memory-buffers',
-    'num-raster-threads=4',
-    'enable-accelerated-video-decode',
-    # fixing pdf.js behavior when qt5 - qt6 migration in progress
-    # see https://github.com/qutebrowser/qutebrowser/issues/7701
-    'enable-experimental-web-platform-features',
-])
+config.set(
+    'qt.args',
+    [
+        # enable GPU acceleration
+        # see https://github.com/qutebrowser/qutebrowser/discussions/6573
+        # see https://github.com/qutebrowser/qutebrowser/issues/5378
+        'ignore-gpu-blocklist',
+        'enable-gpu-rasterization',
+        'enable-native-gpu-memory-buffers',
+        'num-raster-threads=4',
+        'enable-accelerated-video-decode',
+    ])
 
 # command for external editor
 # see https://github.com/qutebrowser/qutebrowser/issues/5340
