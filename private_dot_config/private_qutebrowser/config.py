@@ -50,6 +50,9 @@ config.set('content.blocking.method', 'both')
 config.set('url.default_page', 'qute://start')
 config.set('url.start_pages', 'qute://start')
 
+# close the qutebrowser instance when closing the last tab
+config.set('tabs.last_close', 'close')
+
 # flags passing to Qt library
 config.set(
     'qt.args',
