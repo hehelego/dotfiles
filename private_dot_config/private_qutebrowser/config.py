@@ -31,9 +31,9 @@ kind_ff_map = {
 for (kind, family) in kind_ff_map.items():
     config.set(f'fonts.web.family.{kind}', family)
 config.set('colors.webpage.preferred_color_scheme', 'dark')
-config.set('colors.webpage.bg', 'gray')
+config.set('colors.webpage.bg', 'white')
 config.set('content.autoplay', False)
-config.set('content.javascript.clipboard', 'none')
+config.set('content.javascript.clipboard', 'access-paste')
 config.set('content.pdfjs', True)
 
 # prevent IP address leak through WebRTC
