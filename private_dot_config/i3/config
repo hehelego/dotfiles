@@ -40,8 +40,7 @@ set $screenshot               spectacle -r
 # start picom X compositor
 $exec_                        picom -CGb -m 1.0
 # input: navigate mouse with keyboard
-$exec_                        keynav 'loadconfig ~/.config/keynav/keynavrc'
-$exec_                        fish -c warpd.fish
+$exec_                        warpd
 # input method: start fcitx5
 $exec_                        fish -c restart_im
 # notification: start dunst notification server
@@ -188,15 +187,15 @@ $exec_                        fish -c setbg
     # restart the fcitx5 input method
     bindsym $mod+Shift+i          exec fish -c restart_im
     # open the emoji selector
-    bindsym $mod+i                exec ibus-ui-emojier-plasma
+    bindsym $mod+i                exec rofi -show emoji
     # close the latest notification
     bindsym $mod+n                exec dunstctl close
     # pop one history notification
     bindsym $mod+Shift+n          exec dunstctl history-pop
     # lookup the selected text in dictionary with ydcv
     bindsym $mod+comma            exec fish -c dict_lookup_sel
-    # start rvaiya/warpd; see hehelego/aur-warpd-both
-    bindsym $mod+x                exec fish -c 'warpd.fish --hint'
+    # start rvaiya/warpd
+    bindsym $mod+x                exec warpd --hint
 
     # Use pactl to adjust volume in PulseAudio.
     bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@   +5%    ; exec $refresh_status
