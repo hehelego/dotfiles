@@ -50,6 +50,11 @@ config.set('content.blocking.method', 'both')
 config.set('url.default_page', 'qute://start')
 config.set('url.start_pages', 'qute://start')
 
+# always place the new tab next to the current tab
+config.set('tabs.new_position.related', 'next')
+config.set('tabs.new_position.unrelated', 'next')
+config.set('tabs.new_position.stacking', True)
+
 # close the qutebrowser instance when closing the last tab
 config.set('tabs.last_close', 'close')
 
@@ -141,7 +146,7 @@ config.bind(f'{leader}tp',
 # edit url in external editor
 config.bind(f'{leader}eu', 'edit-url', mode='normal')
 # edit command in external editor
-config.bind(f'{leader}ec', 'edit-command', mode='normal')
+config.bind(f'{leader}ec', 'cmd-edit', mode='normal')
 # edit text-field in external editor
 config.bind('<Alt-e>', 'edit-text', mode='insert')
 
@@ -161,7 +166,7 @@ config.bind(f'{leader}c', 'config-source', mode='normal')
 # restart qutebrowser
 config.bind(f'{leader}r', 'restart', mode='normal')
 
-# focus (hidding the tab-bar and status-bar)
+# focus (hiding the tab-bar and status-bar)
 config.bind(f'{leader}z',
             ';;'.join([
                 'config-cycle -tp statusbar.show never always',
@@ -193,7 +198,7 @@ config.bind('#',
             mode='normal')
 config.bind('#', 'spawn --userscript spinach_cursorword.py prev', mode='caret')
 
-# spinach's dinctionary lookup plugin: search for the selected text in YouDao dinctionary
+# spinach's dictionary lookup plugin: search for the selected text in Merriam-Webster dictionary
 config.bind(f'{leader}{leader}',
             'spawn --userscript spinach_dictlookup.py',
             mode='normal')

@@ -1,18 +1,13 @@
 #!/usr/bin/python
-
-from subprocess import run, DEVNULL
+#!/usr/bin/python
 
 from spinach_qutepy import Helper, Qute
 
-# look up the selected word in YouDao dictionary
-# using [ydcv-rs](https://github.com/farseerfc/ydcv-rs)
+# look up the selected word in Merriam-Webster dictionary
 if __name__ == '__main__':
     qute = Qute()
     selected_text = qute.get_env('selected_text')
+    query_url = rf'open -tr https://www.merriam-webster.com/dictionary/{selected_text}'
     if selected_text:
         Helper.log('selected:', selected_text)
-        run(['fish', '-c', 'dict_lookup_sel'],
-            stdin=DEVNULL,
-            stdout=DEVNULL,
-            stderr=DEVNULL,
-            timeout=5)
+        qute.exec(query_url)
