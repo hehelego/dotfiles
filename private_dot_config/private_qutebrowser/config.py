@@ -50,7 +50,6 @@ config.set('content.blocking.method', 'both')
 config.set('url.default_page', 'qute://start')
 config.set('url.start_pages', 'qute://start')
 
-# always place the new tab next to the current tab
 config.set('tabs.new_position.related', 'next')
 config.set('tabs.new_position.unrelated', 'next')
 config.set('tabs.new_position.stacking', True)
@@ -188,7 +187,10 @@ config.bind(f'{leader}d',
 
 ##################################### PART C: userscripts #####################################
 
-# spinach's theme selector: switch user stylesheets
+# share URL with QR code
+config.bind(f'{leader}s', 'spawn --userscript qr', mode='normal')
+
+# spinach's cursor word selector: search for next/previous occurrence
 config.bind('*',
             'spawn --userscript spinach_cursorword.py next',
             mode='normal')
@@ -226,9 +228,4 @@ config.bind(f'{leader}B',
 config.bind('b', 'spawn --userscript spinach_bookmarks.py', mode='normal')
 config.bind('B',
             'spawn --userscript spinach_bookmarks.py --tab',
-            mode='normal')
-
-# spinach's theme selector: switch user stylesheets
-config.bind(f'{leader}s',
-            'spawn --userscript spinach_themes.py',
             mode='normal')
