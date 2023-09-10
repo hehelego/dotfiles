@@ -74,6 +74,60 @@ local function on_attach(client, bufnr)
 	}, bufnr)
 end
 
+local function general_setup(server_name)
+	local lspconfig = require("lspconfig")
+	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+	local opts = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+	lspconfig[server_name].setup(opts)
+end
+
+-- special configuration for lua-ls
+local function luals_setup(server_name)
+	local lspconfig = require("lspconfig")
+	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+	local opts = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+
+	opts = vim.tbl_deep_extend("force", opts, {
+		settings = {
+			Lua = {
+				runtime = { version = "LuaJIT" },
+				diagnostics = { globals = { "vim" } },
+				workspace = {
+					library = {vim.env.VIMRUNTIME,},
+					checkThirdParty = false,
+				},
+				telemetry = { enable = false },
+				format = { enable = false },
+			},
+		},
+	})
+
+	lspconfig[server_name].setup(opts)
+end
+-- special configuration for clangd
+local function clangd_setup(server_name)
+	local lspconfig = require("lspconfig")
+	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+	-- NOTE: issue on offset encoding
+	-- see <https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428>
+	-- see <https://github.com/neovim/neovim/pull/16694>
+	capabilities.offsetEncoding = { "utf-16" }
+
+	local opts = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+	lspconfig[server_name].setup(opts)
+end
+
 return {
 	{
 		"neovim/nvim-lspconfig",
@@ -88,7 +142,6 @@ return {
 		config = function()
 			local mason = require("mason")
 			local mason_lsp = require("mason-lspconfig")
-			local lspconfig = require("lspconfig")
 
 			lspclient_setup()
 
@@ -96,40 +149,9 @@ return {
 			mason_lsp.setup({})
 
 			mason_lsp.setup_handlers({
-				function(server_name)
-					local capabilities =
-						require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-					-- NOTE: issue on offset encoding
-					-- see <https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428>
-					-- see <https://github.com/neovim/neovim/pull/16694>
-					capabilities.offsetEncoding = { "utf-16" }
-
-					local opts = {
-						on_attach = on_attach,
-						capabilities = capabilities,
-					}
-					-- special configuration for lua-ls
-					if server_name == "lua_ls" then
-						local libs = vim.api.nvim_get_runtime_file("", true)
-						vim.list_extend(libs, { vim.fn.stdpath("config") .. "/lua" })
-						opts = vim.tbl_deep_extend("force", opts, {
-							settings = {
-								Lua = {
-									runtime = { version = "LuaJIT" },
-									diagnostics = { globals = { "vim" } },
-									workspace = {
-										library = vim.api.nvim_get_runtime_file("", true),
-										checkThirdParty = false,
-									},
-									telemetry = { enable = false },
-									format = { enable = false },
-								},
-							},
-						})
-					end
-					lspconfig[server_name].setup(opts)
-				end,
+				general_setup,
+				["lua_ls"] = luals_setup,
+				["clangd"] = clangd_setup,
 			})
 		end,
 	},
