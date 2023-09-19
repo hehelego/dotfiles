@@ -100,7 +100,7 @@ local function luals_setup(server_name)
 				runtime = { version = "LuaJIT" },
 				diagnostics = { globals = { "vim" } },
 				workspace = {
-					library = {vim.env.VIMRUNTIME,},
+					library = { vim.env.VIMRUNTIME },
 					checkThirdParty = false,
 				},
 				telemetry = { enable = false },
@@ -134,7 +134,6 @@ return {
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		dependencies = {
 			"jose-elias-alvarez/null-ls.nvim",
-			"tamago324/nlsp-settings.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"ray-x/lsp_signature.nvim",
@@ -166,12 +165,12 @@ return {
 				sources = {
 					-- formatting
 					b.formatting.latexindent,
-					b.formatting.rustfmt,
 					b.formatting.stylua,
 					b.formatting.rustfmt,
 					b.formatting.clang_format,
 					b.formatting.fish_indent,
 					b.formatting.yapf,
+					b.formatting.fourmolu,
 					-- diagnostic
 					b.diagnostics.fish,
 					b.diagnostics.revive,
@@ -197,19 +196,6 @@ return {
 			"MasonUninstallAll",
 			"MasonLog",
 		},
-	},
-	{
-		"tamago324/nlsp-settings.nvim",
-		cmd = "LspSettings",
-		config = function()
-			require("nlspsettings").setup({
-				config_home = vim.fn.stdpath("config") .. "/nlsp-settings",
-				local_settings_dir = ".nlsp-settings",
-				local_settings_root_markers_fallback = { ".git" },
-				append_default_schemas = true,
-				loader = "json",
-			})
-		end,
 	},
 	{
 		"kosayoda/nvim-lightbulb",
