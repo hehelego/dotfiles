@@ -62,6 +62,9 @@ return {
 			}
 
 			cmp.setup({
+				completion = {
+					autocomplete = false,
+				},
 				performance = {
 					debounce = vim.opt.timeoutlen:get(),
 					throttle = 30,
