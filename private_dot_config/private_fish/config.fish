@@ -5,17 +5,20 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx MANPAGER "nvim +Man!"
 
-# disable less history
+# disable less pager history
 set -gx LESSHISTFILE "/dev/null"
+# disable node repl history
+set -gx NODE_REPL_HISTORY ""
+
 
 
 # SECTION: alias and abbr
 #
-alias   ls="exa              --group-directories-first"
-alias   ll="exa --long       --group-directories-first"
-alias   la="exa --long --all --group-directories-first"
-alias   lt="exa --tree"
-alias  lta="exa --tree --long --all"
+alias   ls="eza              --group-directories-first"
+alias   ll="eza --long       --group-directories-first"
+alias   la="eza --long --all --group-directories-first"
+alias   lt="eza --tree"
+alias  lta="eza --tree --long --all"
 alias  fdf="fd -HI --type file      --exclude .git --strip-cwd-prefix"
 alias  fdd="fd -HI --type directory --exclude .git --strip-cwd-prefix"
 alias fzff="fdf | fzf --multi --preview='stat {}'"
