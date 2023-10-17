@@ -147,3 +147,16 @@ reg({
 	noremap = true,
 	prefix = "<leader>",
 })
+
+reg({
+	name = "diff",
+	["d"] = { "<cmd>diffthis<cr>", "on" },
+	["D"] = { "<cmd>diffoff<cr>", "off" },
+	["o"] = { "<cmd>diffget<cr>", "get" },
+	["p"] = { "<cmd>diffput<cr>", "put" },
+}, {
+	mode = "n",
+	silent = true,
+	noremap = true,
+	prefix = "<leader>d",
+})
