@@ -103,7 +103,21 @@ reg({
 	["S"] = { "<cmd>Telescope git_stash<CR>", "stash" },
 	["b"] = { "<cmd>Telescope git_branches<CR>", "branches" },
 	["c"] = { "<cmd>Telescope git_commits<CR>", "commits" },
-	["C"] = { "<cmd>Telescope git_bcommits<CR>", "commits-buffer" },
+	["C"] = { "<cmd>Telescope git_bcommits<CR>", "commits-on-buf" },
+	["a"] = {
+		function()
+			-- map: code action name -> action callback
+			local actions = require("gitsigns").get_actions()
+			vim.ui.select(vim.tbl_keys(actions), {
+				prompt = "Select gitsigns action:",
+			}, function(action)
+				if action then -- nil value when nothing is selected
+					actions[action]()
+				end
+			end)
+		end,
+		"gitsigns-actions",
+	},
 }, {
 	mode = "n",
 	silent = true,
