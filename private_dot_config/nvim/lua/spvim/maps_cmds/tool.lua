@@ -20,12 +20,25 @@ reg({
 })
 
 reg({
+	name = "change-dir",
 	["z"] = { "<cmd>Telescope zoxide list<cr>", "zoxide" },
+	["b"] = { "<cmd>cd %:h<cr>", "to-buf-dir" },
 }, {
 	mode = "n",
 	silent = true,
 	noremap = true,
-	prefix = "<leader>",
+	prefix = "<leader>z",
+})
+
+reg({
+	name = "aerial-toc",
+	["a"] = { "<cmd>AerialToggle<cr>", "toggle" },
+	["f"] = { "<cmd>Telescope aerial<cr>", "telescope-jump" },
+}, {
+	mode = "n",
+	silent = true,
+	noremap = true,
+	prefix = "<leader>a",
 })
 
 reg({
@@ -132,12 +145,6 @@ vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", {
 })
 vim.keymap.set("n", "<leader>E", "<cmd>NvimTreeFindFileToggle<cr>", {
 	desc = "toggle nvim-tree file explorer",
-	silent = true,
-	noremap = true,
-})
-
-vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle<cr>", {
-	desc = "toggle aerial symbol tree",
 	silent = true,
 	noremap = true,
 })
