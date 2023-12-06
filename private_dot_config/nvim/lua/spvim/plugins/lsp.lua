@@ -152,6 +152,9 @@ return {
 				["lua_ls"] = luals_setup,
 				["clangd"] = clangd_setup,
 			})
+			clangd_setup('clangd')
+			general_setup('hls')
+			general_setup('ocamllsp')
 		end,
 	},
 	{
@@ -164,6 +167,8 @@ return {
 			null_ls.setup({
 				sources = {
 					-- formatting
+					b.formatting.prettier,
+					b.formatting.prettierd,
 					b.formatting.latexindent,
 					b.formatting.stylua,
 					b.formatting.rustfmt,
@@ -171,6 +176,8 @@ return {
 					b.formatting.fish_indent,
 					b.formatting.yapf,
 					b.formatting.fourmolu,
+					b.formatting.ocamlformat,
+					b.formatting.sql_formatter,
 					-- diagnostic
 					b.diagnostics.fish,
 					b.diagnostics.revive,
