@@ -176,15 +176,6 @@ config.bind(f'{leader}z',
 # quiet (clear notifications)
 config.bind(f'{leader}q', 'clear-messages ;; download-clear', mode='normal')
 
-# enable browser dark mode
-config.bind(f'{leader}D',
-            'set colors.webpage.darkmode.enabled true  ;; restart',
-            mode='normal')
-# disable browser dark mode
-config.bind(f'{leader}d',
-            'set colors.webpage.darkmode.enabled false ;; restart',
-            mode='normal')
-
 ##################################### PART C: userscripts #####################################
 
 # share URL with QR code
