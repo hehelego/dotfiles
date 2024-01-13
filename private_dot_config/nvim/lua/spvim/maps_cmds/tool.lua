@@ -33,6 +33,7 @@ reg({
 reg({
 	name = "aerial-toc",
 	["a"] = { "<cmd>AerialToggle<cr>", "toggle" },
+	["r"] = { "<cmd>lua require('aerial').refetch_symbols()<cr>", "refresh" },
 	["f"] = { "<cmd>Telescope aerial<cr>", "telescope-jump" },
 }, {
 	mode = "n",
