@@ -185,7 +185,7 @@ exec                          fish -c setbg
     # lookup the selected text in dictionary with ydcv
     bindsym $mod+comma            exec fish -c dict_lookup_sel
     # start rvaiya/warpd
-    bindsym $mod+x                exec warpd --hint
+    bindsym $mod+m                exec warpd --normal
 
     # Use pactl to adjust volume in PulseAudio.
     bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@   +5%    ; exec $refresh_status
