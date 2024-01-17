@@ -152,11 +152,11 @@ config.bind('<Alt-e>', 'edit-text', mode='insert')
 # play video in MPV
 config.bind(f'{leader}m', 'hint links spawn mpv {hint-url}', mode='normal')
 
-# keepassxc integration, see https://github.com/ususdei/qute-keepassxc)
-config.bind('<Alt-p>',
+# keepassxc integration, see https://github.com/ususdei/qute-keepassxc
+config.bind('<Ctrl-Alt-k>',
             f'spawn --userscript qute-keepassxc --key {qutekey}',
             mode='insert')
-config.bind(f'{leader}p',
+config.bind(f'{leader}k',
             f'spawn --userscript qute-keepassxc --key {qutekey}',
             mode='normal')
 
