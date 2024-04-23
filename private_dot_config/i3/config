@@ -33,7 +33,7 @@ set $screenshot               spectacle -r
 #
 #
 # start picom X compositor
-$exec_                        picom -CGb -m 1.0
+$exec_                        picom --daemon --shadow
 # input: navigate mouse with keyboard
 $exec_                        warpd
 # input method: start fcitx5
