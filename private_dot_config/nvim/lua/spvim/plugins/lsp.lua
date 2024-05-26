@@ -208,4 +208,15 @@ return {
 		event = { "CursorHold", "CursorHoldI" },
 		opts = { autocmd = { enabled = true } },
 	},
+	{
+		"whonore/Coqtail",
+		lazy = true,
+		ft = { "coq" },
+	},
+	{
+		"tlaplus-community/tlaplus-nvim-plugin",
+		dependencies = "florentc/vim-tla",
+		lazy = true,
+		ft = { "tla" },
+	},
 }
