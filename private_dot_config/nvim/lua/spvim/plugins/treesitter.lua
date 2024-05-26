@@ -16,7 +16,7 @@ return {
 					disable = function(ft, bufnr)
 						local _ = ft
 						local max_size, max_lines = 0x400000, 0x4000 -- 4 MB, 16384 lines
-						local ok, stat = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+						local ok, stat = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
 						local lines = vim.api.nvim_buf_line_count(bufnr)
 						if (ok and stat) and (stat.size < max_size and lines < max_lines) then
 							return false

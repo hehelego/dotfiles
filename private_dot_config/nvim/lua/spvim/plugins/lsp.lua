@@ -19,7 +19,7 @@ local function lspclient_setup()
 		float = {
 			focusable = false,
 			style = "minimal",
-			source = "always",
+			source = true,
 			header = "",
 			prefix = "",
 		},
@@ -60,8 +60,7 @@ local function on_attach(client, bufnr)
 		vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
 			group = lsp_codelens_grp,
 			desc = "refresh lsp codelens",
-			callback = vim.lsp.codelens.refresh,
-			buffer = bufnr,
+			callback = function() vim.lsp.codelens.refresh() end,
 		})
 	end
 
