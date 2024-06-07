@@ -142,6 +142,14 @@ config.bind(f'{leader}tp',
             f'config-cycle -tp content.proxy {" ".join(proxy_urls)}',
             mode='normal')
 
+# toggle dark mode
+config.bind(f'{leader}d',
+            f'config-cycle -tp colors.webpage.darkmode.enabled true false',
+            mode='normal')
+
+# restart the browser
+config.bind(f'{leader}r', 'restart', mode='normal')
+
 # edit url in external editor
 config.bind(f'{leader}eu', 'edit-url', mode='normal')
 # edit command in external editor
