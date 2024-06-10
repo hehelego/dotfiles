@@ -10,22 +10,42 @@ set selection-clipboard clipboard
 set synctex true
 set synctex-editor-command "nvim --headless -c \"VimtexInverseSearch %l '%f'\""
 
-# D: toggle single/double page view mode
-map D set "first-page-column 1:1"
-# i: show document information
-map i feedkeys :info<Return>
-# Ctrl+S: reload config
-map <C-s> feedkeys :source<Return>
+# recolor mode
+set recolor-keephue true
+set recolor-lightcolor "#1a1a1a"
+set recolor-darkcolor  "#cccccc"
 
-map <Left> navigate previous
-map <Right> navigate next
-map <Up> navigate previous
-map <Down> navigate next
+
+map d        recolor
+
+map =        adjust_window "best-fit"
+
+map r        rotate "rotate-cw"
+
+map R        reload
+
+map u1        set "first-page-column 1:1:1:1"
+map u2        set "first-page-column 1:2:2:2"
+map u3        set "first-page-column 1:2:3:3"
+map u4        set "first-page-column 1:2:3:4"
+
+map v1       set "pages-per-row 1"
+map v2       set "pages-per-row 2"
+map v3       set "pages-per-row 3"
+map v4       set "pages-per-row 4"
+
+map i        feedkeys :info<Return>
+map <C-s>    feedkeys :source<Return>
+
+map <Left>   navigate previous
+map <Right>  navigate next
+map <Up>     navigate previous
+map <Down>   navigate next
 
 
 # window title and status bar settings
-set window-title-basename true
+set window-title-basename   true
 set window-title-home-tilde true
-set window-title-page true
-set statusbar-home-tilde true
+set window-title-page       true
+set statusbar-home-tilde    true
 
