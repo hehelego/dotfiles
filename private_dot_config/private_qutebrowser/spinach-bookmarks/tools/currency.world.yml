@@ -1,5 +1,6 @@
 name: 'currency.world: exchange rate query'
 tags:
   - currency
+  - tool
 url:
   https://currency.world/

@@ -1,5 +1,5 @@
 name: 'world bank'
 tags:
-  []
+  - data
 url:
   https://www.worldbank.org/en/home

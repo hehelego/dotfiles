@@ -1,6 +1,5 @@
 name: compiler explorer
 tags:
-  - CS
   - tool
 url:
   https://godbolt.org/

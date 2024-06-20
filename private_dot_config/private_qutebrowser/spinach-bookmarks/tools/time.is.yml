@@ -1,5 +1,6 @@
 name: 'time.is: local time and timezone'
 tags:
   - time
+  - tool
 url:
   https://time.is/

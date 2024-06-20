@@ -1,5 +1,5 @@
 name: 'numbeo: cost of living'
 tags:
-  []
+  - data
 url:
   https://www.numbeo.com/
