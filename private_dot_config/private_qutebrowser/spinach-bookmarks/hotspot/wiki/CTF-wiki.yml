@@ -2,6 +2,7 @@ name: CTF wiki
 tags:
   - CTF
   - cryptography
+  - security
   - wiki
 url:
   https://ctf-wiki.org/

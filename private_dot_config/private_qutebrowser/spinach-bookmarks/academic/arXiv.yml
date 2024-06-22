@@ -1,5 +1,7 @@
-name: arXiv
+name: arXiv e-Print archive
 tags:
-  - arxiv
+  - preprint
+  - archive
+  - library
 url:
   https://arxiv.org/

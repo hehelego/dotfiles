@@ -1,6 +1,5 @@
 name: arch linux
 tags:
-  - arch
   - linux
 url:
   https://www.archlinux.org/
