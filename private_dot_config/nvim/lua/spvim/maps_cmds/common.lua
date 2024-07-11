@@ -82,9 +82,6 @@ local window_keys = {
 	"c",
 	"q",
 	"o",
-	-- increase or decrease width
-	"<",
-	">",
 }
 -- Use <Alt> instead of <C-w> for window prefix
 for _, k in ipairs(window_keys) do
@@ -93,17 +90,17 @@ for _, k in ipairs(window_keys) do
 	vim.keymap.set("n", lhs, rhs, {
 		silent = true,
 		noremap = true,
-		desc = string.format("windows manipulation %s", rhs),
+		desc = string.format("windows %s", rhs),
 	})
 end
--- vertical resize: - and =
-for s, t in pairs({ ["-"] = "-", ["="] = "+" }) do
+-- window resize with "-=,." for "-+<>"
+for s, t in pairs({ ["-"] = "-", ["="] = "+", [","] = "<", ["."] = ">" }) do
 	local lhs = string.format("<M-%s>", s)
 	local rhs = string.format("<C-w>%s", t)
 	vim.keymap.set("n", lhs, rhs, {
 		silent = true,
 		noremap = true,
-		desc = string.format("windows manipulation %s", rhs),
+		desc = string.format("windows %s", rhs),
 	})
 end
 
