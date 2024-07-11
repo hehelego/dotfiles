@@ -77,19 +77,14 @@ local window_keys = {
 	"K",
 	"L",
 	"T",
+	"r",
 	-- close or quit the focused window
 	"c",
 	"q",
 	"o",
-	-- increase or decrease height
-	"+",
-	"-",
 	-- increase or decrease width
-	"r",
 	"<",
 	">",
-	-- make the windows have equal size
-	"=",
 }
 -- Use <Alt> instead of <C-w> for window prefix
 for _, k in ipairs(window_keys) do
@@ -98,7 +93,17 @@ for _, k in ipairs(window_keys) do
 	vim.keymap.set("n", lhs, rhs, {
 		silent = true,
 		noremap = true,
-		desc = "windows manipulation keymaps",
+		desc = string.format("windows manipulation %s", rhs),
+	})
+end
+-- vertical resize: - and =
+for s, t in pairs({ ["-"] = "-", ["="] = "+" }) do
+	local lhs = string.format("<M-%s>", s)
+	local rhs = string.format("<C-w>%s", t)
+	vim.keymap.set("n", lhs, rhs, {
+		silent = true,
+		noremap = true,
+		desc = string.format("windows manipulation %s", rhs),
 	})
 end
 

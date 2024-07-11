@@ -55,14 +55,14 @@ local function on_attach(client, bufnr)
 	end
 
 	-- add BufEnter, InsertLeave, CursorHold codelens
-	if client.server_capabilities.codeLensProvider then
-		local lsp_codelens_grp = vim.api.nvim_create_augroup("lsp_codelens", {})
-		vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-			group = lsp_codelens_grp,
-			desc = "refresh lsp codelens",
-			callback = function() vim.lsp.codelens.refresh() end,
-		})
-	end
+	-- if client.server_capabilities.codeLensProvider then
+	-- 	local lsp_codelens_grp = vim.api.nvim_create_augroup("lsp_codelens", {})
+	-- 	vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+	-- 		group = lsp_codelens_grp,
+	-- 		desc = "refresh lsp codelens",
+	-- 		callback = function() vim.lsp.codelens.refresh() end,
+	-- 	})
+	-- end
 
 	require("lsp_signature").on_attach({
 		bind = true,
@@ -151,9 +151,10 @@ return {
 				["lua_ls"] = luals_setup,
 				["clangd"] = clangd_setup,
 			})
-			clangd_setup('clangd')
-			general_setup('hls')
-			general_setup('ocamllsp')
+			clangd_setup("clangd")
+			general_setup("hls")
+			general_setup("ocamllsp")
+			general_setup("jdtls")
 		end,
 	},
 	{
@@ -208,12 +209,30 @@ return {
 		event = { "CursorHold", "CursorHoldI" },
 		opts = { autocmd = { enabled = true } },
 	},
-	{
+	{ -- for the coq proof assistant
 		"whonore/Coqtail",
 		lazy = true,
 		ft = { "coq" },
 	},
-	{
+	-- { -- for the agda proof assistant
+	-- 	"isovector/cornelis",
+	-- 	dependencies = {
+	-- 		"kana/vim-textobj-user",
+	-- 		"neovimhaskell/nvim-hs.vim",
+	-- 	},
+	-- 	build = "stack build",
+	-- 	config = function()
+	-- 		vim.g.cornelis_agda_prefix = "<Tab>"
+	-- 	end,
+	-- 	lazy = true,
+	-- 	ft = { "agda" },
+	-- },
+	{ -- for agda
+		"derekelkins/agda-vim",
+		lazy = true,
+		ft = { "agda" },
+	},
+	{ -- TLA+
 		"tlaplus-community/tlaplus-nvim-plugin",
 		dependencies = "florentc/vim-tla",
 		lazy = true,
