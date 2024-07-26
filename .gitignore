@@ -12,3 +12,4 @@ autoconfig.yml
 # PATH="$HOME/.config/nvim/plugin/packer_compiled.lua"
 # neovim packer.nvim package manager compiled loader file
 packer_compiled.lua
+private_dot_config/private_qutebrowser/qsettings/QtProject.conf
