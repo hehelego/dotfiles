@@ -38,7 +38,7 @@ return {
 		cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeFindFileToggle" },
 		config = function()
 			local nvim_tree = require("nvim-tree")
-			local on_attach = require("spvim.maps_cmds.nvim-tree")
+			local on_attach = require("spvim.maps_cmds.nvim-tree-on-attach")
 
 			local opts = {
 				sync_root_with_cwd = true,
