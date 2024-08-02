@@ -12,7 +12,9 @@ return {
 		cmd = "Telescope",
 		config = function()
 			local telescope = require("telescope")
+			local default_theme = require("telescope.themes").get_ivy()
 			telescope.setup({
+				defaults = default_theme,
 				pickers = {
 					find_files = {
 						find_command = { "fd", "--type", "file", "--exclude", ".git", "--strip-cwd-prefix" },
