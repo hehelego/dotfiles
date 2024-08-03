@@ -5,7 +5,6 @@ return {
 		event = { "BufReadPost", "BufNewFile", "BufAdd" },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			"mrjones2014/nvim-ts-rainbow",
 			"andymass/vim-matchup",
 		},
 		config = function()
@@ -57,13 +56,13 @@ return {
 						},
 					},
 				},
-				rainbow = {
+				context_commentstring = {
 					enable = true,
-					extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-					max_file_lines = 4096, -- Do not enable for files with more than 2000 lines, int
+					enable_autocmd = false,
 				},
-				context_commentstring = { enable = true, enable_autocmd = false },
-				matchup = { enable = true },
+				matchup = {
+					enable = true,
+				},
 			})
 		end,
 	},

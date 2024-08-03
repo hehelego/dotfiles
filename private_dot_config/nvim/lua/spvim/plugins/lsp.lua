@@ -130,7 +130,7 @@ end
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile", "BufAdd" },
 		dependencies = {
 			"jose-elias-alvarez/null-ls.nvim",
 			"williamboman/mason.nvim",
