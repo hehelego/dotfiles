@@ -1,3 +1,9 @@
+local bind = function(func, opts)
+	return function()
+		func(opts)
+	end
+end
+
 require("which-key").register({
 	name = "lsp",
 	["g"] = {
@@ -9,49 +15,40 @@ require("which-key").register({
 		["s"] = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols-file" },
 		["S"] = { "<cmd>Telescope lsp_workspace_symbols<cr>", "symbols-ws" },
 	},
-	["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "code-action" },
-	["A"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "codelens-action" },
-	["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "rename" },
-	["f"] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "format" },
-	["h"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "signature-help" },
+	["a"] = { vim.lsp.buf.code_action, "code-action" },
+	["A"] = { vim.lsp.codelens.run, "codelens-action" },
+	["r"] = { vim.lsp.buf.rename, "rename" },
+	["f"] = { bind(vim.lsp.buf.format, { async = true }), "format" },
+	["h"] = { vim.lsp.buf.signature_help(), "signature-help" },
 }, {
 	mode = "n",
 	silent = true,
-	noremap = true,
 	prefix = ";",
 })
-vim.keymap.set({ "v", "x" }, ";f", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", {
+vim.keymap.set({ "v", "x" }, ";f", bind(vim.lsp.buf.format, { async = true }), {
 	silent = true,
-	noremap = true,
+	desc = "run formatter for the current buffer",
 })
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
 	silent = true,
-	noremap = true,
 	desc = "goto next diagnostic",
 })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {
 	silent = true,
-	noremap = true,
 	desc = "goto next diagnostic",
 })
 
 -- show document
-vim.keymap.set(
-	"n",
-	"K",
-	vim.lsp.buf.hover,
-	{ silent = true, noremap = true, desc = "show document for the symbol under cursor" }
-)
-vim.keymap.set(
-	"n",
-	"M",
-	"<cmd>Man<cr>",
-	{ silent = true, noremap = true, desc = "show man page for the symbol under cursor" }
-)
+vim.keymap.set("n", "K", vim.lsp.buf.hover, {
+	silent = true,
+	desc = "show document for the symbol under cursor",
+})
+vim.keymap.set("n", "M", "<cmd>Man<cr>", {
+	silent = true,
+	desc = "show man page for the symbol under cursor",
+})
 
-vim.api.nvim_create_user_command("Format", function()
-	vim.lsp.buf.format({ async = true })
-end, {
+vim.api.nvim_create_user_command("Format", bind(vim.lsp.buf.format, { async = true }), {
 	desc = "lsp document formatting",
 })

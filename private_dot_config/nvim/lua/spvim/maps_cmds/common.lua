@@ -3,50 +3,42 @@ local reg = require("which-key").register
 -- u/U for undo/redo
 vim.keymap.set("n", "u", "<cmd>:undo<cr>", {
 	silent = true,
-	noremap = true,
 	desc = "undo one change",
 })
 -- u/U for undo/redo
 vim.keymap.set("n", "U", "<cmd>:redo<cr>", {
 	silent = true,
-	noremap = true,
 	desc = "redo one change",
 })
 
 -- dh/dl to delete half line
 vim.keymap.set("n", "dh", "d^", {
 	silent = true,
-	noremap = true,
 	desc = "delete the half line before cursor",
 })
 -- dh/dl to delete half line
 vim.keymap.set("n", "dl", "d$", {
 	silent = true,
-	noremap = true,
 	desc = "delete the half line after cursor",
 })
 
 -- yh/yl to yank half line
 vim.keymap.set("n", "yh", "y^", {
 	silent = true,
-	noremap = true,
 	desc = "yank the half line before cursor",
 })
 vim.keymap.set("n", "yl", "y$", {
 	silent = true,
-	noremap = true,
 	desc = "yank the half line after cursor",
 })
 
 -- using system clipboard
 vim.keymap.set({ "n", "v", "x" }, "gy", [["+y]], {
 	silent = true,
-	noremap = true,
 	desc = "use system clipboard copy",
 })
 vim.keymap.set({ "n", "v", "x" }, "gp", [["+p]], {
 	silent = true,
-	noremap = true,
 	desc = "use system clipboard paste",
 })
 
@@ -60,7 +52,6 @@ local direction_keys = {
 for _, km in ipairs(direction_keys) do
 	vim.keymap.set({ "i", "c" }, km[1], km[2], {
 		silent = true,
-		noremap = true,
 		desc = "use alt+hjkl to move cursor",
 	})
 end
@@ -89,7 +80,6 @@ for _, k in ipairs(window_keys) do
 	local rhs = string.format("<C-w>%s", k)
 	vim.keymap.set("n", lhs, rhs, {
 		silent = true,
-		noremap = true,
 		desc = string.format("windows %s", rhs),
 	})
 end
@@ -99,7 +89,6 @@ for s, t in pairs({ ["-"] = "-", ["="] = "+", [","] = "<", ["."] = ">" }) do
 	local rhs = string.format("<C-w>%s", t)
 	vim.keymap.set("n", lhs, rhs, {
 		silent = true,
-		noremap = true,
 		desc = string.format("windows %s", rhs),
 	})
 end
@@ -107,17 +96,22 @@ end
 for i = 1, 9 do
 	vim.keymap.set("n", string.format("<M-%d>", i), string.format("<cmd>LualineBuffersJump! %d<cr>", i), {
 		silent = true,
-		noremap = true,
 		desc = "switch buffer",
 	})
 end
 
-reg({
-	name = "buffer",
-	d = { "<cmd>Bdelete<cr>", "delete" },
-	n = { "<cmd>bnext<cr>", "next" },
-	p = { "<cmd>bprevious<cr>", "prev" },
-}, { mode = "n", silent = true, noremap = true, prefix = "<leader>b" })
+local buffer_maps = {
+	d = { rhs = "<cmd>Bdelete<cr>", desc = "delete" },
+	w = { rhs = "<cmd>Bwipeout<cr>", desc = "wipeout" },
+	n = { rhs = "<cmd>bnext<cr>", desc = "next" },
+	p = { rhs = "<cmd>bprevious<cr>", desc = "prev" },
+}
+for lhs, v in pairs(buffer_maps) do
+	vim.keymap.set("n", "<leader>b" .. lhs, v.rhs, {
+		silent = true,
+		desc = v.desc,
+	})
+end
 
 local ft_quit_grp = vim.api.nvim_create_augroup("ft_quick_quit", {})
 vim.api.nvim_create_autocmd("FileType", {
@@ -125,7 +119,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
 		vim.keymap.set("n", "q", "<cmd>close<cr>", {
 			silent = false,
-			noremap = true,
 			buffer = args.buf,
 			desc = "press [q] to quit",
 		})
@@ -141,13 +134,9 @@ local function toggle_conceal()
 		vim.opt.conceallevel = 2
 	end
 end
-reg({
-	["p"] = { toggle_conceal, "toggle-conceal" },
-}, {
-	mode = "n",
+vim.keymap.set("n", "<leader>p", toggle_conceal, {
 	silent = true,
-	noremap = true,
-	prefix = "<leader>",
+	desc = "toggle-conceal",
 })
 
 reg({
@@ -159,6 +148,5 @@ reg({
 }, {
 	mode = "n",
 	silent = true,
-	noremap = true,
 	prefix = "<leader>d",
 })

@@ -15,7 +15,6 @@ reg({
 }, {
 	mode = "n",
 	silent = true,
-	noremap = true,
 	prefix = "<leader>f",
 })
 
@@ -26,7 +25,6 @@ reg({
 }, {
 	mode = "n",
 	silent = true,
-	noremap = true,
 	prefix = "<leader>z",
 })
 
@@ -38,7 +36,6 @@ reg({
 }, {
 	mode = "n",
 	silent = true,
-	noremap = true,
 	prefix = "<leader>a",
 })
 
@@ -46,7 +43,11 @@ reg({
 	name = "finder-help",
 	h = { "<cmd>Telescope help_tags<cr>", "help-tags" },
 	m = { "<cmd>Telescope man_pages sections=ALL<cr>", "man-pages" },
-}, { mode = "n", silent = true, noremap = true, prefix = "<leader>h" })
+}, {
+	mode = "n",
+	silent = true,
+	prefix = "<leader>h",
+})
 
 reg({
 	name = "trouble.list",
@@ -56,7 +57,11 @@ reg({
 	l = { "<cmd>Trouble loclist     toggle             <cr>", "trouble loclist" },
 	s = { "<cmd>Trouble symbols     toggle             <cr>", "trouble symbols" },
 	t = { "<cmd>Trouble todo        toggle             <cr>", "trouble todo" },
-}, { mode = "n", silent = true, noremap = true, prefix = "<leader>q" })
+}, {
+	mode = "n",
+	silent = true,
+	prefix = "<leader>q",
+})
 
 vim.keymap.set("n", "]t", function()
 	require("todo-comments").jump_next()
@@ -78,7 +83,6 @@ vim.keymap.set("n", "[q", function()
 	end
 end, {
 	silent = true,
-	noremap = true,
 	desc = "Previous trouble/quickfix item",
 })
 vim.keymap.set("n", "]q", function()
@@ -93,18 +97,15 @@ vim.keymap.set("n", "]q", function()
 	end
 end, {
 	silent = true,
-	noremap = true,
 	desc = "Next trouble/quickfix item",
 })
 
 vim.keymap.set("n", "]g", "<cmd>Gitsigns next_hunk<cr>", {
 	silent = true,
-	noremap = true,
 	desc = "next git diff hunk",
 })
 vim.keymap.set("n", "[g", "<cmd>Gitsigns prev_hunk<cr>", {
 	silent = true,
-	noremap = true,
 	desc = "previous git diff hunk",
 })
 
@@ -134,17 +135,14 @@ reg({
 }, {
 	mode = "n",
 	silent = true,
-	noremap = true,
 	prefix = "<leader>g",
 })
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", {
 	desc = "toggle nvim-tree file explorer",
 	silent = true,
-	noremap = true,
 })
 vim.keymap.set("n", "<leader>E", "<cmd>NvimTreeFindFileToggle<cr>", {
 	desc = "toggle nvim-tree file explorer",
 	silent = true,
-	noremap = true,
 })

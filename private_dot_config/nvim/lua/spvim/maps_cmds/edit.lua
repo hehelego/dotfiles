@@ -1,7 +1,6 @@
 local function bind(mode, lhs, rhs, desc)
 	vim.keymap.set(mode, lhs, rhs, {
 		silent = true,
-		noremap = true,
 		desc = desc,
 	})
 end
