@@ -1,3 +1,42 @@
+local function get_keymaps(cmp, luasnip)
+	return {
+		-- Ctrl-Space to trigger completion
+		["<C-Space>"] = cmp.mapping.complete(),
+		-- Return to confirm completion
+		["<CR>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.confirm({ select = true })
+			else
+				fallback()
+			end
+		end),
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-d>"] = cmp.mapping.scroll_docs(4),
+		["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.jumpable(1) then
+				luasnip.jump(1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		-- Shift-Tab: prev option | prev snippet slot | fallback
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+	}
+end
+
 return {
 	{
 		"hrsh7th/nvim-cmp",
@@ -24,42 +63,7 @@ return {
 			-- load snippets for luasnip
 			require("luasnip.loaders.from_vscode").lazy_load()
 
-			local cmp_keymaps = {
-				-- Ctrl-Space to trigger completion
-				["<C-Space>"] = cmp.mapping.complete(),
-				-- Return to confirm completion
-				["<CR>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.confirm({ select = true })
-					else
-						fallback()
-					end
-				end),
-				["<C-p>"] = cmp.mapping.select_prev_item(),
-				["<C-n>"] = cmp.mapping.select_next_item(),
-				["<C-d>"] = cmp.mapping.scroll_docs(4),
-				["<C-u>"] = cmp.mapping.scroll_docs(-4),
-				["<C-e>"] = cmp.mapping.abort(),
-				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					elseif luasnip.jumpable(1) then
-						luasnip.jump(1)
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-				-- Shift-Tab: prev option | prev snippet slot | fallback
-				["<S-Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
-						luasnip.jump(-1)
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-			}
+			local cmp_keymaps = get_keymaps(cmp, luasnip)
 
 			cmp.setup({
 				completion = {
@@ -76,7 +80,7 @@ return {
 				},
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						luasnip.lsp_expand(args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert(cmp_keymaps),

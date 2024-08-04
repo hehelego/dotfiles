@@ -1,3 +1,67 @@
+local function telescope_setup()
+	local telescope = require("telescope")
+	local default_theme = require("telescope.themes").get_ivy()
+	telescope.setup({
+		defaults = default_theme,
+		pickers = {
+			find_files = {
+				find_command = { "fd", "--type", "file", "--exclude", ".git", "--strip-cwd-prefix" },
+			},
+		},
+		extensions = {
+			fzf = {
+				fuzzy = true,
+				override_generic_sorter = true,
+				override_file_sorter = true,
+				case_mode = "smart_case",
+			},
+		},
+	})
+
+	telescope.load_extension("fzf")
+	telescope.load_extension("zoxide")
+	telescope.load_extension("aerial")
+end
+
+local function nvim_tree_setup()
+	local nvim_tree = require("nvim-tree")
+	local on_attach = require("spvim.maps_cmds.nvim-tree-on-attach")
+
+	local opts = {
+		sync_root_with_cwd = true,
+		on_attach = on_attach,
+		renderer = {
+			indent_markers = {
+				enable = true,
+			},
+			icons = {
+				glyphs = {
+					git = {
+						untracked = "",
+						unstaged = "󰄱",
+						staged = "",
+						ignored = "",
+						unmerged = "",
+						renamed = "󰁕",
+						deleted = "",
+					},
+				},
+			},
+		},
+		system_open = {
+			cmd = "xdg-open",
+			args = {},
+		},
+		diagnostics = {
+			enable = true,
+		},
+		trash = {
+			cmd = "trash",
+		},
+	}
+	nvim_tree.setup(opts)
+end
+
 return {
 	{
 		"nvim-telescope/telescope.nvim",
@@ -10,72 +74,12 @@ return {
 			"jvgrootveld/telescope-zoxide",
 		},
 		cmd = "Telescope",
-		config = function()
-			local telescope = require("telescope")
-			local default_theme = require("telescope.themes").get_ivy()
-			telescope.setup({
-				defaults = default_theme,
-				pickers = {
-					find_files = {
-						find_command = { "fd", "--type", "file", "--exclude", ".git", "--strip-cwd-prefix" },
-					},
-				},
-				extensions = {
-					fzf = {
-						fuzzy = true,
-						override_generic_sorter = true,
-						override_file_sorter = true,
-						case_mode = "smart_case",
-					},
-				},
-			})
-
-			telescope.load_extension("fzf")
-			telescope.load_extension("zoxide")
-			telescope.load_extension("aerial")
-		end,
+		config = telescope_setup,
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeFindFileToggle" },
-		config = function()
-			local nvim_tree = require("nvim-tree")
-			local on_attach = require("spvim.maps_cmds.nvim-tree-on-attach")
-
-			local opts = {
-				sync_root_with_cwd = true,
-				on_attach = on_attach,
-				renderer = {
-					indent_markers = {
-						enable = true,
-					},
-					icons = {
-						glyphs = {
-							git = {
-								untracked = "",
-								unstaged = "󰄱",
-								staged = "",
-								ignored = "",
-								unmerged = "",
-								renamed = "󰁕",
-								deleted = "",
-							},
-						},
-					},
-				},
-				system_open = {
-					cmd = "xdg-open",
-					args = {},
-				},
-				diagnostics = {
-					enable = true,
-				},
-				trash = {
-					cmd = "trash",
-				},
-			}
-			nvim_tree.setup(opts)
-		end,
+		config = nvim_tree_setup,
 	},
 	{
 		"stevearc/aerial.nvim",

@@ -1,4 +1,4 @@
-local reg = require("which-key").register
+local wk = require("which-key")
 
 -- u/U for undo/redo
 vim.keymap.set("n", "u", "<cmd>:undo<cr>", {
@@ -33,11 +33,11 @@ vim.keymap.set("n", "yl", "y$", {
 })
 
 -- using system clipboard
-vim.keymap.set({ "n", "v", "x" }, "gy", [["+y]], {
+vim.keymap.set({ "n", "x" }, "gy", [["+y]], {
 	silent = true,
 	desc = "use system clipboard copy",
 })
-vim.keymap.set({ "n", "v", "x" }, "gp", [["+p]], {
+vim.keymap.set({ "n", "x" }, "gp", [["+p]], {
 	silent = true,
 	desc = "use system clipboard paste",
 })
@@ -100,18 +100,13 @@ for i = 1, 9 do
 	})
 end
 
-local buffer_maps = {
-	d = { rhs = "<cmd>Bdelete<cr>", desc = "delete" },
-	w = { rhs = "<cmd>Bwipeout<cr>", desc = "wipeout" },
-	n = { rhs = "<cmd>bnext<cr>", desc = "next" },
-	p = { rhs = "<cmd>bprevious<cr>", desc = "prev" },
-}
-for lhs, v in pairs(buffer_maps) do
-	vim.keymap.set("n", "<leader>b" .. lhs, v.rhs, {
-		silent = true,
-		desc = v.desc,
-	})
-end
+wk.add({
+	{ "<leader>b", group = "buffer" },
+	{ "<leader>bd", "<cmd>Bdelete<cr>", desc = "delete" },
+	{ "<leader>bw", "<cmd>Bwipeout<cr>", desc = "wipeout" },
+	{ "<leader>bn", "<cmd>bnext<cr>", desc = "next" },
+	{ "<leader>bp", "<cmd>bprevious<cr>", desc = "prev" },
+})
 
 local ft_quit_grp = vim.api.nvim_create_augroup("ft_quick_quit", {})
 vim.api.nvim_create_autocmd("FileType", {
@@ -139,14 +134,10 @@ vim.keymap.set("n", "<leader>p", toggle_conceal, {
 	desc = "toggle-conceal",
 })
 
-reg({
-	name = "diff",
-	["d"] = { "<cmd>diffthis<cr>", "on" },
-	["D"] = { "<cmd>diffoff<cr>", "off" },
-	["o"] = { "<cmd>diffget<cr>", "get" },
-	["p"] = { "<cmd>diffput<cr>", "put" },
-}, {
-	mode = "n",
-	silent = true,
-	prefix = "<leader>d",
+wk.add({
+	{ "<leader>d", group = "diff" },
+	{ "<leader>dD", "<cmd>diffoff<cr>", desc = "off" },
+	{ "<leader>dd", "<cmd>diffthis<cr>", desc = "on" },
+	{ "<leader>do", "<cmd>diffget<cr>", desc = "get" },
+	{ "<leader>dp", "<cmd>diffput<cr>", desc = "put" },
 })

@@ -1,66 +1,56 @@
-local reg = require("which-key").register
+local wk = require("which-key")
 
-reg({
-	name = "finder",
-	["f"] = { "<cmd>Telescope find_files<cr>", "files" },
-	["F"] = { "<cmd>Telescope find_files hidden=true ignore=true<cr>", "files-hidden" },
-	["c"] = { "<cmd>Telescope quickfix<cr>", "quickfix" },
-	["l"] = { "<cmd>Telescope loclist<cr>", "loclist" },
-	["b"] = { "<cmd>Telescope buffers<cr>", "buffers" },
-	["g"] = { "<cmd>Telescope live_grep<cr>", "live-grep" },
-	["h"] = { "<cmd>Telescope oldfiles<cr>", "recent-files" },
-	["."] = { "<cmd>Telescope builtin include_extensions=true<cr>", "finders" },
-	[":"] = { "<cmd>Telescope commands<cr>", "commands" },
-	["/"] = { "<cmd>Telescope current_buffer_fuzzy_find skip_empty_lines=true<cr>", "commands" },
-}, {
-	mode = "n",
-	silent = true,
-	prefix = "<leader>f",
+-- telescope
+wk.add({
+	{ "<leader>f", group = "finder" },
+	-- text search
+	{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "live-grep" },
+	{ "<leader>f/", "<cmd>Telescope current_buffer_fuzzy_find skip_empty_lines=true<cr>", desc = "text" },
+	-- files
+	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "files" },
+	{ "<leader>fF", "<cmd>Telescope find_files hidden=true ignore=true<cr>", desc = "files-hidden" },
+	{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "buffers" },
+	{ "<leader>fh", "<cmd>Telescope oldfiles<cr>", desc = "recent-files" },
+	-- quickfix and location list
+	{ "<leader>fc", "<cmd>Telescope quickfix<cr>", desc = "quickfix" },
+	{ "<leader>fl", "<cmd>Telescope loclist<cr>", desc = "loclist" },
+	-- misc
+	{ "<leader>f.", "<cmd>Telescope builtin include_extensions=true<cr>", desc = "finders" },
+	{ "<leader>f:", "<cmd>Telescope commands<cr>", desc = "commands" },
+	{ "<leader>fm", "<cmd>Telescope keymaps<cr>", desc = "keymaps" },
+	-- help search
+	{ "<leader>h", group = "help" },
+	{ "<leader>hh", "<cmd>Telescope help_tags<cr>", desc = "help-tags" },
+	{ "<leader>hm", "<cmd>Telescope man_pages sections=ALL<cr>", desc = "man-pages" },
 })
 
-reg({
-	name = "change-dir",
-	["z"] = { "<cmd>Telescope zoxide list<cr>", "zoxide" },
-	["b"] = { "<cmd>cd %:h<cr>", "to-buf-dir" },
-}, {
-	mode = "n",
-	silent = true,
-	prefix = "<leader>z",
+-- aerial symbol tree
+wk.add({
+	{ "<leader>a", group = "aerial-toc" },
+	{ "<leader>aa", "<cmd>AerialToggle<cr>", desc = "toggle" },
+	{ "<leader>af", "<cmd>Telescope aerial<cr>", desc = "telescope-jump" },
+	{ "<leader>ar", require("aerial").refetch_symbols, desc = "refresh" },
 })
 
-reg({
-	name = "aerial-toc",
-	["a"] = { "<cmd>AerialToggle<cr>", "toggle" },
-	["r"] = { "<cmd>lua require('aerial').refetch_symbols()<cr>", "refresh" },
-	["f"] = { "<cmd>Telescope aerial<cr>", "telescope-jump" },
-}, {
-	mode = "n",
-	silent = true,
-	prefix = "<leader>a",
+-- trouble list
+wk.add({
+	{ "<leader>q", group = "trouble.list" },
+	-- diagnostics
+	{ "<leader>qd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "diagnostic(buf)" },
+	{ "<leader>qD", "<cmd>Trouble diagnostics toggle <cr>", desc = "diagnostic(ws)" },
+	-- qf and loc
+	{ "<leader>qc", "<cmd>Trouble qflist toggle <cr>", desc = "quickfix" },
+	{ "<leader>ql", "<cmd>Trouble loclist toggle <cr>", desc = "loclist" },
+	-- misc
+	{ "<leader>qs", "<cmd>Trouble symbols toggle <cr>", desc = "symbols" },
+	{ "<leader>qt", "<cmd>Trouble todo toggle <cr>", desc = "todo" },
 })
 
-reg({
-	name = "finder-help",
-	h = { "<cmd>Telescope help_tags<cr>", "help-tags" },
-	m = { "<cmd>Telescope man_pages sections=ALL<cr>", "man-pages" },
-}, {
-	mode = "n",
-	silent = true,
-	prefix = "<leader>h",
-})
-
-reg({
-	name = "trouble.list",
-	d = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "trouble diagnostic this" },
-	D = { "<cmd>Trouble diagnostics toggle             <cr>", "trouble diagnostic ws" },
-	c = { "<cmd>Trouble qflist      toggle             <cr>", "trouble quickfix" },
-	l = { "<cmd>Trouble loclist     toggle             <cr>", "trouble loclist" },
-	s = { "<cmd>Trouble symbols     toggle             <cr>", "trouble symbols" },
-	t = { "<cmd>Trouble todo        toggle             <cr>", "trouble todo" },
-}, {
-	mode = "n",
-	silent = true,
-	prefix = "<leader>q",
+-- zoxide & change directory
+wk.add({
+	{ "<leader>z", group = "change-dir" },
+	{ "<leader>zz", "<cmd>Telescope zoxide list<cr>", desc = "zoxide" },
+	{ "<leader>z.", "<cmd>cd %:h<cr>", desc = "buf-dir" },
 })
 
 vim.keymap.set("n", "]t", function()
@@ -109,40 +99,64 @@ vim.keymap.set("n", "[g", "<cmd>Gitsigns prev_hunk<cr>", {
 	desc = "previous git diff hunk",
 })
 
-reg({
-	name = "git",
-	["g"] = { "<cmd>Neogit<CR>", "neogit" },
-	["f"] = { "<cmd>Telescope git_files<CR>", "tracked-files" },
-	["s"] = { "<cmd>Telescope git_status<CR>", "status" },
-	["S"] = { "<cmd>Telescope git_stash<CR>", "stash" },
-	["b"] = { "<cmd>Telescope git_branches<CR>", "branches" },
-	["c"] = { "<cmd>Telescope git_commits<CR>", "commits" },
-	["C"] = { "<cmd>Telescope git_bcommits<CR>", "commits-on-buf" },
-	["a"] = {
+-- git integration
+local gitsigns = require("gitsigns")
+
+wk.add({
+	{ "<leader>g", group = "git" },
+	{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "status" },
+	{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "commits" },
+	{ "<leader>gC", "<cmd>Telescope git_bcommits<cr>", desc = "commits buf" },
+	{ "<leader>gS", "<cmd>Telescope git_stash<cr>", desc = "stash" },
+	{ "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "branches" },
+	{ "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "tracked-files" },
+	-- neogit
+	{ "<leader>gg", "<cmd>Neogit<cr>", desc = "neogit" },
+	-- gitsigns hunk actions
+	{ "<leader>gh", group = "gitsigns hunk" },
+	-- Actions
+	{ "<leader>ghs", gitsigns.stage_hunk, desc = "stage hunk" },
+	{
+		"<leader>ghs",
 		function()
-			-- map: code action name -> action callback
-			local actions = require("gitsigns").get_actions()
-			vim.ui.select(vim.tbl_keys(actions), {
-				prompt = "Select gitsigns action:",
-			}, function(action)
-				if action then -- nil value when nothing is selected
-					actions[action]()
-				end
-			end)
+			gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 		end,
-		"gitsigns-actions",
+		desc = "stage hunk",
+		mode = "v",
 	},
-}, {
-	mode = "n",
-	silent = true,
-	prefix = "<leader>g",
+	{ "<leader>ghr", gitsigns.reset_hunk, desc = "reset hunk" },
+	{
+		"<leader>ghr",
+		function()
+			gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+		end,
+		desc = "reset hunk",
+		mode = "v",
+	},
+	{ "<leader>ghu", gitsigns.undo_stage_hunk, desc = "undo stage hunk" },
+	{ "<leader>ghp", gitsigns.preview_hunk, desc = "prefix hunk" },
+	{
+		"<leader>ghb",
+		function()
+			gitsigns.blame_line({ full = true })
+		end,
+		desc = "blame",
+	},
+	{ "<leader>ghd", gitsigns.diffthis, desc = "diff-index" },
+	{
+		"<leader>hD",
+		function()
+			gitsigns.diffthis("~")
+		end,
+		desc = "diff-commit(~)",
+	},
 })
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", {
-	desc = "toggle nvim-tree file explorer",
+	desc = "nvim-tree",
 	silent = true,
 })
 vim.keymap.set("n", "<leader>E", "<cmd>NvimTreeFindFileToggle<cr>", {
-	desc = "toggle nvim-tree file explorer",
+	desc = "nvim-tree",
 	silent = true,
 })

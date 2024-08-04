@@ -3,12 +3,15 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile", "BufAdd" },
+		config = true,
 	},
 
 	-- visualize indentation
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile", "BufAdd" },
+		main = "ibl",
+		opts = { indent = { char = "┋" } },
 	},
 
 	-- color matched pairs {[()]}
