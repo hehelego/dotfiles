@@ -158,6 +158,8 @@ config.bind(f'{leader}eu', 'edit-url', mode='normal')
 config.bind(f'{leader}ec', 'cmd-edit', mode='normal')
 # edit text-field in external editor
 config.bind('<Alt-e>', 'edit-text', mode='insert')
+# edit command line in external editor
+config.bind('<Alt-e>', 'cmd-edit', mode='command')
 
 # play video in MPV
 config.bind(f'{leader}m', 'hint links spawn mpv {hint-url}', mode='normal')
