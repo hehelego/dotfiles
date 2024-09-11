@@ -270,6 +270,7 @@ bar {
     status_command            i3status-rs
     font                      pango: Hack, FontAwesome6Free, FontAwesome6Brands 10
     position                  bottom
+    mode                      hide
 }
 
 
