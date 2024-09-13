@@ -103,10 +103,10 @@ return {
 				dashboard.button("g", "󰑑  Grep string", "<cmd>Telescope live_grep<cr>"),
 				dashboard.button("G", "  Neogit", "<cmd>Neogit<cr>"),
 				dashboard.button("z", "  Zoxide change dir", "<cmd>Telescope zoxide list<cr>"),
-				dashboard.button(".", "  Edit neovim config", "<cmd>edit $MYVIMRC<cr><cmd>cd %:h<cr>"),
 				dashboard.button("l", "  Lazy.nvim plugin manager", "<cmd>Lazy<cr>"),
 				dashboard.button("m", "󱧕  Mason.nvim package installer", "<cmd>Mason<cr>"),
 				dashboard.button("?", "󰘥  Help tags", "<cmd>Telescope help_tags<cr>"),
+				dashboard.button("n", "  enew", "<cmd>enew<cr>"),
 				dashboard.button("q", "  Quit", "<cmd>quitall<cr>"),
 			}
 			require("alpha").setup(dashboard.opts)

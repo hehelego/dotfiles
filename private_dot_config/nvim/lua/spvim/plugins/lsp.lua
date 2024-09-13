@@ -1,3 +1,4 @@
+vim.g.cornelis_agda_prefix = "<Tab>"
 local function lspclient_setup()
 	local diagnostic_signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -143,14 +144,11 @@ return {
 			mason_lsp.setup_handlers({
 				general_setup,
 				["lua_ls"] = luals_setup,
-				["clangd"] = clangd_setup,
 			})
 			clangd_setup("clangd")
+			general_setup("rust_analyzer")
 			general_setup("hls")
 			general_setup("ocamllsp")
-			general_setup("jdtls")
-		end,
-	},
 		end,
 	},
 	{
@@ -213,33 +211,23 @@ return {
 		event = { "CursorHold", "CursorHoldI" },
 		opts = { autocmd = { enabled = true } },
 	},
+	------------- extra filetypes ------------------
 	{ -- for the coq proof assistant
 		"whonore/Coqtail",
-		lazy = true,
 		ft = { "coq" },
 	},
-	-- { -- for the agda proof assistant
-	-- 	"isovector/cornelis",
-	-- 	dependencies = {
-	-- 		"kana/vim-textobj-user",
-	-- 		"neovimhaskell/nvim-hs.vim",
-	-- 	},
-	-- 	build = "stack build",
-	-- 	config = function()
-	-- 		vim.g.cornelis_agda_prefix = "<Tab>"
-	-- 	end,
-	-- 	lazy = true,
-	-- 	ft = { "agda" },
-	-- },
-	{ -- for agda
-		"derekelkins/agda-vim",
-		lazy = true,
+	{ -- for the agda proof assistant
+		"isovector/cornelis",
+		dependencies = {
+			"kana/vim-textobj-user",
+			"neovimhaskell/nvim-hs.vim",
+		},
+		build = "stack build",
 		ft = { "agda" },
 	},
-	{ -- TLA+
+	{ -- for TLA+ specifications
 		"tlaplus-community/tlaplus-nvim-plugin",
 		dependencies = "florentc/vim-tla",
-		lazy = true,
 		ft = { "tla" },
 	},
 }

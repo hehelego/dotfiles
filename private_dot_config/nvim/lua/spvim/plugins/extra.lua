@@ -30,7 +30,6 @@ return {
 	},
 	{
 		"lervag/vimtex",
-		cmd = "VimtexInverseSearch",
 		ft = "tex",
 		config = function()
 			-- allow overwriting the default tex filetype syntax&highlight
