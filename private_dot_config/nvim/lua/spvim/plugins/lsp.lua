@@ -205,6 +205,26 @@ return {
 		},
 	},
 	{
+		"stevearc/conform.nvim",
+		cmd = "ConformInfo",
+		event = { "BufReadPost", "BufNewFile", "BufAdd" },
+		opts = {
+			notify_on_error = false,
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "ruff_format" },
+				fish = { "fish_indent" },
+				latex = { "latexindent" },
+				ocaml = { "ocamlformat" },
+				haskell = { "fourmolu" },
+			},
+			default_format_opts = {
+				async = true,
+				lsp_format = "fallback",
+			},
+		},
+	},
+	{
 		"kosayoda/nvim-lightbulb",
 		event = { "CursorHold", "CursorHoldI" },
 		opts = { autocmd = { enabled = true } },

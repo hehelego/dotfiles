@@ -146,7 +146,7 @@ config.bind(f'{leader}tp',
 
 # toggle dark mode
 config.bind(f'{leader}d',
-            f'config-cycle -tp colors.webpage.darkmode.enabled true false',
+            'config-cycle -tp colors.webpage.darkmode.enabled true false',
             mode='normal')
 
 # restart the browser

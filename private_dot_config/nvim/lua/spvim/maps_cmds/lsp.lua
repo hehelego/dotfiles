@@ -1,7 +1,7 @@
 local wk = require("which-key")
 
 local function buf_fmt_async()
-	vim.lsp.buf.format({ async = true })
+	require("conform").format()
 end
 
 wk.add({
