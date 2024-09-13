@@ -115,11 +115,6 @@ local function clangd_setup(server_name)
 	local lspconfig = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-	-- NOTE: issue on offset encoding
-	-- see <https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428>
-	-- see <https://github.com/neovim/neovim/pull/16694>
-	capabilities.offsetEncoding = { "utf-16" }
-
 	local opts = {
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -132,7 +127,6 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPost", "BufNewFile", "BufAdd" },
 		dependencies = {
-			"jose-elias-alvarez/null-ls.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"ray-x/lsp_signature.nvim",
@@ -157,39 +151,6 @@ return {
 			general_setup("jdtls")
 		end,
 	},
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		lazy = true,
-		config = function()
-			local null_ls = require("null-ls")
-			local b = null_ls.builtins
-
-			null_ls.setup({
-				sources = {
-					-- formatting
-					b.formatting.prettier,
-					b.formatting.prettierd,
-					b.formatting.latexindent,
-					b.formatting.stylua,
-					b.formatting.rustfmt,
-					b.formatting.clang_format,
-					b.formatting.fish_indent,
-					b.formatting.yapf,
-					b.formatting.fourmolu,
-					b.formatting.ocamlformat,
-					b.formatting.sql_formatter,
-					-- diagnostic
-					b.diagnostics.fish,
-					b.diagnostics.revive,
-					-- code action
-					b.code_actions.gitsigns,
-					b.code_actions.gitrebase,
-					-- hover
-				},
-				options = {
-					debounce = vim.opt.timeoutlen:get(),
-				},
-			})
 		end,
 	},
 	{
