@@ -225,6 +225,29 @@ return {
 		},
 	},
 	{
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPost", "BufNewFile", "BufAdd" },
+		config = function()
+			require("lint").linters_by_ft = {
+				c = { "clangtidy" },
+				cpp = { "clangtidy" },
+				rust = { "clippy" },
+				python = { "ruff" },
+				fish = { "fish" },
+				lua = { "selene" },
+				latex = { "chktex" },
+			}
+			local grp = vim.api.nvim_create_augroup("nvim-lint", { clear = true })
+			vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+				callback = function()
+					require("lint").try_lint()
+				end,
+				desc = "run linters on buffer write",
+				group = grp,
+			})
+		end,
+	},
+	{
 		"kosayoda/nvim-lightbulb",
 		event = { "CursorHold", "CursorHoldI" },
 		opts = { autocmd = { enabled = true } },
