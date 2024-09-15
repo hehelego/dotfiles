@@ -167,7 +167,6 @@ return {
 		cmd = "ConformInfo",
 		event = { "BufReadPost", "BufNewFile", "BufAdd" },
 		opts = {
-			notify_on_error = false,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "ruff_format" },
@@ -176,8 +175,11 @@ return {
 				ocaml = { "ocamlformat" },
 				haskell = { "fourmolu" },
 			},
+			notify_on_error = true,
 			default_format_opts = {
-				async = true,
+				timeout_ms = 3000,
+				async = false,
+				quiet = false,
 				lsp_format = "fallback",
 			},
 		},
