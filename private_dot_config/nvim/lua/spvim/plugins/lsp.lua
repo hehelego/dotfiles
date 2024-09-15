@@ -1,4 +1,3 @@
-vim.g.cornelis_agda_prefix = "<Tab>"
 local function lspclient_setup()
 	local diagnostic_signs = {
 		{ name = "DiagnosticSignError", text = "" },
