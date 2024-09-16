@@ -42,3 +42,28 @@ vim.keymap.set("n", "M", "<cmd>Man<cr>", {
 vim.api.nvim_create_user_command("Format", buf_fmt_async, {
 	desc = "lsp document formatting",
 })
+
+-- For Cornelis Agda-mode
+local grp = vim.api.nvim_create_augroup("agda-cornelis-group", {})
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "agda" },
+	callback = function(args)
+		local opt = { buffer = args.buf, silent = false, desc = "cornelis agda-mode" }
+		vim.keymap.set("n", "<leader>cl", "<cmd>CornelisLoad<CR>", opt)
+		vim.keymap.set("n", "<leader>cg", "<cmd>CornelisGoals<CR>", opt)
+		vim.keymap.set("n", "<leader>cc", "<cmd>CornelisCloseInfoWindows<CR>", opt)
+		vim.keymap.set("n", "<leader>cr", "<cmd>CornelisRefine<CR>", opt)
+		vim.keymap.set("n", "<leader>cd", "<cmd>CornelisMakeCase<CR>", opt)
+		vim.keymap.set("n", "<leader>c,", "<cmd>CornelisTypeContext<CR>", opt)
+		vim.keymap.set("n", "<leader>c.", "<cmd>CornelisTypeContextInfer<CR>", opt)
+		vim.keymap.set("n", "<leader>cn", "<cmd>CornelisSolve<CR>", opt)
+		vim.keymap.set("n", "<leader>ca", "<cmd>CornelisAuto<CR>", opt)
+		vim.keymap.set("n", "gd", "<cmd>CornelisGoToDefinition<CR>", opt)
+		vim.keymap.set("n", "[/", "<cmd>CornelisPrevGoal<CR>", opt)
+		vim.keymap.set("n", "]/", "<cmd>CornelisNextGoal<CR>", opt)
+		vim.keymap.set("n", "<C-A>", "<cmd>CornelisInc<CR>", opt)
+		vim.keymap.set("n", "<C-X>", "<cmd>CornelisDec<CR>", opt)
+	end,
+	desc = "cornelis agda-mode",
+	group = grp,
+})
