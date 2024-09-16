@@ -1,36 +1,20 @@
 local function lspclient_setup()
 	local diagnostic_signs = {
-		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn", text = "" },
-		{ name = "DiagnosticSignHint", text = "" },
-		{ name = "DiagnosticSignInfo", text = "" },
+		["DiagnosticSignError"] = "", -- error
+		["DiagnosticSignWarn"] = "", -- warn
+		["DiagnosticSignInfo"] = "", -- info
+		["DiagnosticSignHint"] = "", -- hint
 	}
 
-	for _, sign in ipairs(diagnostic_signs) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+	for severity, text in pairs(diagnostic_signs) do
+		vim.fn.sign_define(severity, { texthl = severity, text = text, numhl = "" })
 	end
 
 	vim.diagnostic.config({
 		virtual_text = false,
-		signs = { active = diagnostic_signs },
-		update_in_insert = false,
 		underline = true,
-		severity_sort = true,
-		float = {
-			focusable = false,
-			style = "minimal",
-			source = true,
-			header = "",
-			prefix = "",
-		},
-	})
-
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "single",
-	})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "single",
+		update_in_insert = false,
+		severity_sort = false,
 	})
 end
 
@@ -210,7 +194,10 @@ return {
 	{
 		"kosayoda/nvim-lightbulb",
 		event = { "CursorHold", "CursorHoldI" },
-		opts = { autocmd = { enabled = true } },
+		opts = {
+			priority = 20,
+			autocmd = { enabled = true },
+		},
 	},
 	------------- extra filetypes ------------------
 	{ -- for the coq proof assistant
@@ -227,8 +214,7 @@ return {
 		ft = { "agda" },
 	},
 	{ -- for TLA+ specifications
-		"tlaplus-community/tlaplus-nvim-plugin",
-		dependencies = "florentc/vim-tla",
+		"florentc/vim-tla",
 		ft = { "tla" },
 	},
 }
