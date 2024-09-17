@@ -44,7 +44,6 @@ vim.api.nvim_create_user_command("Format", buf_fmt_async, {
 })
 
 -- For Cornelis Agda-mode
-local grp = vim.api.nvim_create_augroup("agda-cornelis-group", {})
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "agda" },
 	callback = function(args)
@@ -65,5 +64,5 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.keymap.set("n", "<C-X>", "<cmd>CornelisDec<CR>", opt)
 	end,
 	desc = "cornelis agda-mode",
-	group = grp,
+	group = vim.api.nvim_create_augroup("agda-cornelis-group", {}),
 })

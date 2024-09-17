@@ -16,93 +16,55 @@ local function lspclient_setup()
 		update_in_insert = false,
 		severity_sort = false,
 	})
-end
 
-local function on_attach(client, bufnr)
-	_ = bufnr -- discard the argument
+	vim.api.nvim_create_autocmd("LspAttach", {
+		callback = function(args)
+			local bufnr = args.buf
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-	-- add CursorHold document highlighting
-	if client.server_capabilities.documentHighlightProvider then
-		local lsp_dochl_grp = vim.api.nvim_create_augroup("lsp_document_highlight", {})
-		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-			callback = vim.lsp.buf.document_highlight,
-			group = lsp_dochl_grp,
-			desc = "On CursorHold, highlight the reference of the symbol under cursor",
-			buffer = bufnr,
-		})
-		vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-			callback = vim.lsp.buf.clear_references,
-			group = lsp_dochl_grp,
-			desc = "On CursorMoved, clear lsp document_highlight",
-			buffer = bufnr,
-		})
-	end
+			-- highlight the symbol under the cursor
+			if client.server_capabilities.documentHighlightProvider then
+				local lsp_dochl_grp = vim.api.nvim_create_augroup("lsp_document_highlight", {})
+				vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+					callback = vim.lsp.buf.document_highlight,
+					group = lsp_dochl_grp,
+					desc = "On CursorHold, highlight the reference of the symbol under cursor",
+					buffer = bufnr,
+				})
+				vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+					callback = vim.lsp.buf.clear_references,
+					group = lsp_dochl_grp,
+					desc = "On CursorMoved, clear lsp document_highlight",
+					buffer = bufnr,
+				})
+			end
 
-	-- add BufEnter, InsertLeave, CursorHold codelens
-	-- if client.server_capabilities.codeLensProvider then
-	-- 	local lsp_codelens_grp = vim.api.nvim_create_augroup("lsp_codelens", {})
-	-- 	vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-	-- 		group = lsp_codelens_grp,
-	-- 		desc = "refresh lsp codelens",
-	-- 		callback = function() vim.lsp.codelens.refresh() end,
-	-- 	})
-	-- end
+			-- refresh codelens
+			if client.server_capabilities.codeLensProvider then
+				vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+					callback = function()
+						vim.lsp.codelens.refresh({ bufnr = bufnr })
+					end,
+					group = vim.api.nvim_create_augroup("lsp_codelens", {}),
+					desc = "refresh lsp codelens",
+					buffer = bufnr,
+				})
+			end
 
-	require("lsp_signature").on_attach({
-		bind = true,
-		fix_pos = true,
-		handler_opts = {
-			border = "single",
-		},
-	}, bufnr)
+			-- provide inlay hints
+			if client.server_capabilities.inlayHintProvider then
+				vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+			end
+		end,
+		desc = "Setup LSP client on LspAttach event",
+		group = vim.api.nvim_create_augroup("LspClientSetupGroup", {}),
+	})
 end
 
 local function general_setup(server_name)
 	local lspconfig = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-	local opts = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
-	lspconfig[server_name].setup(opts)
-end
-
--- special configuration for lua-ls
-local function luals_setup(server_name)
-	local lspconfig = require("lspconfig")
-	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-	local opts = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
-
-	opts = vim.tbl_deep_extend("force", opts, {
-		settings = {
-			Lua = {
-				runtime = { version = "LuaJIT" },
-				diagnostics = { globals = { "vim" } },
-				workspace = {
-					library = { vim.env.VIMRUNTIME },
-					checkThirdParty = false,
-				},
-				telemetry = { enable = false },
-				format = { enable = false },
-			},
-		},
-	})
-
-	lspconfig[server_name].setup(opts)
-end
--- special configuration for clangd
-local function clangd_setup(server_name)
-	local lspconfig = require("lspconfig")
-	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-	local opts = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
+	local opts = { capabilities = capabilities }
 	lspconfig[server_name].setup(opts)
 end
 
@@ -124,11 +86,8 @@ return {
 			mason.setup({})
 			mason_lsp.setup({})
 
-			mason_lsp.setup_handlers({
-				general_setup,
-				["lua_ls"] = luals_setup,
-			})
-			clangd_setup("clangd")
+			mason_lsp.setup_handlers({ general_setup })
+			general_setup("clangd")
 			general_setup("rust_analyzer")
 			general_setup("hls")
 			general_setup("ocamllsp")
@@ -145,6 +104,10 @@ return {
 			"MasonUninstallAll",
 			"MasonLog",
 		},
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		opts = {},
 	},
 	{
 		"stevearc/conform.nvim",
@@ -181,13 +144,12 @@ return {
 				lua = { "selene" },
 				latex = { "chktex" },
 			}
-			local grp = vim.api.nvim_create_augroup("nvim-lint", { clear = true })
 			vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
 				callback = function()
 					require("lint").try_lint()
 				end,
 				desc = "run linters on buffer write",
-				group = grp,
+				group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
 			})
 		end,
 	},

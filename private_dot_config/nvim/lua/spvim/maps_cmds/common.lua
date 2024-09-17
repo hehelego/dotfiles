@@ -108,7 +108,6 @@ wk.add({
 	{ "<leader>bp", "<cmd>bprevious<cr>", desc = "prev" },
 })
 
-local ft_quit_grp = vim.api.nvim_create_augroup("ft_quick_quit", {})
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "help", "qf", "man", "lspinfo", "mason" },
 	callback = function(args)
@@ -119,7 +118,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		})
 	end,
 	desc = "press [q] to quit in help/man/qf",
-	group = ft_quit_grp,
+	group = vim.api.nvim_create_augroup("ft_quick_quit", {}),
 })
 
 local function toggle_conceal()
