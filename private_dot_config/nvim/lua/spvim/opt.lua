@@ -2,6 +2,13 @@
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+vim.g.bigfile = function(bufnr)
+	-- local max_size, max_lines = 0x100000, 0x4000 -- 1MB, 16K lines
+	local max_size, max_lines = 0x100000, 0x400 -- 1MB, 16K lines
+	local ok, stat = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+	local lines = vim.api.nvim_buf_line_count(bufnr)
+	return lines > max_lines or (ok and stat and stat.size > max_size)
+end
 
 local set = {
 	-- MISC
