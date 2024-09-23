@@ -9,6 +9,5 @@ return {
 		event = "VeryLazy",
 		opts = { preset = "helix", icons = { mappings = false } },
 	},
-	{ "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } },
 	{ "nvim-lua/plenary.nvim", lazy = true },
 }

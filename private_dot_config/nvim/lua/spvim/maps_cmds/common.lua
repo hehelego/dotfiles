@@ -102,8 +102,8 @@ end
 
 wk.add({
 	{ "<leader>b", group = "buffer" },
-	{ "<leader>bd", "<cmd>Bdelete<cr>", desc = "delete" },
-	{ "<leader>bw", "<cmd>Bwipeout<cr>", desc = "wipeout" },
+	{ "<leader>bd", "<cmd>bdelete<cr>", desc = "delete" },
+	{ "<leader>bw", "<cmd>bwipeout<cr>", desc = "wipeout" },
 	{ "<leader>bn", "<cmd>bnext<cr>", desc = "next" },
 	{ "<leader>bp", "<cmd>bprevious<cr>", desc = "prev" },
 })
