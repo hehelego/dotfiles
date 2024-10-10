@@ -87,7 +87,11 @@ $exec_                        fish -c setbg
     bindsym $mod+Shift+q          kill
     # reload the configuration file
     bindsym $mod+Shift+c          reload
-    bindsym $mod+Shift+r          restart
+    bindsym $mod+Shift+r          reload
+    # set the default background
+    bindsym $mod+Shift+b                exec fish -c setbg
+    # take a screenshot of the current monitor and set it as the background
+	bindsym $mod+b                exec fish -c screenshot_bg
     # terminate session
     bindsym $mod+Shift+e          exec i3-nagbar \
                                     -t warning -m 'exit i3wm session' \
