@@ -49,6 +49,8 @@ $exec_                        xss-lock --transfer-sleep-lock -- $locker
 
 
 
+
+
 ### Output configuration
 #
 # set resolution,dpi,gamma,backlight; reset xrandr-gamma
@@ -220,9 +222,9 @@ $exec_                        fish -c setbg
 #
 
 set $mode_default             "default"
-set $mode_session             "session::[{l: lock}, {s: suspend}, {h: hibernate}]"
-set $mode_resize              "resize::[{⬅️: -width}, {➡️: +width}, {⬆️: -height}, {⬇️: +height}]"
-set $mode_display_output      "display-output::[{1: (internal)eDP}, {2: (external)USB-C-DP}, {3: (internal+external)all}]"
+set $mode_session             "session {l lock} {s suspend} {h hibernate}"
+set $mode_resize              "resize {← -width} {→ +width} {↓ -height} {↑ +height}"
+set $mode_display_output      "screen {1 internal} {2 external} {3 internal&external}"
 
 bindsym $mod+Escape           mode $mode_session
 mode $mode_session {
@@ -239,13 +241,13 @@ mode $mode_session {
 bindsym $mod+r                mode $mode_resize
 mode $mode_resize {
     bindsym $left             resize shrink width  10 px or 10 ppt
-    bindsym $down             resize grow   height 10 px or 10 ppt
-    bindsym $up               resize shrink height 10 px or 10 ppt
+    bindsym $down             resize shrink height 10 px or 10 ppt
     bindsym $right            resize grow   width  10 px or 10 ppt
+    bindsym $up               resize grow   height 10 px or 10 ppt
 
     bindsym Left              resize shrink width  10 px or 10 ppt
-    bindsym Down              resize grow   height 10 px or 10 ppt
-    bindsym Up                resize shrink height 10 px or 10 ppt
+    bindsym Down              resize shrink height 10 px or 10 ppt
+    bindsym Up                resize grow   height 10 px or 10 ppt
     bindsym Right             resize grow   width  10 px or 10 ppt
 
     # Return to default mode

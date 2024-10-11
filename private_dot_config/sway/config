@@ -22,7 +22,7 @@ set $right                    l
 # Frequently used applications
 set $term                     alacritty
 set $locker                   swaylock -f -c 333333
-set $menu                     bemenu-run --list 20 --fn 'Hack 18'
+set $menu                     bemenu-run --list 20 --fn 'Hack 14'
 # refresh the status bar
 set $refresh_status           killall -SIGUSR1 i3status-rs
 # take a screenshot
@@ -42,9 +42,10 @@ exec                          fish -c restart_im
 exec                          dunst --config ~/.config/dunst/dunstrc
 # auto lock screen on idle
 exec                          swayidle -w \
-                                timeout 300 'swaylock -f -c 333333' \
-                                timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-                                before-sleep 'swaylock -f -c 333333'
+                                timeout 300 '"$locker"' \
+                                timeout 600 '"systemctl suspend"' \
+                                lock        '"$locker"' \
+                                before-sleep '"$locker"'
 # lock your screen after 300 seconds of inactivity, turn off your displays after another 300 seconds, and turn your screens back on when resumed.
 # It will also lock your screen before your computer goes to sleep.
 
@@ -220,9 +221,9 @@ exec                          fish -c setbg
 #
 
 set $mode_default             "default"
-set $mode_session             "session::[{l: lock}, {s: suspend}, {h: hibernate}]"
-set $mode_resize              "resize::[{⬅️: -width}, {➡️: +width}, {⬆️: -height}, {⬇️: +height}]"
-set $mode_display_output      "display-output::[{1: (internal)eDP}, {2: (external)USB-C-DP}, {3: (internal+external)all}]"
+set $mode_session             "session {l lock} {s suspend} {h hibernate}"
+set $mode_resize              "resize {← -width} {→ +width} {↓ -height} {↑ +height}"
+set $mode_display_output      "screen {1 internal} {2 external} {3 internal&external}"
 
 bindsym $mod+Escape           mode $mode_session
 mode $mode_session {
@@ -239,13 +240,13 @@ mode $mode_session {
 bindsym $mod+r                mode $mode_resize
 mode $mode_resize {
     bindsym $left             resize shrink width  10 px or 10 ppt
-    bindsym $down             resize grow   height 10 px or 10 ppt
-    bindsym $up               resize shrink height 10 px or 10 ppt
+    bindsym $down             resize shrink height 10 px or 10 ppt
     bindsym $right            resize grow   width  10 px or 10 ppt
+    bindsym $up               resize grow   height 10 px or 10 ppt
 
     bindsym Left              resize shrink width  10 px or 10 ppt
-    bindsym Down              resize grow   height 10 px or 10 ppt
-    bindsym Up                resize shrink height 10 px or 10 ppt
+    bindsym Down              resize shrink height 10 px or 10 ppt
+    bindsym Up                resize grow   height 10 px or 10 ppt
     bindsym Right             resize grow   width  10 px or 10 ppt
 
     # Return to default mode
