@@ -40,6 +40,8 @@ $exec_                        warpd
 $exec_                        fish -c restart_im
 # notification: start dunst notification server
 $exec_                        dunst --config ~/.config/dunst/dunstrc
+# pueue task manager
+$exec_                        pueued -d
 # auto lock screen on idle
 $exec_                        xss-lock --transfer-sleep-lock -- $locker
 

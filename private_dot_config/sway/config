@@ -40,8 +40,10 @@ exec                          warpd
 exec                          fish -c restart_im
 # notification: start dunst notification server
 exec                          dunst --config ~/.config/dunst/dunstrc
+# pueue task manager
+exec                          pueued -d
 # auto lock screen on idle
-exec                          swayidle -w \
+exec                          pueue add swayidle -wd \
                                 timeout 300 '"$locker"' \
                                 timeout 600 '"systemctl suspend"' \
                                 lock        '"$locker"' \
