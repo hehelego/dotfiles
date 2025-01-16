@@ -26,6 +26,7 @@ button = "left"
 cmd = "lxrandr"
 
 [[block]]
+driver = "pulseaudio"
 block = "sound"
 show_volume_when_muted = true
 [[block.click]]
