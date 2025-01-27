@@ -157,7 +157,8 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		dependencies = "folke/trouble.nvim",
-		cmd = { "TodoTrouble", "TodoLocList", "TodoQuickFix", "TodoTelescope" },
+		event = { "BufReadPost", "BufNewFile", "BufAdd" },
+		cmd = { "Trouble", "TodoTrouble", "TodoLocList", "TodoQuickFix", "TodoTelescope" },
 		config = true,
 	},
 	{
