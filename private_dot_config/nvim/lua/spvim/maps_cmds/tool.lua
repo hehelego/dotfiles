@@ -160,3 +160,13 @@ vim.keymap.set("n", "<leader>E", "<cmd>NvimTreeFindFileToggle<cr>", {
 	desc = "nvim-tree",
 	silent = true,
 })
+
+-- zk-nvim
+wk.add({
+	{ "<leader>k", group = "zettelkasten" },
+	{ "<leader>kf", "<cmd>ZkNotes<cr>", desc = "find notes" },
+	{ "<leader>kg", ":'<,'>ZkMatch<cr>", desc = "search note text", mode = "v" },
+	{ "<leader>kt", "<cmd>ZkTags<cr>", desc = "note tags" },
+	{ "<leader>kl", "<cmd>ZkLinks<cr>", desc = "outgoing link" },
+	{ "<leader>kj", "<cmd>ZkBacklinks<cr>", desc = "back jumping links" },
+})

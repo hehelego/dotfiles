@@ -59,4 +59,24 @@ return {
 			vim.cmd.highlight({ "link", "Conceal", "Type" })
 		end,
 	},
+	{
+		"zk-org/zk-nvim",
+		event = "VeryLazy",
+		main = "zk",
+		opts = {
+			picker = "telescope",
+
+			lsp = {
+				config = {
+					cmd = { "zk", "lsp" },
+					name = "zk",
+				},
+
+				auto_attach = {
+					enabled = true,
+					filetypes = { "markdown" },
+				},
+			},
+		},
+	},
 }
