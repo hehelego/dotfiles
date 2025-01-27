@@ -118,7 +118,7 @@ return {
 				lua = { "stylua" },
 				python = { "ruff_format" },
 				fish = { "fish_indent" },
-				latex = { "latexindent" },
+				tex = { "latexindent" },
 				ocaml = { "ocamlformat" },
 				haskell = { "fourmolu" },
 			},
