@@ -29,13 +29,13 @@ local function diagnostic_jump_prev()
 	vim.diagnostic.jump({ count = -vim.v.count1 })
 end
 
-vim.keymap.set("n", "[d", diagnostic_jump_next, {
-	silent = true,
-	desc = "goto next diagnostic",
-})
-vim.keymap.set("n", "]d", diagnostic_jump_prev, {
+vim.keymap.set("n", "[d", diagnostic_jump_prev, {
 	silent = true,
 	desc = "goto prev diagnostic",
+})
+vim.keymap.set("n", "]d", diagnostic_jump_next, {
+	silent = true,
+	desc = "goto next diagnostic",
 })
 
 -- show document

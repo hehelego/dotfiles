@@ -12,6 +12,9 @@ local function lspclient_setup()
 				[vim.diagnostic.severity.HINT] = "",
 			},
 		},
+		jump = {
+			float = true,
+		}
 	})
 
 	vim.api.nvim_create_autocmd("LspAttach", {
