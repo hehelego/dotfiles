@@ -22,7 +22,7 @@ return {
 		lazy = false,
 		config = function()
 			require("catppuccin").setup({
-				transparent_background = true,
+				transparent_background = false,
 				show_end_of_buffer = false,
 				term_colors = true,
 				integrations = {
@@ -42,6 +42,7 @@ return {
 				},
 			})
 
+			vim.opt.background = "light"
 			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
@@ -92,24 +93,43 @@ return {
 		},
 	},
 	{
-		"goolord/alpha-nvim",
+		"nvimdev/dashboard-nvim",
 		lazy = false,
-		config = function()
-			local dashboard = require("alpha.themes.dashboard")
-			dashboard.section.buttons.val = {
-				dashboard.button("e", "  Explorer", "<cmd>NvimTreeFocus<cr>"),
-				dashboard.button("f", "  Find files", "<cmd>Telescope find_files<cr>"),
-				dashboard.button("h", "  History files", "<cmd>Telescope oldfiles<cr>"),
-				dashboard.button("g", "󰑑  Grep string", "<cmd>Telescope live_grep<cr>"),
-				dashboard.button("G", "  Neogit", "<cmd>Neogit<cr>"),
-				dashboard.button("z", "  Zoxide change dir", "<cmd>Telescope zoxide list<cr>"),
-				dashboard.button("l", "  Lazy.nvim plugin manager", "<cmd>Lazy<cr>"),
-				dashboard.button("m", "󱧕  Mason.nvim package installer", "<cmd>Mason<cr>"),
-				dashboard.button("?", "󰘥  Help tags", "<cmd>Telescope help_tags<cr>"),
-				dashboard.button("n", "  enew", "<cmd>enew<cr>"),
-				dashboard.button("q", "  Quit", "<cmd>quitall<cr>"),
-			}
-			require("alpha").setup(dashboard.opts)
-		end,
+		opts = {
+			theme = "doom",
+			disable_move = true,
+			shortcut_type = "number",
+			config = {
+				header = {},
+				week_header = {
+					enable = true,
+				},
+				footer = {},
+				center = {
+					-- { desc = "󰊳 Update", action = "Lazy update", key = "u" },
+					-- { desc = "Files", action = "Telescope find_files", key = "f" },
+					-- { desc = " Apps", action = "Telescope app", key = "a" },
+					-- { desc = " dotfiles", action = "Telescope dotfiles", key = "d" },
+
+					{ key = "e", desc = "  Explorer", action = "NvimTreeFocus" },
+					{ key = "f", desc = "  Find files", action = "Telescope find_files" },
+					{ key = "h", desc = "  History files", action = "Telescope oldfiles" },
+					{ key = "g", desc = "󰑑  Grep string", action = "Telescope live_grep" },
+					{ key = "G", desc = "  Neogit", action = "Neogit" },
+					{ key = "z", desc = "  Zoxide change dir", action = "Telescope zoxide list" },
+					{ key = "l", desc = "  Lazy.nvim plugin manager", action = "Lazy" },
+					{ key = "m", desc = "󱧕  Mason.nvim package installer", action = "Mason" },
+					{ key = "?", desc = "󰘥  Help tags", action = "Telescope help_tags" },
+					{ key = "n", desc = "  enew", action = "enew" },
+					{ key = "q", desc = "  Quit", action = "quitall" },
+				},
+			},
+		},
 	},
 }
+--  function()
+-- 	local dashboard = require("alpha.themes.dashboard")
+-- 	dashboard.section.buttons.val = {
+-- 	}
+-- 	require("alpha").setup(dashboard.opts)
+-- end

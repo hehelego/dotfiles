@@ -22,13 +22,20 @@ wk.add({
 	{ ";gt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "typedef" },
 })
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
+local function diagnostic_jump_next()
+	vim.diagnostic.jump({ count = vim.v.count1 })
+end
+local function diagnostic_jump_prev()
+	vim.diagnostic.jump({ count = -vim.v.count1 })
+end
+
+vim.keymap.set("n", "[d", diagnostic_jump_next, {
 	silent = true,
 	desc = "goto next diagnostic",
 })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {
+vim.keymap.set("n", "]d", diagnostic_jump_prev, {
 	silent = true,
-	desc = "goto next diagnostic",
+	desc = "goto prev diagnostic",
 })
 
 -- show document
@@ -47,6 +54,8 @@ vim.api.nvim_create_user_command("Format", buf_fmt_async, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "coq" },
 	callback = function(args)
+		vim.g.coqtail_build_system = "prefer-coqproject"
+
 		wk.add({
 			buffer = args.buf,
 			{ "<leader>c", group = "Coqtail" },
