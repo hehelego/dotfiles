@@ -190,4 +190,14 @@ return {
 		cmd = "Neogit",
 		config = true,
 	},
+	{
+		"sindrets/diffview.nvim",
+		cmd = {
+			"DiffviewOpen",
+			"DiffviewFileHistory",
+			"DiffviewFocusFiles",
+			"DiffviewToggleFiles"
+		},
+		config = true,
+	},
 }
