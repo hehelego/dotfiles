@@ -56,5 +56,3 @@ end
 vim.opt.shortmess:append("c")
 vim.opt.shortmess:append("I")
 
--- Agda-mode unicode symbol input. See https://github.com/isovector/cornelis/
-vim.g.cornelis_agda_prefix = "<Tab>"

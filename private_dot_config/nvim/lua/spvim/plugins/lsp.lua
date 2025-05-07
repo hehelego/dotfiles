@@ -167,12 +167,12 @@ return {
 		ft = { "coq" },
 	},
 	{ -- for the agda proof assistant
-		"isovector/cornelis",
+		"agda/cornelis",
 		dependencies = {
 			"kana/vim-textobj-user",
 			"neovimhaskell/nvim-hs.vim",
 		},
-		build = "stack build",
+		build = "echo need to build the cornelis project",
 		ft = { "agda" },
 	},
 	{ -- for TLA+ specifications
