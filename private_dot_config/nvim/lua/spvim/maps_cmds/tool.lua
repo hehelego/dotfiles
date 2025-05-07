@@ -64,7 +64,7 @@ end, { desc = "Previous todo comment" })
 vim.keymap.set("n", "[q", function()
 	local trouble = require("trouble")
 	if trouble.is_open() then
-		trouble.previous({ skip_groups = true, jump = true })
+		trouble.prev({ skip_groups = true, jump = true })
 	else
 		local ok, _ = pcall(vim.cmd.cprev)
 		if not ok then
