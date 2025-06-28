@@ -40,6 +40,8 @@ zoxide init fish | source
 set -gx FZF_DEFAULT_COMMAND fdf
 set -gx FZF_DEFAULT_OPTS "--cycle --reverse --height=40%"
 
+# SECTION: OPAM OCaml
+opam env | source
 
 if status is-interactive
     # SECTION: key-bindings
