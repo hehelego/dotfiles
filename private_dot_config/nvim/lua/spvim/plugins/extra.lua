@@ -79,4 +79,9 @@ return {
 			},
 		},
 	},
+	{
+		"flix/nvim",
+		event = "VeryLazy",
+		name = "flix.nvim",
+	},
 }
