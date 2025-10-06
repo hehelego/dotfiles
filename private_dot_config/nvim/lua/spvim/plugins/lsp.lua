@@ -14,7 +14,7 @@ local function lspclient_setup()
 		},
 		jump = {
 			float = true,
-		}
+		},
 	})
 
 	vim.api.nvim_create_autocmd("LspAttach", {

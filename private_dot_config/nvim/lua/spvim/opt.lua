@@ -10,6 +10,8 @@ vim.g.bigfile = function(bufnr)
 	return lines > max_lines or (ok and stat and stat.size > max_size)
 end
 
+vim.g.cornelis_agda_prefix = "<Tab>"
+
 local set = {
 	-- MISC
 	guifont = "monospace:h12", -- font for gui-version of neovim
@@ -55,4 +57,3 @@ end
 
 vim.opt.shortmess:append("c")
 vim.opt.shortmess:append("I")
-

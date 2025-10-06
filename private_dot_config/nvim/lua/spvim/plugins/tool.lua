@@ -196,7 +196,7 @@ return {
 			"DiffviewOpen",
 			"DiffviewFileHistory",
 			"DiffviewFocusFiles",
-			"DiffviewToggleFiles"
+			"DiffviewToggleFiles",
 		},
 		config = true,
 	},
