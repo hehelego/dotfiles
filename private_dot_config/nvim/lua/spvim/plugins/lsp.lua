@@ -17,6 +17,8 @@ local function lspclient_setup()
 		},
 	})
 
+	vim.lsp.config("*", { capabilities = require("cmp_nvim_lsp").default_capabilities() })
+
 	vim.api.nvim_create_autocmd("LspAttach", {
 		callback = function(args)
 			local bufnr = args.buf
@@ -61,13 +63,6 @@ local function lspclient_setup()
 	})
 end
 
-local function general_setup(server_name)
-	local lspconfig = require("lspconfig")
-	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-	local opts = { capabilities = capabilities }
-	lspconfig[server_name].setup(opts)
-end
-
 return {
 	{
 		"neovim/nvim-lspconfig",
@@ -86,11 +81,10 @@ return {
 			mason.setup({})
 			mason_lsp.setup({})
 
-			mason_lsp.setup_handlers({ general_setup })
-			general_setup("clangd")
-			general_setup("rust_analyzer")
-			general_setup("hls")
-			general_setup("ocamllsp")
+			vim.lsp.enable("lua_ls")
+			vim.lsp.enable("clangd")
+			vim.lsp.enable("ocamllsp")
+			vim.lsp.enable("hls")
 		end,
 	},
 	{
